@@ -1,0 +1,14 @@
+﻿using App.Domain.Core.HomeService.ResultEntity;
+using App.Domain.Core.HomeService.SubCategoryEntity.Dto;
+
+namespace App.Domain.Core.HomeService.SubCategoryEntity.AppService
+{
+    public interface ISubCategoryAppService
+    {
+        public Task<List<SubCategorySummaryDto>>? GetAll(CancellationToken cancellation);
+        public Task<Result> Delete(int id, CancellationToken cancellation);
+        public Task<Result> Add(SubCategoryCreateDto categoryCreateDto, CancellationToken cancellation);
+        public Task<SubCategoryUpdateDto> GetByIdForUpdate(int id, CancellationToken cancellation);
+        public Task<Result> Update(SubCategoryUpdateDto subCategory, CancellationToken cancellation);
+    }
+}

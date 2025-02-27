@@ -1,5 +1,5 @@
-using App.Domain.Core.HomeService.User.AppService;
-using App.Domain.Core.HomeService.User.Entities;
+using App.Domain.Core.HomeService.UserEntity.AppService;
+using App.Domain.Core.HomeService.UserEntity.Entities;
 using Hw22.Endpoints.Mvc.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -19,10 +19,10 @@ namespace Hw22.Endpoints.Mvc.Controllers
 
         public async Task<IActionResult> Index(CancellationToken cancellation)
         {
-            var result = await userAppService.Register("salam", "Et65$jd" , "Customer");
-            await userAppService.Login("salam" , "Et65$jd", false);
+            //var result = await userAppService.Register("salam", "Et65$jd" , "Customer");
+            //await userAppService.Login("salam" , "Et65$jd", false);
 
-            var claims = User.Claims;
+            //var claims = User.Claims;
 
             return View();
         }

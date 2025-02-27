@@ -1,0 +1,83 @@
+﻿@page
+@model HomeService.Endpoints.RazorPages.Pages.User.Customer.Request.IndexModel
+@{
+}
+
+
+@{
+    Layout = "_Layout";
+}
+
+
+<div class="col-xl-12 col-lg-2 col-md-12 col-sm-12">
+    <div class="submit-form">
+        <div class="dashboard-list-wraps bg-white rounded mb-4">
+            <div class="dashboard-list-wraps-head br-bottom py-3 px-3">
+                <div class="dashboard-list-wraps-flx">
+                    <h4 class="mb-0 ft-medium fs-md">درخواست جدید</h4>
+                </div>
+            </div>
+            <form method="post" asp-action="CreateRequest" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+                <div class="dashboard-list-wraps-body py-3 px-3">
+                    <div class="row">
+
+                        <input type="hidden />
+                        <input type="hidden />
+
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label  class="form-label">برای چه زمانی؟</label>
+                                <input  data-jdp class="form-control rounded" />
+                            </div>
+                        </div>
+                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                            <div class="form-group">
+                                <label class="mb-1">توضیحات</label>
+                                <textarea  class="form-control rounded" rows="5" cols="4"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                            <label for="formFileLg" class="form-label">آپلود تصویر</label>
+                            <input type="file"  class="form-control" />
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                            <div class="form-group p-2">
+                                <button type="submit" class="btn theme-cl rounded theme-bg-light ft-medium">ثبت</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        jalaliDatepicker.startWatch({
+            minDate: "attr",
+            maxDate: "attr",
+            minTime: "attr",
+            maxTime: "attr",
+            hideAfterChange: true,
+            autoHide: true,
+            showTodayBtn: true,
+            showEmptyBtn: true,
+            topSpace: 10,
+            bottomSpace: 30,
+            dayRendering(opt, input) {
+                return {
+                    isHollyDay: opt.day == 1
+                }
+            }
+        });
+
+        document.getElementById("aaa").addEventListener("jdp:change", function (e) { console.log(e) });
+    </script>
+}

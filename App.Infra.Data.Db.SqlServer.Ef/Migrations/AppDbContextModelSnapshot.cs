@@ -22,7 +22,80 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("App.Domain.Core.HomeService.Base.Entities.City", b =>
+            modelBuilder.Entity("App.Domain.Core.HomeService.CategoryEntity.Entities.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IsDeleted = false,
+                            Title = "تمیزکاری"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            IsDeleted = false,
+                            Title = "ساختمان"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            IsDeleted = false,
+                            Title = "تعمیرات اشیا"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            IsDeleted = false,
+                            Title = "اسباب کشی و حمل بار"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            IsDeleted = false,
+                            Title = "خودرو"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            IsDeleted = false,
+                            Title = "سلامت و زیبایی"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            IsDeleted = false,
+                            Title = "سازمان ها و مجتمع ها"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            IsDeleted = false,
+                            Title = "سایر"
+                        });
+                });
+
+            modelBuilder.Entity("App.Domain.Core.HomeService.CityEntity.Entities.City", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -176,7 +249,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         });
                 });
 
-            modelBuilder.Entity("App.Domain.Core.HomeService.Base.Entities.Image", b =>
+            modelBuilder.Entity("App.Domain.Core.HomeService.CommentEntity.Entities.Comment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -184,94 +257,19 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Path")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("CommentAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ExpertId")
+                        .HasColumnType("int");
 
                     b.Property<int>("RequestId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("RequestId");
-
-                    b.ToTable("Images");
-                });
-
-            modelBuilder.Entity("App.Domain.Core.HomeService.Category.Entities.Category", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ImagePath")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Title = "تمیزکاری"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Title = "ساختمان"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Title = "تعمیرات اشیا"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Title = "اسباب کشی و حمل بار"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Title = "خودرو"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Title = "سلامت و زیبایی"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Title = "سازمان ها و مجتمع ها"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Title = "سایر"
-                        });
-                });
-
-            modelBuilder.Entity("App.Domain.Core.HomeService.Comment.Entities.Comment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateOnly>("CommentAt")
-                        .HasColumnType("date");
-
-                    b.Property<int>("ExpertId")
+                    b.Property<int>("StatusEnum")
                         .HasColumnType("int");
 
                     b.Property<string>("Text")
@@ -280,12 +278,59 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CustomerId");
+
                     b.HasIndex("ExpertId");
 
+                    b.HasIndex("RequestId")
+                        .IsUnique();
+
                     b.ToTable("Comments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CommentAt = new DateTime(2025, 2, 27, 3, 9, 5, 48, DateTimeKind.Local).AddTicks(8858),
+                            CustomerId = 1,
+                            ExpertId = 2,
+                            RequestId = 1,
+                            StatusEnum = 0,
+                            Text = "عالی بود"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CommentAt = new DateTime(2025, 2, 27, 3, 9, 5, 50, DateTimeKind.Local).AddTicks(1347),
+                            CustomerId = 2,
+                            ExpertId = 1,
+                            RequestId = 2,
+                            StatusEnum = 0,
+                            Text = "بسیار بد اخلاق"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CommentAt = new DateTime(2025, 2, 27, 3, 9, 5, 50, DateTimeKind.Local).AddTicks(1361),
+                            CustomerId = 3,
+                            ExpertId = 2,
+                            RequestId = 3,
+                            StatusEnum = 0,
+                            Text = "کار بلد"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CommentAt = new DateTime(2025, 2, 27, 3, 9, 5, 50, DateTimeKind.Local).AddTicks(1364),
+                            CustomerId = 1,
+                            ExpertId = 3,
+                            RequestId = 4,
+                            StatusEnum = 0,
+                            Text = "حیف پولی که بهت دادم"
+                        });
                 });
 
-            modelBuilder.Entity("App.Domain.Core.HomeService.Customer.Entities.Customer", b =>
+            modelBuilder.Entity("App.Domain.Core.HomeService.CustomerEntity.Entities.Customer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -305,9 +350,29 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         .IsUnique();
 
                     b.ToTable("Customers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Pirozi",
+                            UserId = 5
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "TehranPars",
+                            UserId = 6
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "KianShahr",
+                            UserId = 7
+                        });
                 });
 
-            modelBuilder.Entity("App.Domain.Core.HomeService.Expert.Entities.Expert", b =>
+            modelBuilder.Entity("App.Domain.Core.HomeService.ExpertEntity.Entities.Expert", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -318,8 +383,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                     b.Property<string>("Biography")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Score")
-                        .HasColumnType("int");
+                    b.Property<float>("Score")
+                        .HasColumnType("real");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -330,9 +395,92 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         .IsUnique();
 
                     b.ToTable("Experts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Biography = "ارایه بهترین خدمات برای شما",
+                            Score = 3.4f,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Biography = "بهترین کیفیت و پایین ترین قیمت",
+                            Score = 4.4f,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Biography = "رضایت مشتریان خوشحالی ماست",
+                            Score = 4.6f,
+                            UserId = 4
+                        });
                 });
 
-            modelBuilder.Entity("App.Domain.Core.HomeService.Request.Entities.Request", b =>
+            modelBuilder.Entity("App.Domain.Core.HomeService.ImageEntity.Entities.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Path")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RequestId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RequestId");
+
+                    b.ToTable("Images");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Path = "Images/trending/1.jpg",
+                            RequestId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Path = "Images/trending/2.jpg",
+                            RequestId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Path = "Images/trending/4.jpg",
+                            RequestId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Path = "Images/trending/3.jpg",
+                            RequestId = 3
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Path = "Images/trending/5.jpg",
+                            RequestId = 4
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Path = "Images/trending/6.jpg",
+                            RequestId = 4
+                        });
+                });
+
+            modelBuilder.Entity("App.Domain.Core.HomeService.RequestEntity.Entities.Request", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -349,8 +497,14 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateOnly>("RequestAt")
-                        .HasColumnType("date");
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("RequestAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ServiceId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -362,10 +516,62 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
 
                     b.HasIndex("CustomerId");
 
+                    b.HasIndex("ServiceId");
+
                     b.ToTable("Requests");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CustomerId = 1,
+                            DateOfCompletion = new DateOnly(2025, 5, 3),
+                            Description = "Bana",
+                            Price = 240,
+                            RequestAt = new DateTime(2025, 2, 27, 3, 9, 5, 55, DateTimeKind.Local).AddTicks(7192),
+                            ServiceId = 5,
+                            Status = 3,
+                            TimeOfCompletion = new TimeOnly(12, 5, 0)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CustomerId = 2,
+                            DateOfCompletion = new DateOnly(2025, 4, 8),
+                            Description = "Bana",
+                            Price = 342,
+                            RequestAt = new DateTime(2025, 2, 27, 3, 9, 5, 55, DateTimeKind.Local).AddTicks(7736),
+                            ServiceId = 3,
+                            Status = 5,
+                            TimeOfCompletion = new TimeOnly(12, 5, 0)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CustomerId = 2,
+                            DateOfCompletion = new DateOnly(2025, 8, 18),
+                            Description = "Bana",
+                            Price = 350,
+                            RequestAt = new DateTime(2025, 2, 27, 3, 9, 5, 55, DateTimeKind.Local).AddTicks(7742),
+                            ServiceId = 1,
+                            Status = 4,
+                            TimeOfCompletion = new TimeOnly(12, 5, 0)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CustomerId = 3,
+                            DateOfCompletion = new DateOnly(2025, 4, 2),
+                            Description = "Bana",
+                            Price = 840,
+                            RequestAt = new DateTime(2025, 2, 27, 3, 9, 5, 55, DateTimeKind.Local).AddTicks(7745),
+                            ServiceId = 2,
+                            Status = 2,
+                            TimeOfCompletion = new TimeOnly(12, 5, 0)
+                        });
                 });
 
-            modelBuilder.Entity("App.Domain.Core.HomeService.Service.Entities.Service", b =>
+            modelBuilder.Entity("App.Domain.Core.HomeService.ServiceCategoryEntity.Entities.ServiceCategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -379,6 +585,9 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<int>("SubCategoryId")
                         .HasColumnType("int");
 
@@ -386,7 +595,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("VisitCount")
+                    b.Property<int>("VisitCount")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -400,166 +609,212 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         {
                             Id = 1,
                             BasePrice = 0f,
+                            IsDeleted = false,
                             SubCategoryId = 1,
-                            Title = "سرویس عادی نظافت"
+                            Title = "سرویس عادی نظافت",
+                            VisitCount = 0
                         },
                         new
                         {
                             Id = 2,
                             BasePrice = 0f,
+                            IsDeleted = false,
                             SubCategoryId = 1,
-                            Title = "سرویس ویژه نظافت"
+                            Title = "سرویس ویژه نظافت",
+                            VisitCount = 0
                         },
                         new
                         {
                             Id = 3,
                             BasePrice = 0f,
+                            IsDeleted = false,
                             SubCategoryId = 1,
-                            Title = "سرویس لوکس نظافت"
+                            Title = "سرویس لوکس نظافت",
+                            VisitCount = 0
                         },
                         new
                         {
                             Id = 4,
                             BasePrice = 0f,
+                            IsDeleted = false,
                             SubCategoryId = 1,
-                            Title = "نظافت راه‌ پله"
+                            Title = "نظافت راه‌ پله",
+                            VisitCount = 0
                         },
                         new
                         {
                             Id = 5,
                             BasePrice = 0f,
+                            IsDeleted = false,
                             SubCategoryId = 1,
-                            Title = "سرویس نظافت فوری"
+                            Title = "سرویس نظافت فوری",
+                            VisitCount = 0
                         },
                         new
                         {
                             Id = 6,
                             BasePrice = 0f,
+                            IsDeleted = false,
                             SubCategoryId = 1,
-                            Title = "سمپاشی فضای داخلی"
+                            Title = "سمپاشی فضای داخلی",
+                            VisitCount = 0
                         },
                         new
                         {
                             Id = 7,
                             BasePrice = 0f,
+                            IsDeleted = false,
                             SubCategoryId = 1,
-                            Title = "پذیرایی"
+                            Title = "پذیرایی",
+                            VisitCount = 0
                         },
                         new
                         {
                             Id = 8,
                             BasePrice = 0f,
+                            IsDeleted = false,
                             SubCategoryId = 1,
-                            Title = "کارگر ساده"
+                            Title = "کارگر ساده",
+                            VisitCount = 0
                         },
                         new
                         {
                             Id = 9,
                             BasePrice = 0f,
+                            IsDeleted = false,
                             SubCategoryId = 2,
-                            Title = "(شستشو در محل (مبل، موکت، فرش)"
+                            Title = "(شستشو در محل (مبل، موکت، فرش)",
+                            VisitCount = 0
                         },
                         new
                         {
                             Id = 10,
                             BasePrice = 0f,
+                            IsDeleted = false,
                             SubCategoryId = 2,
-                            Title = "قالیشویی"
+                            Title = "قالیشویی",
+                            VisitCount = 0
                         },
                         new
                         {
                             Id = 11,
                             BasePrice = 0f,
+                            IsDeleted = false,
                             SubCategoryId = 2,
-                            Title = "خشکشویی"
+                            Title = "خشکشویی",
+                            VisitCount = 0
                         },
                         new
                         {
                             Id = 23,
                             BasePrice = 0f,
+                            IsDeleted = false,
                             SubCategoryId = 2,
-                            Title = "پرده‌شویی"
+                            Title = "پرده‌شویی",
+                            VisitCount = 0
                         },
                         new
                         {
                             Id = 12,
                             BasePrice = 0f,
+                            IsDeleted = false,
                             SubCategoryId = 3,
-                            Title = "سرامیک‌ خودرو"
+                            Title = "سرامیک‌ خودرو",
+                            VisitCount = 0
                         },
                         new
                         {
                             Id = 13,
                             BasePrice = 0f,
+                            IsDeleted = false,
                             SubCategoryId = 3,
-                            Title = "کارواش نانو"
+                            Title = "کارواش نانو",
+                            VisitCount = 0
                         },
                         new
                         {
                             Id = 14,
                             BasePrice = 0f,
+                            IsDeleted = false,
                             SubCategoryId = 3,
-                            Title = "کارواش با آب"
+                            Title = "کارواش با آب",
+                            VisitCount = 0
                         },
                         new
                         {
                             Id = 15,
                             BasePrice = 0f,
+                            IsDeleted = false,
                             SubCategoryId = 3,
-                            Title = "واکس و پولیش خودرو"
+                            Title = "واکس و پولیش خودرو",
+                            VisitCount = 0
                         },
                         new
                         {
                             Id = 16,
                             BasePrice = 0f,
+                            IsDeleted = false,
                             SubCategoryId = 3,
-                            Title = "صفرشویی خودرو"
+                            Title = "صفرشویی خودرو",
+                            VisitCount = 0
                         },
                         new
                         {
                             Id = 17,
                             BasePrice = 0f,
+                            IsDeleted = false,
                             SubCategoryId = 3,
-                            Title = "موتورشویی خودرو"
+                            Title = "موتورشویی خودرو",
+                            VisitCount = 0
                         },
                         new
                         {
                             Id = 18,
                             BasePrice = 0f,
+                            IsDeleted = false,
                             SubCategoryId = 3,
-                            Title = "پکیج کارواش VIP (صفرشویی VIP + واکس و پولیش سه مرحله‌ای)"
+                            Title = "پکیج کارواش VIP (صفرشویی VIP + واکس و پولیش سه مرحله‌ای)",
+                            VisitCount = 0
                         },
                         new
                         {
                             Id = 19,
                             BasePrice = 0f,
+                            IsDeleted = false,
                             SubCategoryId = 3,
-                            Title = "شفاف‌سازی چراغ خودرو"
+                            Title = "شفاف‌سازی چراغ خودرو",
+                            VisitCount = 0
                         },
                         new
                         {
                             Id = 20,
                             BasePrice = 0f,
+                            IsDeleted = false,
                             SubCategoryId = 3,
-                            Title = "احیای رنگ خودرو"
+                            Title = "احیای رنگ خودرو",
+                            VisitCount = 0
                         },
                         new
                         {
                             Id = 21,
                             BasePrice = 0f,
+                            IsDeleted = false,
                             SubCategoryId = 3,
-                            Title = "صافکاری و نقاشی خودرو"
+                            Title = "صافکاری و نقاشی خودرو",
+                            VisitCount = 0
                         },
                         new
                         {
                             Id = 22,
                             BasePrice = 0f,
+                            IsDeleted = false,
                             SubCategoryId = 3,
-                            Title = "نصب شیشه دودی خودرو در محل"
+                            Title = "نصب شیشه دودی خودرو در محل",
+                            VisitCount = 0
                         });
                 });
 
-            modelBuilder.Entity("App.Domain.Core.HomeService.SubCategory.Entities.SubCategory", b =>
+            modelBuilder.Entity("App.Domain.Core.HomeService.SubCategoryEntity.Entities.SubCategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -572,6 +827,9 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
 
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -588,197 +846,229 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
+                            IsDeleted = false,
                             Title = "نظافت و پذیرایی"
                         },
                         new
                         {
                             Id = 2,
                             CategoryId = 1,
+                            IsDeleted = false,
                             Title = "شستشو"
                         },
                         new
                         {
                             Id = 3,
                             CategoryId = 1,
+                            IsDeleted = false,
                             Title = "کارواش و دیتیلینگ"
                         },
                         new
                         {
                             Id = 4,
                             CategoryId = 2,
+                            IsDeleted = false,
                             Title = "سرمایش و گرمایش"
                         },
                         new
                         {
                             Id = 5,
                             CategoryId = 2,
+                            IsDeleted = false,
                             Title = "تعمیرات ساختمان"
                         },
                         new
                         {
                             Id = 6,
                             CategoryId = 2,
+                            IsDeleted = false,
                             Title = "لوله کشی"
                         },
                         new
                         {
                             Id = 7,
                             CategoryId = 2,
+                            IsDeleted = false,
                             Title = "طراحی و بازسازی ساختمان"
                         },
                         new
                         {
                             Id = 8,
                             CategoryId = 2,
+                            IsDeleted = false,
                             Title = "برقکاری"
                         },
                         new
                         {
                             Id = 9,
                             CategoryId = 2,
+                            IsDeleted = false,
                             Title = "چوب و کابینت"
                         },
                         new
                         {
                             Id = 10,
                             CategoryId = 2,
+                            IsDeleted = false,
                             Title = "خدمات شیشه ای ساختمان"
                         },
                         new
                         {
                             Id = 11,
                             CategoryId = 2,
+                            IsDeleted = false,
                             Title = "باغبانی و فضای سبز"
                         },
                         new
                         {
                             Id = 12,
                             CategoryId = 3,
+                            IsDeleted = false,
                             Title = "سرمایش و گرمایش"
                         },
                         new
                         {
                             Id = 13,
                             CategoryId = 3,
+                            IsDeleted = false,
                             Title = "نصب و تعمیر لوازم خانگی"
                         },
                         new
                         {
                             Id = 14,
                             CategoryId = 3,
+                            IsDeleted = false,
                             Title = "خدمات کامپیوتری"
                         },
                         new
                         {
                             Id = 15,
                             CategoryId = 3,
+                            IsDeleted = false,
                             Title = "تعمیرات موبایل"
                         },
                         new
                         {
                             Id = 16,
                             CategoryId = 4,
+                            IsDeleted = false,
                             Title = "باربری و جابجایی"
                         },
                         new
                         {
                             Id = 17,
                             CategoryId = 5,
+                            IsDeleted = false,
                             Title = "خدمات و تعمیرات خودرو"
                         },
                         new
                         {
                             Id = 18,
                             CategoryId = 5,
+                            IsDeleted = false,
                             Title = "کارواش و دیتیلینگ"
                         },
                         new
                         {
                             Id = 19,
                             CategoryId = 6,
+                            IsDeleted = false,
                             Title = "زیبایی بانوان"
                         },
                         new
                         {
                             Id = 20,
                             CategoryId = 6,
+                            IsDeleted = false,
                             Title = "پزشکی و پرستاری"
                         },
                         new
                         {
                             Id = 21,
                             CategoryId = 6,
+                            IsDeleted = false,
                             Title = "حیوانات خانگی"
                         },
                         new
                         {
                             Id = 22,
                             CategoryId = 6,
+                            IsDeleted = false,
                             Title = "مشاوره"
                         },
                         new
                         {
                             Id = 23,
                             CategoryId = 6,
+                            IsDeleted = false,
                             Title = "پیرایش و زیبایی آقایان"
                         },
                         new
                         {
                             Id = 24,
                             CategoryId = 6,
+                            IsDeleted = false,
                             Title = "تندرستی و ورزش"
                         },
                         new
                         {
                             Id = 25,
                             CategoryId = 7,
+                            IsDeleted = false,
                             Title = "خدمات شرکتی"
                         },
                         new
                         {
                             Id = 26,
                             CategoryId = 7,
+                            IsDeleted = false,
                             Title = "تامین نیروی انسانی"
                         },
                         new
                         {
                             Id = 27,
                             CategoryId = 8,
+                            IsDeleted = false,
                             Title = "خیاطی و تعمیرات لباس"
                         },
                         new
                         {
                             Id = 28,
                             CategoryId = 8,
+                            IsDeleted = false,
                             Title = "مجالس و رویدادها"
                         },
                         new
                         {
                             Id = 29,
                             CategoryId = 8,
+                            IsDeleted = false,
                             Title = "آموزش"
                         },
                         new
                         {
                             Id = 30,
                             CategoryId = 8,
+                            IsDeleted = false,
                             Title = "همه فن حریف"
                         },
                         new
                         {
                             Id = 31,
                             CategoryId = 8,
+                            IsDeleted = false,
                             Title = "خدمات فوری"
                         },
                         new
                         {
                             Id = 32,
                             CategoryId = 8,
+                            IsDeleted = false,
                             Title = "کودک"
                         });
                 });
 
-            modelBuilder.Entity("App.Domain.Core.HomeService.Suggestion.Entities.Suggestion", b =>
+            modelBuilder.Entity("App.Domain.Core.HomeService.SuggestionEntity.Entities.Suggestion", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -804,8 +1094,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                     b.Property<float>("SuggestedPrice")
                         .HasColumnType("real");
 
-                    b.Property<DateOnly>("SuggestionAt")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("SuggestionAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -814,9 +1104,66 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                     b.HasIndex("RequestId");
 
                     b.ToTable("Suggestions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DeliveryDate = new DateOnly(2025, 5, 2),
+                            Description = "کار شما تخصص ماست",
+                            ExpertId = 1,
+                            RequestId = 1,
+                            Status = 1,
+                            SuggestedPrice = 250f,
+                            SuggestionAt = new DateTime(2025, 2, 27, 3, 9, 5, 73, DateTimeKind.Local).AddTicks(4340)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DeliveryDate = new DateOnly(2025, 5, 2),
+                            Description = "کار شما تخصص ماست",
+                            ExpertId = 2,
+                            RequestId = 1,
+                            Status = 3,
+                            SuggestedPrice = 250f,
+                            SuggestionAt = new DateTime(2025, 2, 27, 3, 9, 5, 73, DateTimeKind.Local).AddTicks(5357)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DeliveryDate = new DateOnly(2025, 5, 2),
+                            Description = "کار شما تخصص ماست",
+                            ExpertId = 3,
+                            RequestId = 2,
+                            Status = 4,
+                            SuggestedPrice = 250f,
+                            SuggestionAt = new DateTime(2025, 2, 27, 3, 9, 5, 73, DateTimeKind.Local).AddTicks(5366)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DeliveryDate = new DateOnly(2025, 5, 2),
+                            Description = "کار شما تخصص ماست",
+                            ExpertId = 2,
+                            RequestId = 3,
+                            Status = 2,
+                            SuggestedPrice = 250f,
+                            SuggestionAt = new DateTime(2025, 2, 27, 3, 9, 5, 73, DateTimeKind.Local).AddTicks(5370)
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DeliveryDate = new DateOnly(2025, 5, 2),
+                            Description = "کار شما تخصص ماست",
+                            ExpertId = 3,
+                            RequestId = 4,
+                            Status = 4,
+                            SuggestedPrice = 250f,
+                            SuggestionAt = new DateTime(2025, 2, 27, 3, 9, 5, 73, DateTimeKind.Local).AddTicks(5373)
+                        });
                 });
 
-            modelBuilder.Entity("App.Domain.Core.HomeService.User.Entities.User", b =>
+            modelBuilder.Entity("App.Domain.Core.HomeService.UserEntity.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -850,7 +1197,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsActive")
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("LastName")
@@ -882,6 +1229,9 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                     b.Property<DateTime>("RegisterAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -912,24 +1262,151 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             Id = 1,
                             AccessFailedCount = 0,
                             CityId = 1,
-                            ConcurrencyStamp = "bcb553db-f570-4276-8952-b1bb4fd7f635",
+                            ConcurrencyStamp = "99306a23-587d-4ef9-8495-c986786d9366",
                             Email = "Admin@gmail.com",
                             EmailConfirmed = false,
-                            IsActive = false,
+                            IsDeleted = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGqCKOi0vqYXpAMdg1BdTtpD4F7ywZNo5Z42R074j4z65ZzhGT4y53/n9leIK66r2A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOi0aXxROXEnSkW1oXDGHAdnSsDb/e3ruGj2kDh8pcX/GVe82hfRKio0BSeDfBdpKA==",
                             PhoneNumber = "09377507920",
                             PhoneNumberConfirmed = false,
-                            RegisterAt = new DateTime(2025, 2, 14, 12, 5, 17, 258, DateTimeKind.Local).AddTicks(9397),
-                            SecurityStamp = "f844f013-ffac-40cc-9137-69951c364a63",
+                            RegisterAt = new DateTime(2025, 2, 27, 3, 9, 5, 79, DateTimeKind.Local).AddTicks(1623),
+                            RoleId = 1,
+                            SecurityStamp = "bbd094bc-c3d2-4618-b214-8d51d7e45e0e",
                             TwoFactorEnabled = false,
                             UserName = "Admin@gmail.com"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AccessFailedCount = 0,
+                            CityId = 4,
+                            ConcurrencyStamp = "adcf7055-f8e4-4306-bb79-c16787b4d794",
+                            Email = "Ali@gmail.com",
+                            EmailConfirmed = false,
+                            IsDeleted = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ALI@GMAIL.COM",
+                            NormalizedUserName = "ALI",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIqjayTD+jm8o2BOhXXvHZe+H46cvBH/cMTSmePNHULKd7U7HsESjqej/7oo5sMjCA==",
+                            PhoneNumber = "09245112357",
+                            PhoneNumberConfirmed = false,
+                            RegisterAt = new DateTime(2025, 2, 27, 3, 9, 5, 79, DateTimeKind.Local).AddTicks(2020),
+                            RoleId = 2,
+                            SecurityStamp = "513aa469-e948-40c3-b0ed-e50b762e61ce",
+                            TwoFactorEnabled = false,
+                            UserName = "Ali"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AccessFailedCount = 0,
+                            CityId = 2,
+                            ConcurrencyStamp = "79dfdd3d-8772-496e-8931-b16fdcd1dbfd",
+                            Email = "Mohsen@gmail.com",
+                            EmailConfirmed = false,
+                            IsDeleted = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "MOHSEN@GMAIL.COM",
+                            NormalizedUserName = "MOHSEN@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAiRiwfth+gg8OZb2y0HzLaM3pSi5wla6TYXIuIR6xXT2ZAWDOI+qq5YrNheM4CEZQ==",
+                            PhoneNumber = "09106578542",
+                            PhoneNumberConfirmed = false,
+                            RegisterAt = new DateTime(2025, 2, 27, 3, 9, 5, 79, DateTimeKind.Local).AddTicks(2038),
+                            RoleId = 2,
+                            SecurityStamp = "6b94a867-9be9-45b9-bd1b-1dc201326470",
+                            TwoFactorEnabled = false,
+                            UserName = "Mohsen@gmail.com"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AccessFailedCount = 0,
+                            CityId = 1,
+                            ConcurrencyStamp = "5e927ff7-023b-40cc-bfb3-d7bd52751697",
+                            Email = "Sahar@gmail.com",
+                            EmailConfirmed = false,
+                            IsDeleted = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "SAHAR@GMAIL.COM",
+                            NormalizedUserName = "SAHAR@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAENa+XgWV61cgAX6yU6qKDQIz17HsTmzKTT3MBdElS/VssUFBs0es6sAtmRX4CB4CvA==",
+                            PhoneNumber = "09304578725",
+                            PhoneNumberConfirmed = false,
+                            RegisterAt = new DateTime(2025, 2, 27, 3, 9, 5, 79, DateTimeKind.Local).AddTicks(2067),
+                            RoleId = 2,
+                            SecurityStamp = "129cac6a-8414-4964-9542-e598c6ee61c1",
+                            TwoFactorEnabled = false,
+                            UserName = "Sahar@gmail.com"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AccessFailedCount = 0,
+                            CityId = 1,
+                            ConcurrencyStamp = "4beb6d8e-000d-45a0-a102-4d3fd1f0ca43",
+                            Email = "Majd@gmail.com",
+                            EmailConfirmed = false,
+                            IsDeleted = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "MAJID@GMAIL.COM",
+                            NormalizedUserName = "MAJID@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKUek6QlTBTy61oLdj2RE9NkjwtJ+Mop1Cam0kuPGuZZ5XrUTwm+wokF+eD85Qnofw==",
+                            PhoneNumber = "09206548795",
+                            PhoneNumberConfirmed = false,
+                            RegisterAt = new DateTime(2025, 2, 27, 3, 9, 5, 79, DateTimeKind.Local).AddTicks(2081),
+                            RoleId = 3,
+                            SecurityStamp = "1275f49c-43bd-4c5e-bc1a-72c4863cdc40",
+                            TwoFactorEnabled = false,
+                            UserName = "Majid@gmail.com"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            AccessFailedCount = 0,
+                            CityId = 1,
+                            ConcurrencyStamp = "d3e53452-a44c-4b77-bd45-7586551cd060",
+                            Email = "Parvane@gmail.com",
+                            EmailConfirmed = false,
+                            IsDeleted = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "PARVANE@GMAIL.COM",
+                            NormalizedUserName = "PARVANE@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAedntp4kw+ujNaqXTvO5/FrIdbPzI7rVzx22WzG3TDxu2ufUbmJ4cXoWzJDqCIdTw==",
+                            PhoneNumber = "09632548785",
+                            PhoneNumberConfirmed = false,
+                            RegisterAt = new DateTime(2025, 2, 27, 3, 9, 5, 79, DateTimeKind.Local).AddTicks(2101),
+                            RoleId = 3,
+                            SecurityStamp = "388d1c7d-218d-435c-886d-a807f5d23c72",
+                            TwoFactorEnabled = false,
+                            UserName = "Parvane@gmail.com"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            AccessFailedCount = 0,
+                            CityId = 8,
+                            ConcurrencyStamp = "c5ca6664-5c66-47b4-a18a-b25135afb31c",
+                            Email = "Hasan@gmail.com",
+                            EmailConfirmed = false,
+                            IsDeleted = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "HASAN@GMAIL.COM",
+                            NormalizedUserName = "HASAN@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEK0lRLzaMg6Y+LoWo9p3yMSCS16Ib47+Dat6nHoJ20vXp1EDii4rRGzUtBH5quXdBQ==",
+                            PhoneNumber = "09223458712",
+                            PhoneNumberConfirmed = false,
+                            RegisterAt = new DateTime(2025, 2, 27, 3, 9, 5, 79, DateTimeKind.Local).AddTicks(2116),
+                            RoleId = 3,
+                            SecurityStamp = "70a96bfb-da38-42b3-9a43-cbd89e50933d",
+                            TwoFactorEnabled = false,
+                            UserName = "Hasan@gmail.com"
                         });
                 });
 
-            modelBuilder.Entity("ExpertService", b =>
+            modelBuilder.Entity("ExpertServiceCategory", b =>
                 {
                     b.Property<int>("ExpertsId")
                         .HasColumnType("int");
@@ -941,7 +1418,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
 
                     b.HasIndex("SkilsId");
 
-                    b.ToTable("ExpertService");
+                    b.ToTable("ExpertServiceCategory");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<int>", b =>
@@ -1040,6 +1517,50 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("AspNetUserClaims", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ClaimType = "ExpertId",
+                            ClaimValue = "1",
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ClaimType = "ExpertId",
+                            ClaimValue = "2",
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ClaimType = "ExpertId",
+                            ClaimValue = "3",
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ClaimType = "CustomerId",
+                            ClaimValue = "1",
+                            UserId = 4
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ClaimType = "CustomerId",
+                            ClaimValue = "2",
+                            UserId = 5
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ClaimType = "CustomerId",
+                            ClaimValue = "3",
+                            UserId = 6
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
@@ -1082,6 +1603,36 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         {
                             UserId = 1,
                             RoleId = 1
+                        },
+                        new
+                        {
+                            UserId = 2,
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            UserId = 3,
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            UserId = 4,
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            UserId = 5,
+                            RoleId = 3
+                        },
+                        new
+                        {
+                            UserId = 6,
+                            RoleId = 3
+                        },
+                        new
+                        {
+                            UserId = 7,
+                            RoleId = 3
                         });
                 });
 
@@ -1104,9 +1655,58 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("App.Domain.Core.HomeService.Base.Entities.Image", b =>
+            modelBuilder.Entity("App.Domain.Core.HomeService.CommentEntity.Entities.Comment", b =>
                 {
-                    b.HasOne("App.Domain.Core.HomeService.Request.Entities.Request", "Request")
+                    b.HasOne("App.Domain.Core.HomeService.CustomerEntity.Entities.Customer", "Customer")
+                        .WithMany("Comments")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("App.Domain.Core.HomeService.ExpertEntity.Entities.Expert", "Expert")
+                        .WithMany("Comments")
+                        .HasForeignKey("ExpertId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("App.Domain.Core.HomeService.RequestEntity.Entities.Request", "Request")
+                        .WithOne("Comment")
+                        .HasForeignKey("App.Domain.Core.HomeService.CommentEntity.Entities.Comment", "RequestId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Expert");
+
+                    b.Navigation("Request");
+                });
+
+            modelBuilder.Entity("App.Domain.Core.HomeService.CustomerEntity.Entities.Customer", b =>
+                {
+                    b.HasOne("App.Domain.Core.HomeService.UserEntity.Entities.User", "User")
+                        .WithOne("Customer")
+                        .HasForeignKey("App.Domain.Core.HomeService.CustomerEntity.Entities.Customer", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("App.Domain.Core.HomeService.ExpertEntity.Entities.Expert", b =>
+                {
+                    b.HasOne("App.Domain.Core.HomeService.UserEntity.Entities.User", "User")
+                        .WithOne("Expert")
+                        .HasForeignKey("App.Domain.Core.HomeService.ExpertEntity.Entities.Expert", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("App.Domain.Core.HomeService.ImageEntity.Entities.Image", b =>
+                {
+                    b.HasOne("App.Domain.Core.HomeService.RequestEntity.Entities.Request", "Request")
                         .WithMany("Images")
                         .HasForeignKey("RequestId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1115,53 +1715,28 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                     b.Navigation("Request");
                 });
 
-            modelBuilder.Entity("App.Domain.Core.HomeService.Comment.Entities.Comment", b =>
+            modelBuilder.Entity("App.Domain.Core.HomeService.RequestEntity.Entities.Request", b =>
                 {
-                    b.HasOne("App.Domain.Core.HomeService.Expert.Entities.Expert", "Expert")
-                        .WithMany("Comments")
-                        .HasForeignKey("ExpertId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Expert");
-                });
-
-            modelBuilder.Entity("App.Domain.Core.HomeService.Customer.Entities.Customer", b =>
-                {
-                    b.HasOne("App.Domain.Core.HomeService.User.Entities.User", "User")
-                        .WithOne("Customer")
-                        .HasForeignKey("App.Domain.Core.HomeService.Customer.Entities.Customer", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("App.Domain.Core.HomeService.Expert.Entities.Expert", b =>
-                {
-                    b.HasOne("App.Domain.Core.HomeService.User.Entities.User", "User")
-                        .WithOne("Expert")
-                        .HasForeignKey("App.Domain.Core.HomeService.Expert.Entities.Expert", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("App.Domain.Core.HomeService.Request.Entities.Request", b =>
-                {
-                    b.HasOne("App.Domain.Core.HomeService.Customer.Entities.Customer", "Customer")
+                    b.HasOne("App.Domain.Core.HomeService.CustomerEntity.Entities.Customer", "Customer")
                         .WithMany("Requests")
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("App.Domain.Core.HomeService.ServiceCategoryEntity.Entities.ServiceCategory", "Service")
+                        .WithMany("Requests")
+                        .HasForeignKey("ServiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Customer");
+
+                    b.Navigation("Service");
                 });
 
-            modelBuilder.Entity("App.Domain.Core.HomeService.Service.Entities.Service", b =>
+            modelBuilder.Entity("App.Domain.Core.HomeService.ServiceCategoryEntity.Entities.ServiceCategory", b =>
                 {
-                    b.HasOne("App.Domain.Core.HomeService.SubCategory.Entities.SubCategory", "SubCategory")
+                    b.HasOne("App.Domain.Core.HomeService.SubCategoryEntity.Entities.SubCategory", "SubCategory")
                         .WithMany("Services")
                         .HasForeignKey("SubCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1170,9 +1745,9 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                     b.Navigation("SubCategory");
                 });
 
-            modelBuilder.Entity("App.Domain.Core.HomeService.SubCategory.Entities.SubCategory", b =>
+            modelBuilder.Entity("App.Domain.Core.HomeService.SubCategoryEntity.Entities.SubCategory", b =>
                 {
-                    b.HasOne("App.Domain.Core.HomeService.Category.Entities.Category", "Category")
+                    b.HasOne("App.Domain.Core.HomeService.CategoryEntity.Entities.Category", "Category")
                         .WithMany("SubCategories")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1181,15 +1756,15 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("App.Domain.Core.HomeService.Suggestion.Entities.Suggestion", b =>
+            modelBuilder.Entity("App.Domain.Core.HomeService.SuggestionEntity.Entities.Suggestion", b =>
                 {
-                    b.HasOne("App.Domain.Core.HomeService.Expert.Entities.Expert", "Expert")
+                    b.HasOne("App.Domain.Core.HomeService.ExpertEntity.Entities.Expert", "Expert")
                         .WithMany("Suggestions")
                         .HasForeignKey("ExpertId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("App.Domain.Core.HomeService.Request.Entities.Request", "Request")
+                    b.HasOne("App.Domain.Core.HomeService.RequestEntity.Entities.Request", "Request")
                         .WithMany("Suggestions")
                         .HasForeignKey("RequestId")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -1200,24 +1775,24 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                     b.Navigation("Request");
                 });
 
-            modelBuilder.Entity("App.Domain.Core.HomeService.User.Entities.User", b =>
+            modelBuilder.Entity("App.Domain.Core.HomeService.UserEntity.Entities.User", b =>
                 {
-                    b.HasOne("App.Domain.Core.HomeService.Base.Entities.City", "City")
+                    b.HasOne("App.Domain.Core.HomeService.CityEntity.Entities.City", "City")
                         .WithMany("Users")
                         .HasForeignKey("CityId");
 
                     b.Navigation("City");
                 });
 
-            modelBuilder.Entity("ExpertService", b =>
+            modelBuilder.Entity("ExpertServiceCategory", b =>
                 {
-                    b.HasOne("App.Domain.Core.HomeService.Expert.Entities.Expert", null)
+                    b.HasOne("App.Domain.Core.HomeService.ExpertEntity.Entities.Expert", null)
                         .WithMany()
                         .HasForeignKey("ExpertsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("App.Domain.Core.HomeService.Service.Entities.Service", null)
+                    b.HasOne("App.Domain.Core.HomeService.ServiceCategoryEntity.Entities.ServiceCategory", null)
                         .WithMany()
                         .HasForeignKey("SkilsId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1235,7 +1810,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
-                    b.HasOne("App.Domain.Core.HomeService.User.Entities.User", null)
+                    b.HasOne("App.Domain.Core.HomeService.UserEntity.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1244,7 +1819,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
-                    b.HasOne("App.Domain.Core.HomeService.User.Entities.User", null)
+                    b.HasOne("App.Domain.Core.HomeService.UserEntity.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1259,7 +1834,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("App.Domain.Core.HomeService.User.Entities.User", null)
+                    b.HasOne("App.Domain.Core.HomeService.UserEntity.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1268,48 +1843,57 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
-                    b.HasOne("App.Domain.Core.HomeService.User.Entities.User", null)
+                    b.HasOne("App.Domain.Core.HomeService.UserEntity.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("App.Domain.Core.HomeService.Base.Entities.City", b =>
-                {
-                    b.Navigation("Users");
-                });
-
-            modelBuilder.Entity("App.Domain.Core.HomeService.Category.Entities.Category", b =>
+            modelBuilder.Entity("App.Domain.Core.HomeService.CategoryEntity.Entities.Category", b =>
                 {
                     b.Navigation("SubCategories");
                 });
 
-            modelBuilder.Entity("App.Domain.Core.HomeService.Customer.Entities.Customer", b =>
+            modelBuilder.Entity("App.Domain.Core.HomeService.CityEntity.Entities.City", b =>
                 {
+                    b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("App.Domain.Core.HomeService.CustomerEntity.Entities.Customer", b =>
+                {
+                    b.Navigation("Comments");
+
                     b.Navigation("Requests");
                 });
 
-            modelBuilder.Entity("App.Domain.Core.HomeService.Expert.Entities.Expert", b =>
+            modelBuilder.Entity("App.Domain.Core.HomeService.ExpertEntity.Entities.Expert", b =>
                 {
                     b.Navigation("Comments");
 
                     b.Navigation("Suggestions");
                 });
 
-            modelBuilder.Entity("App.Domain.Core.HomeService.Request.Entities.Request", b =>
+            modelBuilder.Entity("App.Domain.Core.HomeService.RequestEntity.Entities.Request", b =>
                 {
+                    b.Navigation("Comment");
+
                     b.Navigation("Images");
 
                     b.Navigation("Suggestions");
                 });
 
-            modelBuilder.Entity("App.Domain.Core.HomeService.SubCategory.Entities.SubCategory", b =>
+            modelBuilder.Entity("App.Domain.Core.HomeService.ServiceCategoryEntity.Entities.ServiceCategory", b =>
+                {
+                    b.Navigation("Requests");
+                });
+
+            modelBuilder.Entity("App.Domain.Core.HomeService.SubCategoryEntity.Entities.SubCategory", b =>
                 {
                     b.Navigation("Services");
                 });
 
-            modelBuilder.Entity("App.Domain.Core.HomeService.User.Entities.User", b =>
+            modelBuilder.Entity("App.Domain.Core.HomeService.UserEntity.Entities.User", b =>
                 {
                     b.Navigation("Customer");
 

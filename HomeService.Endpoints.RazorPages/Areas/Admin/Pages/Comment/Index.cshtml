@@ -1,0 +1,81 @@
+﻿@page
+@using HomeService.Endpoints.RazorPages.Areas.Admin.Pages.Comment
+@model IndexModel
+@{
+    ViewData["Title"] = "دیوارچه > مدیریت نظرات > لیست نظرات";
+}
+<div class="col-lg-12">
+    <div class="portlet box shadow">
+        <div class="portlet-heading">
+            <div class="portlet-title">
+                <h3 class="title">
+                    نظرات
+                </h3>
+            </div><!-- /.portlet-title -->
+        </div><!-- /.portlet-heading -->
+        <div class="portlet-body">
+           
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped" id="data-table">
+                        <thead>
+                            <tr>
+                                
+                                <th>شناسه</th>
+                                <th>متن</th>
+                                <th>شناسه مشتری</th>
+                                <th>شناسه کارشناس</th>
+                                <th>شناسه سفارش</th>
+                                <th>وضعیت</th>
+                                <th>زمان ثبت</th>
+                                <th>عملیات</th>
+                                
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var comment in @Model.Comments)
+                            {
+                                <tr>
+
+                                    <td>@comment.Id</td>
+
+                                    <td>@comment.Text</td>
+                                    <td>@comment.CustomerId</td>
+                                    <td>@comment.ExpertId</td>
+                                    <td>@comment.RequestId</td>
+                                    <td>@comment.StatusEnum</td>
+                                    <td>@comment.CommentAt</td>
+                                   
+                                    
+                                    <td>
+                                        @if(comment.StatusEnum == App.Domain.Core.HomeService.CommentEntity.Enum.StatusEnum.IsPending)
+                                        {
+                                            <a onclick="return confirm('آیا از تایید این کامنت اطمینان دارید؟')" asp-page-handler="Approve" asp-route-Id="@comment.Id" class="btn btn-success">تایید</a>
+                                            <a onclick="return confirm('آیا از رد این کامنت اطمینان دارید؟')" asp-page-handler="Reject" asp-route-Id="@comment.Id" class="btn btn-danger">رد</a>
+                                        }
+                                        else if (comment.StatusEnum == App.Domain.Core.HomeService.CommentEntity.Enum.StatusEnum.Approve)
+                                        {
+                                            <a onclick="return confirm('آیا از رد این کامنت اطمینان دارید؟')" asp-page-handler="Delete" asp-route-Id="@comment.Id" class="btn btn-danger">رد</a>
+                                        } else
+                                        {
+                                            <a onclick="return confirm('آیا از تایید این کامنت اطمینان دارید؟')" asp-page-handler="Approve" asp-route-Id="@comment.Id" class="btn btn-success">تایید</a>
+                                        }
+                                        
+                                    </td>
+
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div><!-- /.portlet-body -->
+    </div><!-- /.portlet -->
+</div><!-- /.col-lg-12 -->
+@section Scripts
+{
+    <script src="~/AdminTemplate/plugins/data-table/js/jquery.dataTables.min.js"></script>
+    <script src="~/AdminTemplate/js/pages/datatable.js"></script>
+}

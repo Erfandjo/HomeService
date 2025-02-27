@@ -1,7 +1,4 @@
-﻿using App.Domain.Core.HomeService.Admin.Data;
-using App.Domain.Core.HomeService.Category.Entities;
-using App.Domain.Core.HomeService.Result;
-using App.Infra.Data.Db.SqlServer.Ef.Common;
+﻿using App.Infra.Data.Db.SqlServer.Ef.Common;
 using Microsoft.EntityFrameworkCore;
 
 namespace App.Infra.Data.Repos.Ef.HomeService.Admin

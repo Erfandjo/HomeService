@@ -1,6 +1,5 @@
-﻿using App.Domain.Core.HomeService.Customer.Entities;
-using App.Domain.Core.HomeService.Expert.Data;
-using App.Domain.Core.HomeService.Result;
+﻿using App.Domain.Core.HomeService.ExpertEntity.Data;
+using App.Domain.Core.HomeService.ResultEntity;
 using App.Infra.Data.Db.SqlServer.Ef.Common;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,7 +7,7 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Expert
 {
     public class ExpertRepository(AppDbContext _dbContext) : IExpertRepository
     {
-        public async Task<Result> Add(Domain.Core.HomeService.Expert.Entities.Expert expert, CancellationToken cancellation)
+        public async Task<Result> Add(Domain.Core.HomeService.ExpertEntity.Entities.Expert expert, CancellationToken cancellation)
         {
             if (expert is null)
                 return new Result(false, "Expert Is Null");
@@ -31,17 +30,17 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Expert
             return new Result(true, "Success");
         }
 
-        public async Task<List<Domain.Core.HomeService.Expert.Entities.Expert>>? GetAll(Domain.Core.HomeService.Expert.Entities.Expert expert, CancellationToken cancellation)
+        public async Task<List<Domain.Core.HomeService.ExpertEntity.Entities.Expert>>? GetAll(Domain.Core.HomeService.ExpertEntity.Entities.Expert expert, CancellationToken cancellation)
         {
             return await _dbContext.Experts.AsNoTracking().ToListAsync();
         }
 
-        public async Task<Domain.Core.HomeService.Expert.Entities.Expert>? GetById(int id, CancellationToken cancellation)
+        public async Task<Domain.Core.HomeService.ExpertEntity.Entities.Expert>? GetById(int id, CancellationToken cancellation)
         {
             return await _dbContext.Experts.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<Result> Update(int id, Domain.Core.HomeService.Expert.Entities.Expert expert, CancellationToken cancellation)
+        public async Task<Result> Update(int id, Domain.Core.HomeService.ExpertEntity.Entities.Expert expert, CancellationToken cancellation)
         {
             var exp = await _dbContext.Experts.FirstOrDefaultAsync(x => x.Id == id);
             if (exp is null)
