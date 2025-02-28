@@ -12,6 +12,11 @@ namespace App.Domain.Services.HomeService.Request
             return await _requestRepository.GetAll(cancellation);
         }
 
+        public async Task<Core.HomeService.RequestEntity.Entities.Request>? GetById(int id, CancellationToken cancellation)
+        {
+            return await _requestRepository.GetById(id, cancellation);
+        }
+
         public async Task<RequestUpdateDto>? GetByIdForUpdate(int id, CancellationToken cancellation)
         {
             return await _requestRepository.GetByIdForUpdate(id, cancellation);

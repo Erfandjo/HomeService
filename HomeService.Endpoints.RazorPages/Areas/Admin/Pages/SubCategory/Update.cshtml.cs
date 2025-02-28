@@ -7,13 +7,14 @@ using App.Domain.Core.HomeService.SubCategoryEntity.AppService;
 using App.Domain.Core.HomeService.SubCategoryEntity.Dto;
 using App.Domain.Core.HomeService.UserEntity.AppService;
 using App.Domain.Core.HomeService.UserEntity.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Threading;
 
 namespace HomeService.Endpoints.RazorPages.Areas.Admin.Pages.SubCategory
 {
-
+    [Authorize(Roles = "Admin")]
     public class UpdateModel(ISubCategoryAppService _subCategoryAppService , ICategoryAppService _categoryAppService) : PageModel
     {
         [BindProperty]

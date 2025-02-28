@@ -1,0 +1,29 @@
+﻿@page
+@model HomeService.Endpoints.RazorPages.Areas.Account.Pages.RegisterModel
+@{
+}
+
+<section id="main" class="clearfix user-page">
+    <div class="container">
+        <div class="row text-center">
+            <!-- user-login -->
+            <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                <div class="user-account">
+                    <h2>فرم ثبت نام</h2>
+                    <!-- form -->
+                    <form method="post">
+                        <div class="form-group">
+                            <input type="text" asp-for="@Model.User.UserName" class="form-control" placeholder="نام کاربری">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" asp-for="@Model.User.Password" class="form-control" placeholder="رمزعبور">
+                        </div>
+                        <button type="submit" class="btn">ثبت نام</button>
+                    </form><!-- form -->
+                    <!-- forgot-password -->
+                </div>
+                <a asp-page="Login" class="btn-primary">ورود به اکانت</a>
+            </div><!-- user-login -->
+        </div><!-- row -->
+    </div><!-- container -->
+</section><!-- signin-page -->

@@ -52,25 +52,19 @@ namespace App.Infra.Data.Repos.Ef.HomeService.User
             }).ToListAsync();
         }
 
-        public async Task<UserCreateDto>? GetById(int id, CancellationToken cancellation)
+        public async Task<UserChangePasswordDto> GetByForChangePassword(int id , CancellationToken cancellation)
         {
-            return await _dbContext.Users.AsNoTracking().Select(x => new UserCreateDto()
+            return await _dbContext.Users.AsNoTracking().Select(x => new UserChangePasswordDto()
             {
-                //Id = x.Id,
-                FirstName = x.FirstName,
-                LastName = x.LastName,
-                PhoneNumber = x.PhoneNumber,
-                UserName = x.UserName,
-                CityId = x.CityId,
-                Balance = x.Balance,
-                ImagePath = x.ImagePath,
-                Role = (RoleEnum) x.RoleId,
-                Email = x.Email,
-                
-                
-                
-            }).FirstOrDefaultAsync(x => x.FirstName == "FB");
-            
+                Id = x.Id,
+                Password = "",
+                Repassword = "",
+            }).FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<Domain.Core.HomeService.UserEntity.Entities.User>? GetById(int id, CancellationToken cancellation)
+        {
+            return await _dbContext.Users.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<UserUpdateDto>? GetByIdForUpdate(int id, CancellationToken cancellation)
@@ -117,9 +111,6 @@ namespace App.Infra.Data.Repos.Ef.HomeService.User
             return new Result(true, "Success");
         }
 
-        Task<UserCreateDto>? IUserRepository.GetById(int id, CancellationToken cancellation)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

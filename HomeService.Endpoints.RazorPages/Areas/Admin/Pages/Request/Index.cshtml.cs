@@ -1,12 +1,13 @@
 using App.Domain.Core.HomeService.CategoryEntity.Dto;
 using App.Domain.Core.HomeService.RequestEntity.AppService;
 using App.Domain.Core.HomeService.RequestEntity.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace HomeService.Endpoints.RazorPages.Areas.Admin.Pages.Request
 {
-    // [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class IndexModel(IRequestAppService _requestAppService) : PageModel
     {
       

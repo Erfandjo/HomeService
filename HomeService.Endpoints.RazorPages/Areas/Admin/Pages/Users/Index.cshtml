@@ -72,6 +72,7 @@
                                     <td>
                                         <a asp-page="Update" asp-route-Id="@user.Id" class="btn btn-info">ویرایش</a>
                                         <a onclick="return confirm('آیا از حذف این کاربر اطمینان دارید؟')" asp-page-handler="Delete" asp-route-Id="@user.Id" class="btn btn-danger">حذف</a>
+                                        <a asp-page="ChangePassword" asp-route-Id="@user.Id" class="btn btn-danger">تغییر رمز عبور</a>
                                     </td>
                                 </tr>
                             }

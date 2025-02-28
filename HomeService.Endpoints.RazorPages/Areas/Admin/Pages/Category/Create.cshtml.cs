@@ -5,11 +5,13 @@ using App.Domain.Core.HomeService.CityEntity.Entities;
 using App.Domain.Core.HomeService.UserEntity.AppService;
 using App.Domain.Core.HomeService.UserEntity.Dto;
 using App.Domain.Core.HomeService.UserEntity.Enum;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace HomeService.Endpoints.RazorPages.Areas.Admin.Pages.Category
 {
+    [Authorize(Roles = "Admin")]
     public class CreateModel(ICategoryAppService _categoryAppService) : PageModel
     {
 

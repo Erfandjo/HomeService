@@ -57,9 +57,12 @@ using App.Infra.Data.Repos.Ef.HomeService.Service;
 using App.Infra.Data.Repos.Ef.HomeService.SubCategory;
 using App.Infra.Data.Repos.Ef.HomeService.Suggestion;
 using App.Infra.Data.Repos.Ef.HomeService.User;
+using Framework;
+using HomeService.Endpoints.RazorPages.Middleware;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -82,6 +85,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 
 
+
 builder.Services.AddIdentity<User, IdentityRole<int>>(options =>
 {
     options.SignIn.RequireConfirmedAccount = false;
@@ -92,7 +96,19 @@ builder.Services.AddIdentity<User, IdentityRole<int>>(options =>
     options.Password.RequireLowercase = false;
 })
     .AddRoles<IdentityRole<int>>()
-    .AddEntityFrameworkStores<AppDbContext>();
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddErrorDescriber<PersianIdentityErrorDescriber>();
+;
+
+
+
+    builder.Host.ConfigureLogging(o => {
+        o.ClearProviders();
+        o.AddSerilog();
+    }).UseSerilog((context, config) =>
+    {
+        config.WriteTo.Seq("http://localhost:5341", apiKey: "N1C3WgdFG0vkWdpe6px7");
+    });
 
 
 builder.Services.AddScoped<IUserAppService, UserAppService>();
@@ -140,12 +156,14 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseErrorLogging();
+
 app.UseHttpsRedirection();
 
 app.UseRouting();
 
 app.UseAuthorization();
-
+app.UseSerilogRequestLogging();
 app.MapStaticAssets();
 app.MapRazorPages()
    .WithStaticAssets();

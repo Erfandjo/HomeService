@@ -2,6 +2,7 @@
 using App.Domain.Core.HomeService.RequestEntity.Dto;
 using App.Domain.Core.HomeService.RequestEntity.Entities;
 using App.Domain.Core.HomeService.ResultEntity;
+using App.Domain.Core.HomeService.UserEntity.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,6 @@ namespace App.Domain.Core.HomeService.RequestEntity.Data
         public Task<List<RequestSummaryDto>>? GetAll(CancellationToken cancellation);
         public Task<Request>? GetById(int id, CancellationToken cancellation);
         public Task<RequestUpdateDto>? GetByIdForUpdate(int id, CancellationToken cancellation);
+        
     }
 }

@@ -4,12 +4,14 @@ using App.Domain.Core.HomeService.ServiceCategoryEntity.AppService;
 using App.Domain.Core.HomeService.ServiceCategoryEntity.Dto;
 using App.Domain.Core.HomeService.SubCategoryEntity.AppService;
 using App.Domain.Core.HomeService.SubCategoryEntity.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 
 namespace HomeService.Endpoints.RazorPages.Areas.Admin.Pages.ServiceCategory
 {
+    [Authorize(Roles = "Admin")]
     public class CreateModel(IServiceCategoryAppService _serviceCategoryAppService, ISubCategoryAppService _subCategoryAppService) : PageModel
     {
 

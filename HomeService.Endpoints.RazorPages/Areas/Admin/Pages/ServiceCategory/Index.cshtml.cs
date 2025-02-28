@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace HomeService.Endpoints.RazorPages.Areas.Admin.Pages.ServiceCategory
 {
-    // [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class IndexModel(IServiceCategoryAppService _serviceCategoryAppService) : PageModel
     {
 

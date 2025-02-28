@@ -106,7 +106,9 @@
                                     </button>
                                 </span>
                             </div><!-- /.input-group -->
-                            <div class="help-block"></div>
+                            <div class="help-block">
+                                
+                            </div>
                         </div>
 
                     </div>
@@ -121,6 +123,10 @@
                         </a>
                     </div>
                 </form>
+                @if (Model.Result is not null)
+                {
+                    <h1 style="align-items:center; background-color:tomato; display:block; font-size:22px; text-align:center; color:white" class="m-3 p-3">@Model.Result</h1>
+                }
             </div>
         </div><!-- /.portlet-body -->
     </div><!-- /.portlet -->

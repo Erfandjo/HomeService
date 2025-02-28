@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace HomeService.Endpoints.RazorPages.Areas.Admin.Pages
 {
-    // [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class IndexModel(IDashboardAppService _dashboardAppService) : PageModel
     {
 
@@ -17,7 +17,7 @@ namespace HomeService.Endpoints.RazorPages.Areas.Admin.Pages
         {
            // StatisticsDataDto model = new StatisticsDataDto() { AdvertisementCount = 10, BrandCount = 5, CategoryCount = 16, UserCount = 10 };
             DashboardData = await _dashboardAppService.GetStatisticsData(cancellation);
-            var data = User;
+            
         }
     }
 }

@@ -1,12 +1,13 @@
 using App.Domain.Core.HomeService.CategoryEntity.Dto;
 using App.Domain.Core.HomeService.CommentEntity.AppService;
 using App.Domain.Core.HomeService.CommentEntity.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace HomeService.Endpoints.RazorPages.Areas.Admin.Pages.Comment
 {
-    // [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class IndexModel(ICommentAppService _commentAppService) : PageModel
     {
       

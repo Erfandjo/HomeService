@@ -12,7 +12,7 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Category
         public async Task<Result> Add(CategoryCreateDto category, CancellationToken cancellation)
         {
             if (category is null)
-                return new Result(false, "Category Is Null");
+                return new Result(false, "دسته بندی یافت نشد");
 
             var model = new Domain.Core.HomeService.CategoryEntity.Entities.Category();
             model.Title = category.Title;
@@ -21,20 +21,20 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Category
             await _dbContext.Categories.AddAsync(model);
             await _dbContext.SaveChangesAsync();
 
-            return new Result(true, "Success");
+            return new Result(true, "با موفقیت اضافه شد");
         }
 
         public async Task<Result> Delete(int id, CancellationToken cancellation)
         {
             var category = await _dbContext.Categories.FirstOrDefaultAsync(x => x.Id == id);
             if (category is null)
-                return new Result(false, "Category Not Found.");
+                return new Result(false, "دسته بندی یافت نشد");
 
             //_dbContext.Categories.Remove(category);
             category.IsDeleted = true;
             await _dbContext.SaveChangesAsync();
 
-            return new Result(true, "Success");
+            return new Result(true, "با موفقیت حدف شد");
         }
 
         public async Task<List<CategorySummaryDto>>? GetAll(CancellationToken cancellation)
@@ -61,7 +61,7 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Category
         {
             var cat = await _dbContext.Categories.FirstOrDefaultAsync(x => x.Id == category.Id);
             if (cat is null)
-                return new Result(false, "Category Not Found.");
+                return new Result(false, "دسته بندی یافت نشد");
 
 
             cat.Title = category.Title;
@@ -69,7 +69,7 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Category
 
             await _dbContext.SaveChangesAsync();
 
-            return new Result(true, "Success");
+            return new Result(true, "با موفقیت بروزرسانی شد");
         }
     }
 }

@@ -9,9 +9,11 @@ using App.Domain.Core.HomeService.CategoryEntity.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using App.Domain.Core.HomeService.SubCategoryEntity.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HomeService.Endpoints.RazorPages.Areas.Admin.Pages.SubCategory
 {
+    [Authorize(Roles = "Admin")]
     public class CreateModel(ISubCategoryAppService _subCategoryAppService , ICategoryAppService _categoryAppService) : PageModel
     {
 

@@ -8,27 +8,54 @@
                 </a>
                 <ul>
                     <li>
-                        <a asp-page="Users/Index" class="@(ViewContext.RouteData.Values["Page"] == "/Admin/Index" ? "current" : "")">
+                        <a asp-area="Admin" asp-page="/Index" class="current">
+                            <i class="icon-home"></i>
+                            <span>داشبورد</span>
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a asp-area="Admin" asp-page="/Users/Index" class="">
                             <i class="icon-home"></i>
                             <span>کاربران</span>
                         </a>
                     </li>
                     <li>
-                        <a asp-page="Request/Index" class="@(ViewContext.RouteData.Values["Page"] == "Admin/Users/Index" ? "current" : "")">
+                        <a asp-area="Admin" asp-page="/Category/Index" class="">
                             <i class="icon-home"></i>
                             <span>دسته بندی</span>
                         </a>
                     </li>
                     <li>
-                        <a href="parastoo.html" class="@(ViewContext.RouteData.Values["Page"] == "/yekan" ? "current" : "")">
+                        <a asp-area="Admin" asp-page="/SubCategory/Index" class="">
                             <i class="icon-home"></i>
-                            <span>دسته بندی ها </span>
+                            <span>زیر مجموعه دسته بندی ها </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a asp-area="Admin" asp-page="/ServiceCategory/Index" class="">
+                            <i class="icon-home"></i>
+                            <span>سرویس ها</span>
                         </a>
                     </li>
                     <li>
-                        <a href="yekan.html" class="@(ViewContext.RouteData.Values["Page"] == "/yekan" ? "current" : "")">
+                        <a asp-area="Admin" asp-page="/Request/Index" class="">
                             <i class="icon-home"></i>
-                            <span>برندها</span>
+                            <span>درخواست ها</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="Admin" asp-page="/Suggestion/Index" class="">
+                            <i class="icon-home"></i>
+                            <span>پیشنهادات</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="Admin" asp-page="/Comment/Index" class="">
+                            <i class="icon-home"></i>
+                            <span>نظرات</span>
                         </a>
                     </li>
                 </ul>

@@ -7,11 +7,11 @@ namespace App.Domain.Services.HomeService.User
 {
     public class UserService(IUserRepository _userRepository) : IUserService
     {
-        
+
 
         public async Task<Result> Delete(int id, CancellationToken cancellation)
         {
-           return await _userRepository.Delete(id, cancellation);
+            return await _userRepository.Delete(id, cancellation);
         }
 
         public async Task<List<UserSummaryDto>>? GetAll(CancellationToken cancellation)
@@ -19,7 +19,12 @@ namespace App.Domain.Services.HomeService.User
             return await _userRepository.GetAll(cancellation);
         }
 
-        public async Task<UserCreateDto>? GetById(int id, CancellationToken cancellation)
+        public async Task<UserChangePasswordDto> GetByForChangePassword(int id, CancellationToken cancellation)
+        {
+            return await _userRepository.GetByForChangePassword(id, cancellation);
+        }
+
+        public async Task<Core.HomeService.UserEntity.Entities.User>? GetById(int id, CancellationToken cancellation)
         {
             return await _userRepository.GetById(id, cancellation);
         }
@@ -31,7 +36,7 @@ namespace App.Domain.Services.HomeService.User
 
         public async Task<int> GetCount(CancellationToken cancellation)
         {
-           return await _userRepository.GetCount(cancellation);
+            return await _userRepository.GetCount(cancellation);
 
         }
 
@@ -40,9 +45,6 @@ namespace App.Domain.Services.HomeService.User
             return await _userRepository.Update(user, cancellation);
         }
 
-        Task<UserCreateDto>? IUserService.GetById(int id, CancellationToken cancellation)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

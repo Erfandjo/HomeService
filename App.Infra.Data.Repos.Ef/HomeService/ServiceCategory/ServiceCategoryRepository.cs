@@ -12,7 +12,7 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Service
         public async Task<Result> Add(ServiceCategoryCreateDto service, CancellationToken cancellation)
         {
             if (service is null)
-                return new Result(false, "Service Is Null");
+                return new Result(false, "سرویس یافت نشد");
 
 
             var categoryService = new ServiceCategory();
@@ -25,7 +25,7 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Service
             await _dbContext.Services.AddAsync(categoryService);
             await _dbContext.SaveChangesAsync();
 
-            return new Result(true, "Success");
+            return new Result(true, "سرویس با موفقیت اضافه شد");
         }
 
 
@@ -33,14 +33,14 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Service
         {
             var service = await _dbContext.Services.FirstOrDefaultAsync(x => x.Id == id);
             if (service is null)
-                return new Result(false, "Service Not Found.");
+                return new Result(false, "سرویس یافت نشد");
 
             service.IsDeleted = true;
 
            // _dbContext.Services.Remove(service);
             await _dbContext.SaveChangesAsync();
 
-            return new Result(true, "Success");
+            return new Result(true, "سرویس با موفقیت حذف شد");
         }
 
         public async Task<List<ServiceCategorySummaryDto>>? GetAll(CancellationToken cancellation)
@@ -78,7 +78,7 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Service
         {
             var ser = await _dbContext.Services.FirstOrDefaultAsync(x => x.Id == service.Id);
             if (ser is null)
-                return new Result(false, "Service Not Found.");
+                return new Result(false, "سرویس یافت نشد");
 
             ser.Title = service.Title;
             ser.BasePrice = float.Parse(service.BasePrice);
@@ -87,7 +87,7 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Service
             
             await _dbContext.SaveChangesAsync();
 
-            return new Result(true, "Success");
+            return new Result(true, "سرویس با موفقیت بروزرسانی شد");
         }
     }
 }

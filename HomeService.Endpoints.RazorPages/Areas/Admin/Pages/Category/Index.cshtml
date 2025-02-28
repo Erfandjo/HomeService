@@ -23,15 +23,15 @@
             </div>
             <div class="row">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover table-striped" id="data-table">
+                    <table class="table table-bordered table-hover table-striped" >
                         <thead>
                             <tr>
                                 
-                                <th>#</th>
+                                <th>شناسه</th>
                                 <th>تصویر</th>
                                 <th>نام</th>
                                 <th>عملیات</th>
-                                
+
 
                             </tr>
                         </thead>
@@ -39,20 +39,21 @@
                             @foreach (var category in @Model.Categories)
                             {
                                 <tr>
-                                    
+
+                                   
                                     <td>@category.Id</td>
 
-                                    @if (string.IsNullOrEmpty(category.ImagePath))
-                                    {
-                                        <td><img style="border-radius : 50%" src="\Images\Category\IeKrEgl6K91vwymznimqskAsIGpAxwvPC7rGK005.jpg" width="80" height="80" /></td>
-                                    }
+                                     @if (string.IsNullOrEmpty(category.ImagePath))
+                                    { 
+                                     <td><img style="border-radius : 50%" src="\Images\Category\IeKrEgl6K91vwymznimqskAsIGpAxwvPC7rGK005.jpg" width="80" height="80" /></td> 
+                                     }
                                     else
                                     {
                                         <td><img style="border-radius : 50%" src="@category.ImagePath" width="100" height="100" /></td>
-                                    }
+                                    } 
 
                                     <td>@category.Title</td>
-                                    
+
                                     <td>
                                         <a asp-page="Update" asp-route-Id="@category.Id" class="btn btn-info">ویرایش</a>
                                         <a onclick="return confirm('آیا از حذف این دسته بندی اطمینان دارید؟')" asp-page-handler="Delete" asp-route-Id="@category.Id" class="btn btn-danger">حذف</a>
@@ -73,3 +74,22 @@
     <script src="~/AdminTemplate/plugins/data-table/js/jquery.dataTables.min.js"></script>
     <script src="~/AdminTemplate/js/pages/datatable.js"></script>
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -18,7 +18,7 @@ namespace App.Infra.Data.Repos.Ef.HomeService.SubCategory
         public async Task<Result> Add(SubCategoryCreateDto subCategory, CancellationToken cancellation)
         {
             if (subCategory is null)
-                return new Result(false, "SubCategory Is Null");
+                return new Result(false, "دسته بندی یافت نشد");
 
             var sub = new Domain.Core.HomeService.SubCategoryEntity.Entities.SubCategory();
 
@@ -31,20 +31,20 @@ namespace App.Infra.Data.Repos.Ef.HomeService.SubCategory
             await _dbContext.SubCategories.AddAsync(sub);
             await _dbContext.SaveChangesAsync();
 
-            return new Result(true, "Success");
+            return new Result(true, "با موفقیت اضافه شد");
         }
 
         public async Task<Result> Delete(int id, CancellationToken cancellation)
         {
             var subCategory = await _dbContext.SubCategories.FirstOrDefaultAsync(x => x.Id == id);
             if (subCategory is null)
-                return new Result(false, "SubCategory Not Found.");
+                return new Result(false, "دسته بندی یافت نشد");
 
            // _dbContext.SubCategories.Remove(subCategory);
            subCategory.IsDeleted = true;
             await _dbContext.SaveChangesAsync();
 
-            return new Result(true, "Success");
+            return new Result(true, "با موفقیت حدف شد");
         }
 
         public async Task<List<SubCategorySummaryDto>>? GetAll(CancellationToken cancellation)
@@ -78,14 +78,14 @@ namespace App.Infra.Data.Repos.Ef.HomeService.SubCategory
         {
             var sub = await _dbContext.SubCategories.FirstOrDefaultAsync(x => x.Id == subCategory.Id);
             if (sub is null)
-                return new Result(false, "SubCategory Not Found.");
+                return new Result(false, "دسته بندی یافت نشد");
 
             sub.Title = subCategory.Title;
             sub.ImagePath = subCategory.ImagePath;
             sub.CategoryId = subCategory.CategoryId;
 
             await _dbContext.SaveChangesAsync();
-            return new Result(true, "Success");
+            return new Result(true, "با موفقیت بروزرسانی شد");
         }
 
 

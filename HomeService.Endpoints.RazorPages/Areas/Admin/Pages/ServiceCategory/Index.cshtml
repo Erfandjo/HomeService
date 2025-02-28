@@ -26,15 +26,15 @@
                     <table class="table table-bordered table-hover table-striped" id="data-table">
                         <thead>
                             <tr>
-                                
-                                <th>#</th>
+
+                                <th>شناسه</th>
                                 <th>تصویر</th>
                                 <th>نام</th>
                                 <th>دسته بندی</th>
                                 <th>قیمت پایه</th>
                                 <th>تعداد بازدید</th>
                                 <th>عملیات</th>
-                                
+
 
                             </tr>
                         </thead>
@@ -42,7 +42,7 @@
                             @foreach (var category in @Model.ServiceCategories)
                             {
                                 <tr>
-                                    
+
                                     <td>@category.Id</td>
 
                                     @if (string.IsNullOrEmpty(category.ImagePath))
@@ -59,7 +59,7 @@
                                     <td>@category.SubCategoryTitle</td>
                                     <td>@category.BasePrice</td>
                                     <td>@category.VisitCount</td>
-                                    
+
                                     <td>
                                         <a asp-page="Update" asp-route-Id="@category.Id" class="btn btn-info">ویرایش</a>
                                         <a onclick="return confirm('آیا از حذف این دسته بندی اطمینان دارید؟')" asp-page-handler="Delete" asp-route-Id="@category.Id" class="btn btn-danger">حذف</a>
