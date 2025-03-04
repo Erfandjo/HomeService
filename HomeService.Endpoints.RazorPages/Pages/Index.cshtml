@@ -1,10 +1,10 @@
 ﻿@page
 @model HomeService.Endpoints.RazorPages.Pages.IndexModel
-
 @{
+   
 }
 <div class="home-banner margin-bottom-0" style="background:#f41b3b url('@Url.Content("~/assetsHomePage/img/img.png")')" no-repeat;" data-overlay="4">
-    
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-11 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -17,30 +17,30 @@
                 <form asp-action="Search" class="main-search-wrap fl-wrap half-column">
                     <div class="main-search-item">
                         <span class="search-tag">خدمات</span>
-                        <input type="text" class="form-control radius" placeholder="مثلا برقکاری، خانه تکانی">
+                        <input type="text" class="form-control radius" placeholder="مثلا برقکاری، خانه تکانی">;
                     </div>
-                 
+
                     <div class="main-search-button">
                         <button type="submit" class="btn full-width theme-bg text-white" type="button">جستجو<i class="fas fa-search"></i></button>
                     </div>
                 </form>
-           
-                
+
+
 
                 <div class="Goodup-bnr-cats">
                     <ul>
                         <li><a href="half-map-search-1.html">مکانیکی</a>
-                        <li>
-                        <li><a href="half-map-search-1.html">وسایل خانه</a>
-                        <li>
-                        <li><a href="half-map-search-1.html">لوله کشی</a>
-                        <li>
-                        <li><a href="half-map-search-1.html">دیجیتال</a>
-                        <li>
-                        <li><a href="half-map-search-1.html">تمیز کاری</a>
-                        <li>
-                        <li><a href="half-map-search-1.html">آموزش</a>
-                        <li>
+                            <li>
+                                <li><a href="half-map-search-1.html">وسایل خانه</a>
+                                    <li>
+                                        <li><a href="half-map-search-1.html">لوله کشی</a>
+                                            <li>
+                                                <li><a href="half-map-search-1.html">دیجیتال</a>
+                                                    <li>
+                                                        <li><a href="half-map-search-1.html">تمیز کاری</a>
+                                                            <li>
+                                                                <li><a href="half-map-search-1.html">آموزش</a>
+                                                                    <li>
                     </ul>
                 </div>
 
@@ -61,16 +61,42 @@
         </div>
 
         <div class="row align-items-center">
-            
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
-                    <div class="Goodup-img-catg-wrap">
-                        <div class="Goodup-img-catg-thumb text-center"><a asp-action="ServicesInCategory" asp-route-id="2"><img style="width:fit-content" src="~/Images/Category/7f3097f4-f6b7-4d68-80da-88a33a4f7616Scanitto_2024-10-10_005.jpg" class="img-fluid" alt=""></a></div>
-                        <div class="Goodup-img-catg-caption">
-                            <h4 class="fs-md mb-0 ft-medium m-catrio">تمیزکاری</h4>
-                            <a asp-action="ServicesInCategory" asp-route-id="2" class="Goodup-cat-arrow"><i class="lni lni-arrow-left-circle"></i></a>
+
+
+            @if (Model.Categories is not null)
+            {
+
+                @foreach (var category in @Model.Categories)
+                {
+
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
+                        <div class="Goodup-img-catg-wrap">
+                            <div class="Goodup-img-catg-thumb text-center">
+                                <a asp-page="/SubCategory/Index" asp-route-id="@category.Id">
+                                    @if (string.IsNullOrEmpty(category.ImagePath))
+                                    {
+                                        <img style="width:fit-content" src="~/Images/Category/IeKrEgl6K91vwymznimqskAsIGpAxwvPC7rGK005.jpg" class="img-fluid" alt="">
+                                    }
+                                    else
+                                    {
+                                        <img style="width:fit-content" src="@category.ImagePath" class="img-fluid" alt="">
+                                    }
+                                </a>
+                            </div>
+                            <div class="Goodup-img-catg-caption">
+                                <h4 class="fs-md mb-0 ft-medium m-catrio">@category.Title</h4>
+                                <a asp-page="/SubCategory/Index" asp-route-id="@category.Id" class="Goodup-cat-arrow"><i class="lni lni-arrow-left-circle"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
+
+
+                }
+
+            }
+
+ 
+              
             
         </div>
 

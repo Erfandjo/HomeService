@@ -2,6 +2,7 @@
 using App.Domain.Core.HomeService.ResultEntity;
 using App.Domain.Core.HomeService.ServiceCategoryEntity.Dto;
 using App.Domain.Core.HomeService.ServiceCategoryEntity.Entities;
+using App.Domain.Core.HomeService.SubCategoryEntity.Dto;
 
 namespace App.Domain.Core.HomeService.ServiceCategoryEntity.Data
 {
@@ -13,5 +14,6 @@ namespace App.Domain.Core.HomeService.ServiceCategoryEntity.Data
         public Task<ServiceCategory>? GetById(int id, CancellationToken cancellation);
         public Task<List<ServiceCategorySummaryDto>>? GetAll(CancellationToken cancellation);
         public Task<ServiceCategoryUpdateDto>? GetByIdForUpdate(int id, CancellationToken cancellation);
+        public Task<List<ServiceCategorySummaryDto>>? GetBySubCategoryId(int subCategoryId, CancellationToken cancellation);
     }
 }

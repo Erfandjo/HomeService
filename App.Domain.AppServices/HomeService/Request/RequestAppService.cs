@@ -30,9 +30,10 @@ namespace App.Domain.AppServices.HomeService.Request
                 return (new Result(false, "هنوز پیشنهادی داده نشده است"));
 
             
-                return (new Result(false, "هنوز پیشنهادی داده نشده است"));
+                
 
-            return await _requestService.Update(request, cancellation);
+             await _requestService.Update(request, cancellation);
+            return (new Result(false, "هنوز پیشنهادی داده نشده است"));
         }
     }
 }

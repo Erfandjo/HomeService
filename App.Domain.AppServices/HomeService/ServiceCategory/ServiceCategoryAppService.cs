@@ -36,6 +36,11 @@ namespace App.Domain.AppServices.HomeService.ServiceCategory
             return await _serviceCategoryService.GetByIdForUpdate(id, cancellation);
         }
 
+        public async Task<List<ServiceCategorySummaryDto>>? GetBySubCategoryId(int subCategoryId, CancellationToken cancellation)
+        {
+            return await _serviceCategoryService.GetBySubCategoryId(subCategoryId, cancellation);
+        }
+
         public async Task<Result> Update(ServiceCategoryUpdateDto service, CancellationToken cancellation)
         {
 

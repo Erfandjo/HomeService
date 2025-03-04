@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250226233908_init")]
+    [Migration("20250301172342_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -51,48 +51,56 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 1,
+                            ImagePath = "D:\\MaktabSharif\\FinalProject-HomeService\\HomeService\\HomeService.Endpoints.RazorPages\\wwwroot\\Images\\Category\\TamizKari.jpg",
                             IsDeleted = false,
                             Title = "تمیزکاری"
                         },
                         new
                         {
                             Id = 2,
+                            ImagePath = "D:\\MaktabSharif\\FinalProject-HomeService\\HomeService\\HomeService.Endpoints.RazorPages\\wwwroot\\Images\\Category\\Sakhteman.jpg",
                             IsDeleted = false,
                             Title = "ساختمان"
                         },
                         new
                         {
                             Id = 3,
+                            ImagePath = "D:\\MaktabSharif\\FinalProject-HomeService\\HomeService\\HomeService.Endpoints.RazorPages\\wwwroot\\Images\\Category\\TamiratAshiya.jpg",
                             IsDeleted = false,
                             Title = "تعمیرات اشیا"
                         },
                         new
                         {
                             Id = 4,
+                            ImagePath = "D:\\MaktabSharif\\FinalProject-HomeService\\HomeService\\HomeService.Endpoints.RazorPages\\wwwroot\\Images\\Category\\AsbabKeshi.jpg",
                             IsDeleted = false,
                             Title = "اسباب کشی و حمل بار"
                         },
                         new
                         {
                             Id = 5,
+                            ImagePath = "D:\\MaktabSharif\\FinalProject-HomeService\\HomeService\\HomeService.Endpoints.RazorPages\\wwwroot\\Images\\Category\\Khodro.jpg",
                             IsDeleted = false,
                             Title = "خودرو"
                         },
                         new
                         {
                             Id = 6,
+                            ImagePath = "D:\\MaktabSharif\\FinalProject-HomeService\\HomeService\\HomeService.Endpoints.RazorPages\\wwwroot\\Images\\Category\\SalamatZibaii.jpg",
                             IsDeleted = false,
                             Title = "سلامت و زیبایی"
                         },
                         new
                         {
                             Id = 7,
+                            ImagePath = "D:\\MaktabSharif\\FinalProject-HomeService\\HomeService\\HomeService.Endpoints.RazorPages\\wwwroot\\Images\\Category\\Sazman.jpg",
                             IsDeleted = false,
                             Title = "سازمان ها و مجتمع ها"
                         },
                         new
                         {
                             Id = 8,
+                            ImagePath = "D:\\MaktabSharif\\FinalProject-HomeService\\HomeService\\HomeService.Endpoints.RazorPages\\wwwroot\\Images\\Category\\Sayer.png",
                             IsDeleted = false,
                             Title = "سایر"
                         });
@@ -294,7 +302,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 1,
-                            CommentAt = new DateTime(2025, 2, 27, 3, 9, 5, 48, DateTimeKind.Local).AddTicks(8858),
+                            CommentAt = new DateTime(2025, 3, 1, 20, 53, 41, 392, DateTimeKind.Local).AddTicks(2736),
                             CustomerId = 1,
                             ExpertId = 2,
                             RequestId = 1,
@@ -304,7 +312,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 2,
-                            CommentAt = new DateTime(2025, 2, 27, 3, 9, 5, 50, DateTimeKind.Local).AddTicks(1347),
+                            CommentAt = new DateTime(2025, 3, 1, 20, 53, 41, 393, DateTimeKind.Local).AddTicks(2956),
                             CustomerId = 2,
                             ExpertId = 1,
                             RequestId = 2,
@@ -314,7 +322,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 3,
-                            CommentAt = new DateTime(2025, 2, 27, 3, 9, 5, 50, DateTimeKind.Local).AddTicks(1361),
+                            CommentAt = new DateTime(2025, 3, 1, 20, 53, 41, 393, DateTimeKind.Local).AddTicks(2968),
                             CustomerId = 3,
                             ExpertId = 2,
                             RequestId = 3,
@@ -324,7 +332,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 4,
-                            CommentAt = new DateTime(2025, 2, 27, 3, 9, 5, 50, DateTimeKind.Local).AddTicks(1364),
+                            CommentAt = new DateTime(2025, 3, 1, 20, 53, 41, 393, DateTimeKind.Local).AddTicks(2970),
                             CustomerId = 1,
                             ExpertId = 3,
                             RequestId = 4,
@@ -531,7 +539,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             DateOfCompletion = new DateOnly(2025, 5, 3),
                             Description = "Bana",
                             Price = 240,
-                            RequestAt = new DateTime(2025, 2, 27, 3, 9, 5, 55, DateTimeKind.Local).AddTicks(7192),
+                            RequestAt = new DateTime(2025, 3, 1, 20, 53, 41, 398, DateTimeKind.Local).AddTicks(8881),
                             ServiceId = 5,
                             Status = 3,
                             TimeOfCompletion = new TimeOnly(12, 5, 0)
@@ -543,7 +551,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             DateOfCompletion = new DateOnly(2025, 4, 8),
                             Description = "Bana",
                             Price = 342,
-                            RequestAt = new DateTime(2025, 2, 27, 3, 9, 5, 55, DateTimeKind.Local).AddTicks(7736),
+                            RequestAt = new DateTime(2025, 3, 1, 20, 53, 41, 398, DateTimeKind.Local).AddTicks(9518),
                             ServiceId = 3,
                             Status = 5,
                             TimeOfCompletion = new TimeOnly(12, 5, 0)
@@ -555,7 +563,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             DateOfCompletion = new DateOnly(2025, 8, 18),
                             Description = "Bana",
                             Price = 350,
-                            RequestAt = new DateTime(2025, 2, 27, 3, 9, 5, 55, DateTimeKind.Local).AddTicks(7742),
+                            RequestAt = new DateTime(2025, 3, 1, 20, 53, 41, 398, DateTimeKind.Local).AddTicks(9574),
                             ServiceId = 1,
                             Status = 4,
                             TimeOfCompletion = new TimeOnly(12, 5, 0)
@@ -567,7 +575,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             DateOfCompletion = new DateOnly(2025, 4, 2),
                             Description = "Bana",
                             Price = 840,
-                            RequestAt = new DateTime(2025, 2, 27, 3, 9, 5, 55, DateTimeKind.Local).AddTicks(7745),
+                            RequestAt = new DateTime(2025, 3, 1, 20, 53, 41, 398, DateTimeKind.Local).AddTicks(9578),
                             ServiceId = 2,
                             Status = 2,
                             TimeOfCompletion = new TimeOnly(12, 5, 0)
@@ -1118,7 +1126,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             RequestId = 1,
                             Status = 1,
                             SuggestedPrice = 250f,
-                            SuggestionAt = new DateTime(2025, 2, 27, 3, 9, 5, 73, DateTimeKind.Local).AddTicks(4340)
+                            SuggestionAt = new DateTime(2025, 3, 1, 20, 53, 41, 403, DateTimeKind.Local).AddTicks(411)
                         },
                         new
                         {
@@ -1129,7 +1137,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             RequestId = 1,
                             Status = 3,
                             SuggestedPrice = 250f,
-                            SuggestionAt = new DateTime(2025, 2, 27, 3, 9, 5, 73, DateTimeKind.Local).AddTicks(5357)
+                            SuggestionAt = new DateTime(2025, 3, 1, 20, 53, 41, 403, DateTimeKind.Local).AddTicks(1020)
                         },
                         new
                         {
@@ -1140,7 +1148,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             RequestId = 2,
                             Status = 4,
                             SuggestedPrice = 250f,
-                            SuggestionAt = new DateTime(2025, 2, 27, 3, 9, 5, 73, DateTimeKind.Local).AddTicks(5366)
+                            SuggestionAt = new DateTime(2025, 3, 1, 20, 53, 41, 403, DateTimeKind.Local).AddTicks(1025)
                         },
                         new
                         {
@@ -1151,7 +1159,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             RequestId = 3,
                             Status = 2,
                             SuggestedPrice = 250f,
-                            SuggestionAt = new DateTime(2025, 2, 27, 3, 9, 5, 73, DateTimeKind.Local).AddTicks(5370)
+                            SuggestionAt = new DateTime(2025, 3, 1, 20, 53, 41, 403, DateTimeKind.Local).AddTicks(1028)
                         },
                         new
                         {
@@ -1162,7 +1170,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             RequestId = 4,
                             Status = 4,
                             SuggestedPrice = 250f,
-                            SuggestionAt = new DateTime(2025, 2, 27, 3, 9, 5, 73, DateTimeKind.Local).AddTicks(5373)
+                            SuggestionAt = new DateTime(2025, 3, 1, 20, 53, 41, 403, DateTimeKind.Local).AddTicks(1030)
                         });
                 });
 
@@ -1265,19 +1273,19 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             Id = 1,
                             AccessFailedCount = 0,
                             CityId = 1,
-                            ConcurrencyStamp = "99306a23-587d-4ef9-8495-c986786d9366",
+                            ConcurrencyStamp = "59bf811a-6db9-4fe0-a2d9-a78c528574c4",
                             Email = "Admin@gmail.com",
                             EmailConfirmed = false,
                             IsDeleted = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEOi0aXxROXEnSkW1oXDGHAdnSsDb/e3ruGj2kDh8pcX/GVe82hfRKio0BSeDfBdpKA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMOA+ms1+mchJxeT22PmjwSrhLRjpcmRJVuzlzv9EXvIz4WTECRi7REaW5vG0ywFCw==",
                             PhoneNumber = "09377507920",
                             PhoneNumberConfirmed = false,
-                            RegisterAt = new DateTime(2025, 2, 27, 3, 9, 5, 79, DateTimeKind.Local).AddTicks(1623),
+                            RegisterAt = new DateTime(2025, 3, 1, 20, 53, 41, 407, DateTimeKind.Local).AddTicks(455),
                             RoleId = 1,
-                            SecurityStamp = "bbd094bc-c3d2-4618-b214-8d51d7e45e0e",
+                            SecurityStamp = "ebb1ba6d-03b2-43e0-9a4a-5f4c1191d1c9",
                             TwoFactorEnabled = false,
                             UserName = "Admin@gmail.com"
                         },
@@ -1286,19 +1294,19 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             Id = 2,
                             AccessFailedCount = 0,
                             CityId = 4,
-                            ConcurrencyStamp = "adcf7055-f8e4-4306-bb79-c16787b4d794",
+                            ConcurrencyStamp = "1e725075-f8cc-4a6b-8513-db72915cac50",
                             Email = "Ali@gmail.com",
                             EmailConfirmed = false,
                             IsDeleted = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ALI@GMAIL.COM",
                             NormalizedUserName = "ALI",
-                            PasswordHash = "AQAAAAIAAYagAAAAEIqjayTD+jm8o2BOhXXvHZe+H46cvBH/cMTSmePNHULKd7U7HsESjqej/7oo5sMjCA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEP7jeeNgYQE44k0MKf1kDzuM7Cu+AKrl0TE0mHnakhxjn3lgkXCgczfwgGBjami+ZA==",
                             PhoneNumber = "09245112357",
                             PhoneNumberConfirmed = false,
-                            RegisterAt = new DateTime(2025, 2, 27, 3, 9, 5, 79, DateTimeKind.Local).AddTicks(2020),
+                            RegisterAt = new DateTime(2025, 3, 1, 20, 53, 41, 407, DateTimeKind.Local).AddTicks(730),
                             RoleId = 2,
-                            SecurityStamp = "513aa469-e948-40c3-b0ed-e50b762e61ce",
+                            SecurityStamp = "90b63b57-562c-43e0-8f63-47e24d36dc4c",
                             TwoFactorEnabled = false,
                             UserName = "Ali"
                         },
@@ -1307,19 +1315,19 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             Id = 3,
                             AccessFailedCount = 0,
                             CityId = 2,
-                            ConcurrencyStamp = "79dfdd3d-8772-496e-8931-b16fdcd1dbfd",
+                            ConcurrencyStamp = "b0a9adda-11c5-4524-861c-698dc70d8dab",
                             Email = "Mohsen@gmail.com",
                             EmailConfirmed = false,
                             IsDeleted = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "MOHSEN@GMAIL.COM",
                             NormalizedUserName = "MOHSEN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAiRiwfth+gg8OZb2y0HzLaM3pSi5wla6TYXIuIR6xXT2ZAWDOI+qq5YrNheM4CEZQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDv5ry0qUIopHEsMCi4gMQb7VRSELR+Cj/VazuE4yochn73khRa0RaypNbGkwdcNAw==",
                             PhoneNumber = "09106578542",
                             PhoneNumberConfirmed = false,
-                            RegisterAt = new DateTime(2025, 2, 27, 3, 9, 5, 79, DateTimeKind.Local).AddTicks(2038),
+                            RegisterAt = new DateTime(2025, 3, 1, 20, 53, 41, 407, DateTimeKind.Local).AddTicks(742),
                             RoleId = 2,
-                            SecurityStamp = "6b94a867-9be9-45b9-bd1b-1dc201326470",
+                            SecurityStamp = "6fd3ef24-f5f9-4f9a-aa41-9013749f54b0",
                             TwoFactorEnabled = false,
                             UserName = "Mohsen@gmail.com"
                         },
@@ -1328,19 +1336,19 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             Id = 4,
                             AccessFailedCount = 0,
                             CityId = 1,
-                            ConcurrencyStamp = "5e927ff7-023b-40cc-bfb3-d7bd52751697",
+                            ConcurrencyStamp = "5ed82c2d-ada2-46c0-8a54-094644b1071e",
                             Email = "Sahar@gmail.com",
                             EmailConfirmed = false,
                             IsDeleted = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "SAHAR@GMAIL.COM",
                             NormalizedUserName = "SAHAR@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAENa+XgWV61cgAX6yU6qKDQIz17HsTmzKTT3MBdElS/VssUFBs0es6sAtmRX4CB4CvA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENtt4Kd5Gpfmxvp1Ig4agGUicg1yTpQSe4gdDU2CwYeRIGhG9aX7ft1zkvf7bK7EVg==",
                             PhoneNumber = "09304578725",
                             PhoneNumberConfirmed = false,
-                            RegisterAt = new DateTime(2025, 2, 27, 3, 9, 5, 79, DateTimeKind.Local).AddTicks(2067),
+                            RegisterAt = new DateTime(2025, 3, 1, 20, 53, 41, 407, DateTimeKind.Local).AddTicks(753),
                             RoleId = 2,
-                            SecurityStamp = "129cac6a-8414-4964-9542-e598c6ee61c1",
+                            SecurityStamp = "2387bdbc-19f8-4b79-9128-7de31f789fbd",
                             TwoFactorEnabled = false,
                             UserName = "Sahar@gmail.com"
                         },
@@ -1349,19 +1357,19 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             Id = 5,
                             AccessFailedCount = 0,
                             CityId = 1,
-                            ConcurrencyStamp = "4beb6d8e-000d-45a0-a102-4d3fd1f0ca43",
+                            ConcurrencyStamp = "1ae25b3d-6378-4099-b9bb-684efbc86bbe",
                             Email = "Majd@gmail.com",
                             EmailConfirmed = false,
                             IsDeleted = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "MAJID@GMAIL.COM",
                             NormalizedUserName = "MAJID@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKUek6QlTBTy61oLdj2RE9NkjwtJ+Mop1Cam0kuPGuZZ5XrUTwm+wokF+eD85Qnofw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEA2fXZayIhrqba9i2H01AQUNrtvEAvmjhd0ICaUrLAZQC/QBiVwFz06gPJtYdK0HOQ==",
                             PhoneNumber = "09206548795",
                             PhoneNumberConfirmed = false,
-                            RegisterAt = new DateTime(2025, 2, 27, 3, 9, 5, 79, DateTimeKind.Local).AddTicks(2081),
+                            RegisterAt = new DateTime(2025, 3, 1, 20, 53, 41, 407, DateTimeKind.Local).AddTicks(770),
                             RoleId = 3,
-                            SecurityStamp = "1275f49c-43bd-4c5e-bc1a-72c4863cdc40",
+                            SecurityStamp = "bac1a043-1869-4106-b720-3108f1cce842",
                             TwoFactorEnabled = false,
                             UserName = "Majid@gmail.com"
                         },
@@ -1370,19 +1378,19 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             Id = 6,
                             AccessFailedCount = 0,
                             CityId = 1,
-                            ConcurrencyStamp = "d3e53452-a44c-4b77-bd45-7586551cd060",
+                            ConcurrencyStamp = "27935936-b4b3-4b41-9fbb-92f40cc2cd6e",
                             Email = "Parvane@gmail.com",
                             EmailConfirmed = false,
                             IsDeleted = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "PARVANE@GMAIL.COM",
                             NormalizedUserName = "PARVANE@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAedntp4kw+ujNaqXTvO5/FrIdbPzI7rVzx22WzG3TDxu2ufUbmJ4cXoWzJDqCIdTw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGNCvU0bs0nBQh2ReQVqs4u2duWL7ECHGBmdUxQ+NZnag/KMFE6jVPjNgOLOdODmRA==",
                             PhoneNumber = "09632548785",
                             PhoneNumberConfirmed = false,
-                            RegisterAt = new DateTime(2025, 2, 27, 3, 9, 5, 79, DateTimeKind.Local).AddTicks(2101),
+                            RegisterAt = new DateTime(2025, 3, 1, 20, 53, 41, 407, DateTimeKind.Local).AddTicks(788),
                             RoleId = 3,
-                            SecurityStamp = "388d1c7d-218d-435c-886d-a807f5d23c72",
+                            SecurityStamp = "688638cd-1a75-456e-baa9-73998e5a2b72",
                             TwoFactorEnabled = false,
                             UserName = "Parvane@gmail.com"
                         },
@@ -1391,19 +1399,19 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             Id = 7,
                             AccessFailedCount = 0,
                             CityId = 8,
-                            ConcurrencyStamp = "c5ca6664-5c66-47b4-a18a-b25135afb31c",
+                            ConcurrencyStamp = "d54b464a-23d4-46ac-b0b6-b08a1056b336",
                             Email = "Hasan@gmail.com",
                             EmailConfirmed = false,
                             IsDeleted = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "HASAN@GMAIL.COM",
                             NormalizedUserName = "HASAN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEK0lRLzaMg6Y+LoWo9p3yMSCS16Ib47+Dat6nHoJ20vXp1EDii4rRGzUtBH5quXdBQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFXQb2jPLhsyTaJGerRC77S4XL/bS4g1N5V0iX/TuWO0UCj6RbtMdjpQG4BTFz/Pyg==",
                             PhoneNumber = "09223458712",
                             PhoneNumberConfirmed = false,
-                            RegisterAt = new DateTime(2025, 2, 27, 3, 9, 5, 79, DateTimeKind.Local).AddTicks(2116),
+                            RegisterAt = new DateTime(2025, 3, 1, 20, 53, 41, 407, DateTimeKind.Local).AddTicks(798),
                             RoleId = 3,
-                            SecurityStamp = "70a96bfb-da38-42b3-9a43-cbd89e50933d",
+                            SecurityStamp = "f197b65e-0d0f-4aeb-9514-0334e15336fa",
                             TwoFactorEnabled = false,
                             UserName = "Hasan@gmail.com"
                         });

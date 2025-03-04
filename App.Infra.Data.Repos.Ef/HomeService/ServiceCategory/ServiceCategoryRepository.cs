@@ -74,6 +74,21 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Service
             }).FirstOrDefaultAsync(x => x.Id == id);
         }
 
+        public async Task<List<ServiceCategorySummaryDto>>? GetBySubCategoryId(int subCategoryId, CancellationToken cancellation)
+        {
+            return await _dbContext.Services.AsNoTracking().Where(x => x.SubCategoryId == subCategoryId).Select(x => new ServiceCategorySummaryDto()
+            {
+                Id = x.Id,
+                SubCategoryTitle = x.SubCategory.Title,
+                BasePrice = x.BasePrice.ToString(),
+                VisitCount = x.VisitCount,
+                ImagePath = x.ImagePath,
+                Title = x.Title,
+
+
+            }).ToListAsync();
+        }
+
         public async Task<Result> Update(ServiceCategoryUpdateDto service, CancellationToken cancellation)
         {
             var ser = await _dbContext.Services.FirstOrDefaultAsync(x => x.Id == service.Id);

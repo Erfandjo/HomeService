@@ -53,8 +53,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Common
             base.OnModelCreating(modelBuilder);
         }
 
+     
 
-       
         public DbSet<City> Cities { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Category> Categories { get; set; }

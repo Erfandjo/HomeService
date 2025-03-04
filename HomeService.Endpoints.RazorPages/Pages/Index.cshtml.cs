@@ -1,15 +1,19 @@
+using App.Domain.Core.HomeService.CategoryEntity.AppService;
+using App.Domain.Core.HomeService.CategoryEntity.Dto;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace HomeService.Endpoints.RazorPages.Pages
 {
-    public class IndexModel : PageModel
+    public class IndexModel(ICategoryAppService _categoryAppService) : PageModel
     {
-        
 
-        public async Task<IActionResult> OnGetAsync(string returnUrl = null)
+        [BindProperty]
+        public List<CategorySummaryDto> Categories { get; set; }
+
+        public async Task<IActionResult> OnGetAsync(CancellationToken cancellation , string returnUrl = null)
         {
-            
+            Categories = await _categoryAppService.GetAll(cancellation);
             if (User.IsInRole("Admin"))
             {
                 returnUrl = Url.Content("/Admin");

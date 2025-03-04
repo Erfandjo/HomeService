@@ -29,7 +29,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Images\ServiceCategory\" />
-    <Folder Include="wwwroot\Images\SubCategory\" />
   </ItemGroup>
 
 </Project>

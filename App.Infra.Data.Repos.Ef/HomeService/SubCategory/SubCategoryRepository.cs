@@ -29,7 +29,7 @@ namespace App.Infra.Data.Repos.Ef.HomeService.SubCategory
 
 
             await _dbContext.SubCategories.AddAsync(sub);
-            await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync(cancellation);
 
             return new Result(true, "با موفقیت اضافه شد");
         }
@@ -55,12 +55,29 @@ namespace App.Infra.Data.Repos.Ef.HomeService.SubCategory
                 ImagePath = x.ImagePath,
                 Title = x.Title,
                 CategoryTitle = x.Category.Title
+            }).ToListAsync(cancellation);
+        }
+
+        public async Task<List<SubCategorySummaryDto>>? GetByCategoryId(int categoryId, CancellationToken cancellation)
+        {
+            return await _dbContext.SubCategories.Where(x => x.CategoryId == categoryId).Select(x => new SubCategorySummaryDto()
+            {
+                ImagePath = x.ImagePath,
+                Title = x.Title,
+                CategoryTitle = x.Category.Title,
+                Id = x.Id
             }).ToListAsync();
         }
 
-        public async Task<Domain.Core.HomeService.SubCategoryEntity.Entities.SubCategory>? GetById(int id, CancellationToken cancellation)
+        public async Task<SubCategorySummaryDto>? GetById(int id, CancellationToken cancellation)
         {
-            return await _dbContext.SubCategories.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+            return await _dbContext.SubCategories.AsNoTracking().Select(x => new SubCategorySummaryDto()
+            {
+                Id = x.Id,
+                ImagePath = x.ImagePath,
+                Title = x.Title,
+                CategoryTitle = x.Category.Title
+            }).FirstOrDefaultAsync(x => x.Id == id , cancellation);
         }
 
         public async Task<SubCategoryUpdateDto> GetByIdForUpdate(int id, CancellationToken cancellation)
@@ -71,7 +88,7 @@ namespace App.Infra.Data.Repos.Ef.HomeService.SubCategory
                 ImagePath = x.ImagePath,
                 Title = x.Title,
                 CategoryId = x.CategoryId,
-            }).FirstOrDefaultAsync(x => x.Id == id);
+            }).FirstOrDefaultAsync(x => x.Id == id , cancellation);
         }
 
         public async Task<Result> Update(SubCategoryUpdateDto subCategory, CancellationToken cancellation)
@@ -84,7 +101,7 @@ namespace App.Infra.Data.Repos.Ef.HomeService.SubCategory
             sub.ImagePath = subCategory.ImagePath;
             sub.CategoryId = subCategory.CategoryId;
 
-            await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync(cancellation);
             return new Result(true, "با موفقیت بروزرسانی شد");
         }
 

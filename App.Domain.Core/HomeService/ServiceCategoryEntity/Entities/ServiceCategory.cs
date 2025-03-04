@@ -14,8 +14,8 @@ namespace App.Domain.Core.HomeService.ServiceCategoryEntity.Entities
         public int VisitCount { get; set; }
         public float BasePrice { get; set; }
         public bool IsDeleted { get; set; } = false;
-
         
+
         #endregion
 
         #region NavigationProperties

@@ -22,6 +22,16 @@ namespace App.Domain.Services.HomeService.SubCategory
             return await _subCategoryRepository.GetAll(cancellation);
         }
 
+        public async Task<List<SubCategorySummaryDto>>? GetByCategoryId(int categoryId, CancellationToken cancellation)
+        {
+            return await _subCategoryRepository.GetByCategoryId(categoryId, cancellation);
+        }
+
+        public async Task<SubCategorySummaryDto>? GetById(int id, CancellationToken cancellation)
+        {
+            return await _subCategoryRepository.GetById(id, cancellation);
+        }
+
         public async Task<SubCategoryUpdateDto> GetByIdForUpdate(int id, CancellationToken cancellation)
         {
             return await _subCategoryRepository.GetByIdForUpdate(id, cancellation);

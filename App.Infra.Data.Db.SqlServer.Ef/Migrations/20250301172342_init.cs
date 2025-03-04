@@ -443,14 +443,14 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                 columns: new[] { "Id", "ImagePath", "IsDeleted", "Title" },
                 values: new object[,]
                 {
-                    { 1, null, false, "تمیزکاری" },
-                    { 2, null, false, "ساختمان" },
-                    { 3, null, false, "تعمیرات اشیا" },
-                    { 4, null, false, "اسباب کشی و حمل بار" },
-                    { 5, null, false, "خودرو" },
-                    { 6, null, false, "سلامت و زیبایی" },
-                    { 7, null, false, "سازمان ها و مجتمع ها" },
-                    { 8, null, false, "سایر" }
+                    { 1, "D:\\MaktabSharif\\FinalProject-HomeService\\HomeService\\HomeService.Endpoints.RazorPages\\wwwroot\\Images\\Category\\TamizKari.jpg", false, "تمیزکاری" },
+                    { 2, "D:\\MaktabSharif\\FinalProject-HomeService\\HomeService\\HomeService.Endpoints.RazorPages\\wwwroot\\Images\\Category\\Sakhteman.jpg", false, "ساختمان" },
+                    { 3, "D:\\MaktabSharif\\FinalProject-HomeService\\HomeService\\HomeService.Endpoints.RazorPages\\wwwroot\\Images\\Category\\TamiratAshiya.jpg", false, "تعمیرات اشیا" },
+                    { 4, "D:\\MaktabSharif\\FinalProject-HomeService\\HomeService\\HomeService.Endpoints.RazorPages\\wwwroot\\Images\\Category\\AsbabKeshi.jpg", false, "اسباب کشی و حمل بار" },
+                    { 5, "D:\\MaktabSharif\\FinalProject-HomeService\\HomeService\\HomeService.Endpoints.RazorPages\\wwwroot\\Images\\Category\\Khodro.jpg", false, "خودرو" },
+                    { 6, "D:\\MaktabSharif\\FinalProject-HomeService\\HomeService\\HomeService.Endpoints.RazorPages\\wwwroot\\Images\\Category\\SalamatZibaii.jpg", false, "سلامت و زیبایی" },
+                    { 7, "D:\\MaktabSharif\\FinalProject-HomeService\\HomeService\\HomeService.Endpoints.RazorPages\\wwwroot\\Images\\Category\\Sazman.jpg", false, "سازمان ها و مجتمع ها" },
+                    { 8, "D:\\MaktabSharif\\FinalProject-HomeService\\HomeService\\HomeService.Endpoints.RazorPages\\wwwroot\\Images\\Category\\Sayer.png", false, "سایر" }
                 });
 
             migrationBuilder.InsertData(
@@ -492,13 +492,13 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Balance", "CityId", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "ImagePath", "IsDeleted", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "RegisterAt", "RoleId", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { 1, 0, null, 1, "99306a23-587d-4ef9-8495-c986786d9366", "Admin@gmail.com", false, null, null, false, null, false, null, "ADMIN@GMAIL.COM", "ADMIN@GMAIL.COM", "AQAAAAIAAYagAAAAEOi0aXxROXEnSkW1oXDGHAdnSsDb/e3ruGj2kDh8pcX/GVe82hfRKio0BSeDfBdpKA==", "09377507920", false, new DateTime(2025, 2, 27, 3, 9, 5, 79, DateTimeKind.Local).AddTicks(1623), 1, "bbd094bc-c3d2-4618-b214-8d51d7e45e0e", false, "Admin@gmail.com" },
-                    { 2, 0, null, 4, "adcf7055-f8e4-4306-bb79-c16787b4d794", "Ali@gmail.com", false, null, null, false, null, false, null, "ALI@GMAIL.COM", "ALI", "AQAAAAIAAYagAAAAEIqjayTD+jm8o2BOhXXvHZe+H46cvBH/cMTSmePNHULKd7U7HsESjqej/7oo5sMjCA==", "09245112357", false, new DateTime(2025, 2, 27, 3, 9, 5, 79, DateTimeKind.Local).AddTicks(2020), 2, "513aa469-e948-40c3-b0ed-e50b762e61ce", false, "Ali" },
-                    { 3, 0, null, 2, "79dfdd3d-8772-496e-8931-b16fdcd1dbfd", "Mohsen@gmail.com", false, null, null, false, null, false, null, "MOHSEN@GMAIL.COM", "MOHSEN@GMAIL.COM", "AQAAAAIAAYagAAAAEAiRiwfth+gg8OZb2y0HzLaM3pSi5wla6TYXIuIR6xXT2ZAWDOI+qq5YrNheM4CEZQ==", "09106578542", false, new DateTime(2025, 2, 27, 3, 9, 5, 79, DateTimeKind.Local).AddTicks(2038), 2, "6b94a867-9be9-45b9-bd1b-1dc201326470", false, "Mohsen@gmail.com" },
-                    { 4, 0, null, 1, "5e927ff7-023b-40cc-bfb3-d7bd52751697", "Sahar@gmail.com", false, null, null, false, null, false, null, "SAHAR@GMAIL.COM", "SAHAR@GMAIL.COM", "AQAAAAIAAYagAAAAENa+XgWV61cgAX6yU6qKDQIz17HsTmzKTT3MBdElS/VssUFBs0es6sAtmRX4CB4CvA==", "09304578725", false, new DateTime(2025, 2, 27, 3, 9, 5, 79, DateTimeKind.Local).AddTicks(2067), 2, "129cac6a-8414-4964-9542-e598c6ee61c1", false, "Sahar@gmail.com" },
-                    { 5, 0, null, 1, "4beb6d8e-000d-45a0-a102-4d3fd1f0ca43", "Majd@gmail.com", false, null, null, false, null, false, null, "MAJID@GMAIL.COM", "MAJID@GMAIL.COM", "AQAAAAIAAYagAAAAEKUek6QlTBTy61oLdj2RE9NkjwtJ+Mop1Cam0kuPGuZZ5XrUTwm+wokF+eD85Qnofw==", "09206548795", false, new DateTime(2025, 2, 27, 3, 9, 5, 79, DateTimeKind.Local).AddTicks(2081), 3, "1275f49c-43bd-4c5e-bc1a-72c4863cdc40", false, "Majid@gmail.com" },
-                    { 6, 0, null, 1, "d3e53452-a44c-4b77-bd45-7586551cd060", "Parvane@gmail.com", false, null, null, false, null, false, null, "PARVANE@GMAIL.COM", "PARVANE@GMAIL.COM", "AQAAAAIAAYagAAAAEAedntp4kw+ujNaqXTvO5/FrIdbPzI7rVzx22WzG3TDxu2ufUbmJ4cXoWzJDqCIdTw==", "09632548785", false, new DateTime(2025, 2, 27, 3, 9, 5, 79, DateTimeKind.Local).AddTicks(2101), 3, "388d1c7d-218d-435c-886d-a807f5d23c72", false, "Parvane@gmail.com" },
-                    { 7, 0, null, 8, "c5ca6664-5c66-47b4-a18a-b25135afb31c", "Hasan@gmail.com", false, null, null, false, null, false, null, "HASAN@GMAIL.COM", "HASAN@GMAIL.COM", "AQAAAAIAAYagAAAAEK0lRLzaMg6Y+LoWo9p3yMSCS16Ib47+Dat6nHoJ20vXp1EDii4rRGzUtBH5quXdBQ==", "09223458712", false, new DateTime(2025, 2, 27, 3, 9, 5, 79, DateTimeKind.Local).AddTicks(2116), 3, "70a96bfb-da38-42b3-9a43-cbd89e50933d", false, "Hasan@gmail.com" }
+                    { 1, 0, null, 1, "59bf811a-6db9-4fe0-a2d9-a78c528574c4", "Admin@gmail.com", false, null, null, false, null, false, null, "ADMIN@GMAIL.COM", "ADMIN@GMAIL.COM", "AQAAAAIAAYagAAAAEMOA+ms1+mchJxeT22PmjwSrhLRjpcmRJVuzlzv9EXvIz4WTECRi7REaW5vG0ywFCw==", "09377507920", false, new DateTime(2025, 3, 1, 20, 53, 41, 407, DateTimeKind.Local).AddTicks(455), 1, "ebb1ba6d-03b2-43e0-9a4a-5f4c1191d1c9", false, "Admin@gmail.com" },
+                    { 2, 0, null, 4, "1e725075-f8cc-4a6b-8513-db72915cac50", "Ali@gmail.com", false, null, null, false, null, false, null, "ALI@GMAIL.COM", "ALI", "AQAAAAIAAYagAAAAEP7jeeNgYQE44k0MKf1kDzuM7Cu+AKrl0TE0mHnakhxjn3lgkXCgczfwgGBjami+ZA==", "09245112357", false, new DateTime(2025, 3, 1, 20, 53, 41, 407, DateTimeKind.Local).AddTicks(730), 2, "90b63b57-562c-43e0-8f63-47e24d36dc4c", false, "Ali" },
+                    { 3, 0, null, 2, "b0a9adda-11c5-4524-861c-698dc70d8dab", "Mohsen@gmail.com", false, null, null, false, null, false, null, "MOHSEN@GMAIL.COM", "MOHSEN@GMAIL.COM", "AQAAAAIAAYagAAAAEDv5ry0qUIopHEsMCi4gMQb7VRSELR+Cj/VazuE4yochn73khRa0RaypNbGkwdcNAw==", "09106578542", false, new DateTime(2025, 3, 1, 20, 53, 41, 407, DateTimeKind.Local).AddTicks(742), 2, "6fd3ef24-f5f9-4f9a-aa41-9013749f54b0", false, "Mohsen@gmail.com" },
+                    { 4, 0, null, 1, "5ed82c2d-ada2-46c0-8a54-094644b1071e", "Sahar@gmail.com", false, null, null, false, null, false, null, "SAHAR@GMAIL.COM", "SAHAR@GMAIL.COM", "AQAAAAIAAYagAAAAENtt4Kd5Gpfmxvp1Ig4agGUicg1yTpQSe4gdDU2CwYeRIGhG9aX7ft1zkvf7bK7EVg==", "09304578725", false, new DateTime(2025, 3, 1, 20, 53, 41, 407, DateTimeKind.Local).AddTicks(753), 2, "2387bdbc-19f8-4b79-9128-7de31f789fbd", false, "Sahar@gmail.com" },
+                    { 5, 0, null, 1, "1ae25b3d-6378-4099-b9bb-684efbc86bbe", "Majd@gmail.com", false, null, null, false, null, false, null, "MAJID@GMAIL.COM", "MAJID@GMAIL.COM", "AQAAAAIAAYagAAAAEA2fXZayIhrqba9i2H01AQUNrtvEAvmjhd0ICaUrLAZQC/QBiVwFz06gPJtYdK0HOQ==", "09206548795", false, new DateTime(2025, 3, 1, 20, 53, 41, 407, DateTimeKind.Local).AddTicks(770), 3, "bac1a043-1869-4106-b720-3108f1cce842", false, "Majid@gmail.com" },
+                    { 6, 0, null, 1, "27935936-b4b3-4b41-9fbb-92f40cc2cd6e", "Parvane@gmail.com", false, null, null, false, null, false, null, "PARVANE@GMAIL.COM", "PARVANE@GMAIL.COM", "AQAAAAIAAYagAAAAEGNCvU0bs0nBQh2ReQVqs4u2duWL7ECHGBmdUxQ+NZnag/KMFE6jVPjNgOLOdODmRA==", "09632548785", false, new DateTime(2025, 3, 1, 20, 53, 41, 407, DateTimeKind.Local).AddTicks(788), 3, "688638cd-1a75-456e-baa9-73998e5a2b72", false, "Parvane@gmail.com" },
+                    { 7, 0, null, 8, "d54b464a-23d4-46ac-b0b6-b08a1056b336", "Hasan@gmail.com", false, null, null, false, null, false, null, "HASAN@GMAIL.COM", "HASAN@GMAIL.COM", "AQAAAAIAAYagAAAAEFXQb2jPLhsyTaJGerRC77S4XL/bS4g1N5V0iX/TuWO0UCj6RbtMdjpQG4BTFz/Pyg==", "09223458712", false, new DateTime(2025, 3, 1, 20, 53, 41, 407, DateTimeKind.Local).AddTicks(798), 3, "f197b65e-0d0f-4aeb-9514-0334e15336fa", false, "Hasan@gmail.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -622,10 +622,10 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                 columns: new[] { "Id", "CustomerId", "DateOfCompletion", "Description", "Price", "RequestAt", "ServiceId", "Status", "TimeOfCompletion" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateOnly(2025, 5, 3), "Bana", 240, new DateTime(2025, 2, 27, 3, 9, 5, 55, DateTimeKind.Local).AddTicks(7192), 5, 3, new TimeOnly(12, 5, 0) },
-                    { 2, 2, new DateOnly(2025, 4, 8), "Bana", 342, new DateTime(2025, 2, 27, 3, 9, 5, 55, DateTimeKind.Local).AddTicks(7736), 3, 5, new TimeOnly(12, 5, 0) },
-                    { 3, 2, new DateOnly(2025, 8, 18), "Bana", 350, new DateTime(2025, 2, 27, 3, 9, 5, 55, DateTimeKind.Local).AddTicks(7742), 1, 4, new TimeOnly(12, 5, 0) },
-                    { 4, 3, new DateOnly(2025, 4, 2), "Bana", 840, new DateTime(2025, 2, 27, 3, 9, 5, 55, DateTimeKind.Local).AddTicks(7745), 2, 2, new TimeOnly(12, 5, 0) }
+                    { 1, 1, new DateOnly(2025, 5, 3), "Bana", 240, new DateTime(2025, 3, 1, 20, 53, 41, 398, DateTimeKind.Local).AddTicks(8881), 5, 3, new TimeOnly(12, 5, 0) },
+                    { 2, 2, new DateOnly(2025, 4, 8), "Bana", 342, new DateTime(2025, 3, 1, 20, 53, 41, 398, DateTimeKind.Local).AddTicks(9518), 3, 5, new TimeOnly(12, 5, 0) },
+                    { 3, 2, new DateOnly(2025, 8, 18), "Bana", 350, new DateTime(2025, 3, 1, 20, 53, 41, 398, DateTimeKind.Local).AddTicks(9574), 1, 4, new TimeOnly(12, 5, 0) },
+                    { 4, 3, new DateOnly(2025, 4, 2), "Bana", 840, new DateTime(2025, 3, 1, 20, 53, 41, 398, DateTimeKind.Local).AddTicks(9578), 2, 2, new TimeOnly(12, 5, 0) }
                 });
 
             migrationBuilder.InsertData(
@@ -633,10 +633,10 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                 columns: new[] { "Id", "CommentAt", "CustomerId", "ExpertId", "RequestId", "StatusEnum", "Text" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2025, 2, 27, 3, 9, 5, 48, DateTimeKind.Local).AddTicks(8858), 1, 2, 1, 0, "عالی بود" },
-                    { 2, new DateTime(2025, 2, 27, 3, 9, 5, 50, DateTimeKind.Local).AddTicks(1347), 2, 1, 2, 0, "بسیار بد اخلاق" },
-                    { 3, new DateTime(2025, 2, 27, 3, 9, 5, 50, DateTimeKind.Local).AddTicks(1361), 3, 2, 3, 0, "کار بلد" },
-                    { 4, new DateTime(2025, 2, 27, 3, 9, 5, 50, DateTimeKind.Local).AddTicks(1364), 1, 3, 4, 0, "حیف پولی که بهت دادم" }
+                    { 1, new DateTime(2025, 3, 1, 20, 53, 41, 392, DateTimeKind.Local).AddTicks(2736), 1, 2, 1, 0, "عالی بود" },
+                    { 2, new DateTime(2025, 3, 1, 20, 53, 41, 393, DateTimeKind.Local).AddTicks(2956), 2, 1, 2, 0, "بسیار بد اخلاق" },
+                    { 3, new DateTime(2025, 3, 1, 20, 53, 41, 393, DateTimeKind.Local).AddTicks(2968), 3, 2, 3, 0, "کار بلد" },
+                    { 4, new DateTime(2025, 3, 1, 20, 53, 41, 393, DateTimeKind.Local).AddTicks(2970), 1, 3, 4, 0, "حیف پولی که بهت دادم" }
                 });
 
             migrationBuilder.InsertData(
@@ -657,11 +657,11 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                 columns: new[] { "Id", "DeliveryDate", "Description", "ExpertId", "RequestId", "Status", "SuggestedPrice", "SuggestionAt" },
                 values: new object[,]
                 {
-                    { 1, new DateOnly(2025, 5, 2), "کار شما تخصص ماست", 1, 1, 1, 250f, new DateTime(2025, 2, 27, 3, 9, 5, 73, DateTimeKind.Local).AddTicks(4340) },
-                    { 2, new DateOnly(2025, 5, 2), "کار شما تخصص ماست", 2, 1, 3, 250f, new DateTime(2025, 2, 27, 3, 9, 5, 73, DateTimeKind.Local).AddTicks(5357) },
-                    { 3, new DateOnly(2025, 5, 2), "کار شما تخصص ماست", 3, 2, 4, 250f, new DateTime(2025, 2, 27, 3, 9, 5, 73, DateTimeKind.Local).AddTicks(5366) },
-                    { 4, new DateOnly(2025, 5, 2), "کار شما تخصص ماست", 2, 3, 2, 250f, new DateTime(2025, 2, 27, 3, 9, 5, 73, DateTimeKind.Local).AddTicks(5370) },
-                    { 5, new DateOnly(2025, 5, 2), "کار شما تخصص ماست", 3, 4, 4, 250f, new DateTime(2025, 2, 27, 3, 9, 5, 73, DateTimeKind.Local).AddTicks(5373) }
+                    { 1, new DateOnly(2025, 5, 2), "کار شما تخصص ماست", 1, 1, 1, 250f, new DateTime(2025, 3, 1, 20, 53, 41, 403, DateTimeKind.Local).AddTicks(411) },
+                    { 2, new DateOnly(2025, 5, 2), "کار شما تخصص ماست", 2, 1, 3, 250f, new DateTime(2025, 3, 1, 20, 53, 41, 403, DateTimeKind.Local).AddTicks(1020) },
+                    { 3, new DateOnly(2025, 5, 2), "کار شما تخصص ماست", 3, 2, 4, 250f, new DateTime(2025, 3, 1, 20, 53, 41, 403, DateTimeKind.Local).AddTicks(1025) },
+                    { 4, new DateOnly(2025, 5, 2), "کار شما تخصص ماست", 2, 3, 2, 250f, new DateTime(2025, 3, 1, 20, 53, 41, 403, DateTimeKind.Local).AddTicks(1028) },
+                    { 5, new DateOnly(2025, 5, 2), "کار شما تخصص ماست", 3, 4, 4, 250f, new DateTime(2025, 3, 1, 20, 53, 41, 403, DateTimeKind.Local).AddTicks(1030) }
                 });
 
             migrationBuilder.CreateIndex(
