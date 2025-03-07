@@ -45,6 +45,11 @@ namespace App.Domain.Services.HomeService.User
             return await _userRepository.GetImagePath(id);
         }
 
+        public async Task<Result> Price(string price, CancellationToken cancellation)
+        {
+            return await _userRepository.Price(price, cancellation);
+        }
+
         public async Task<Result> Update(UserUpdateDto user, CancellationToken cancellation)
         {
             return await _userRepository.Update(user, cancellation);

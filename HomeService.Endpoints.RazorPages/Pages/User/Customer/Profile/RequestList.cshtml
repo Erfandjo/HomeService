@@ -93,7 +93,7 @@
                                                             } else if(request.Status == StatusRequestEnum.WaitingPayment && suggestion.Status == App.Domain.Core.HomeService.SuggestionEntity.Enum.StatusSuggestionEnum.finished)
                                                             {
                                                                 <span class="text-success">در انتظار پرداخت</span>
-                                                                <a onclick="return confirm('آیا از پرداخت اطمینان دارید؟')" class="btn btn-sm btn-success" asp-page-handler="Payment" asp-route-suggestionId="@suggestion.Id" asp-route-expertId="@suggestion.ExpertId" asp-route-requestId="@request.Id" asp-route-price="@suggestion.SuggestedPrice" >پرداخت</a>
+                                                                <a onclick="return confirm('آیا از پرداخت اطمینان دارید؟')" class="btn btn-sm btn-success" asp-page-handler="Payment"  asp-route-suggestionId="@suggestion.Id" asp-route-expertId="@suggestion.ExpertId" asp-route-requestId="@request.Id" asp-route-price="@suggestion.SuggestedPrice" >پرداخت</a>
                                                             }
                                                             else if (request.Status == StatusRequestEnum.Paid && suggestion.Status == App.Domain.Core.HomeService.SuggestionEntity.Enum.StatusSuggestionEnum.Paid)
                                                             {

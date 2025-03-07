@@ -40,6 +40,14 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Expert
             return await _dbContext.Experts.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
         }
 
+        public async Task<Result> Price(int id, string price, CancellationToken cancellation)
+        {
+           var user =  await _dbContext.Experts.Include(x => x.User).FirstOrDefaultAsync(x => x.Id == id);
+            user.User.Balance = Convert.ToString(int.Parse(user.User.Balance) + int.Parse(price));
+           await _dbContext.SaveChangesAsync();
+            return new Result(true, "با موفقیت انجام شد"); 
+        }
+
         public async Task<Result> Update(int id, Domain.Core.HomeService.ExpertEntity.Entities.Expert expert, CancellationToken cancellation)
         {
             var exp = await _dbContext.Experts.FirstOrDefaultAsync(x => x.Id == id);

@@ -50,7 +50,7 @@ namespace HomeService.Endpoints.RazorPages.Pages.User.Customer.Profile
 
         public async Task<IActionResult> OnGetPaymentAsync(int requestId, int suggestionId , int expertId , string price , CancellationToken cancellation)
         {
-            Result = await _requestAppService.PaidSuggestion(requestId , suggestionId , UserTools.GetCustomerId(User.Claims) , price , cancellation);
+            Result = await _requestAppService.PaidSuggestion(requestId , suggestionId , UserTools.GetCustomerId(User.Claims) , price , expertId , cancellation);
             Requests = await _requestAppService.GetRequestsCustomer(UserTools.GetCustomerId(User.Claims), cancellation);
             return Page();
         }

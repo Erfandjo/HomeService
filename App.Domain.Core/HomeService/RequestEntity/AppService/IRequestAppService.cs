@@ -13,6 +13,6 @@ namespace App.Domain.Core.HomeService.RequestEntity.AppService
         public Task<List<RequestListCustomerDto>>? GetRequestsCustomer(int customerId, CancellationToken cancellation);
         public Task<Result> AcceptSuggestion(int requestId , int suggestionId , CancellationToken cancellation);
         public Task<Result> FinishSuggestion(int requestId, int suggestionId, CancellationToken cancellation);
-        public Task<Result> PaidSuggestion(int requestId, int suggestionId, int customerId, string price, CancellationToken cancellation);
+        public Task<Result> PaidSuggestion(int requestId, int suggestionId, int customerId, string price , int expertId , CancellationToken cancellation);
     }
 }

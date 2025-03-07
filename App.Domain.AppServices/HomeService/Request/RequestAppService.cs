@@ -1,4 +1,5 @@
 ﻿using App.Domain.Core.HomeService.CustomerEntity.Service;
+using App.Domain.Core.HomeService.ExpertEntity.Service;
 using App.Domain.Core.HomeService.ImageEntity.Service;
 using App.Domain.Core.HomeService.RequestEntity.AppService;
 using App.Domain.Core.HomeService.RequestEntity.Dto;
@@ -8,11 +9,13 @@ using App.Domain.Core.HomeService.ServiceCategoryEntity.AppService;
 using App.Domain.Core.HomeService.ServiceCategoryEntity.Service;
 using App.Domain.Core.HomeService.SuggestionEntity.AppService;
 using App.Domain.Core.HomeService.SuggestionEntity.Service;
+using App.Domain.Core.HomeService.UserEntity.AppService;
+using App.Domain.Core.HomeService.UserEntity.Service;
 using System.Threading;
 
 namespace App.Domain.AppServices.HomeService.Request
 {
-    public class RequestAppService(IRequestService _requestService, IImageService _imageService , ISuggestionService _suggestionService , IServiceCategoryService _serviceCategoryService , ICustomerService _customerService) : IRequestAppService
+    public class RequestAppService(IRequestService _requestService, IImageService _imageService , ISuggestionService _suggestionService , IServiceCategoryService _serviceCategoryService , ICustomerService _customerService , IExpertService _expertService , IUserService _userService) : IRequestAppService
     {
         public async Task<Result> AcceptSuggestion(int requestId, int suggestionId, CancellationToken cancellation)
         {
@@ -100,13 +103,18 @@ namespace App.Domain.AppServices.HomeService.Request
             return await _requestService.GetRequestsCustomer(customerId, cancellation);
         }
 
-        public async Task<Result> PaidSuggestion(int requestId, int suggestionId, int customerId , string price , CancellationToken cancellation)
+        public async Task<Result> PaidSuggestion(int requestId, int suggestionId, int customerId , string price, int expertId, CancellationToken cancellation)
         {
             var balance = await _customerService.GetBalance(customerId, cancellation);
             if (int.Parse(balance) < int.Parse(price))
                 return new Result(false, "موجودی کافی نمیباشد");
 
+            string priceExpert = Convert.ToString(int.Parse(price) * 0.9);
+            string priceAdmin = Convert.ToString(int.Parse(price) * 0.1);
+
             var priceResult = await _customerService.Paid(customerId , price , cancellation);
+            var priceExper = await _expertService.Price(expertId, priceExpert, cancellation);
+            var resultadmin = await _userService.Price(priceAdmin, cancellation);
 
             var requestResult = await _requestService.PaidRequest(requestId, cancellation);
             if (requestResult.IsSucces)
