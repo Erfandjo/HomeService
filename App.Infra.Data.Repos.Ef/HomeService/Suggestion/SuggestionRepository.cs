@@ -13,6 +13,19 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Suggestion
 {
     public class SuggestionRepository(AppDbContext _dbContext) : ISuggestionRepository
     {
+        public async Task<Result> AcceptSuggestion(int suggestionId, CancellationToken cancellation)
+        {
+            var suggestion = await _dbContext.Suggestions.FirstOrDefaultAsync(x => x.Id == suggestionId , cancellation);
+            if (suggestion == null)
+                return new Result(false , "پیشنهاد یافت نشد");
+
+            suggestion.Status = Domain.Core.HomeService.SuggestionEntity.Enum.StatusSuggestionEnum.Selected;
+
+            await _dbContext.SaveChangesAsync(cancellation);
+            return new Result(true , "با موفقیت انجام شد");
+
+        }
+
         public async Task<Result> Add(Domain.Core.HomeService.SuggestionEntity.Entities.Suggestion suggestion, CancellationToken cancellation)
         {
             if (suggestion is null)
@@ -36,6 +49,18 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Suggestion
             return new Result(true, "Success");
         }
 
+        public async Task<Result> FinishSuggestion(int suggestionId, CancellationToken cancellation)
+        {
+            var suggestion = await _dbContext.Suggestions.FirstOrDefaultAsync(x => x.Id == suggestionId, cancellation);
+            if (suggestion == null)
+                return new Result(false, "پیشنهاد یافت نشد");
+
+            suggestion.Status = Domain.Core.HomeService.SuggestionEntity.Enum.StatusSuggestionEnum.finished;
+
+            await _dbContext.SaveChangesAsync(cancellation);
+            return new Result(true, "با موفقیت انجام شد");
+        }
+
         public async Task<List<SuggestionSummaryDto>>? GetAll(CancellationToken cancellation)
         {
             return await _dbContext.Suggestions.AsNoTracking().Select(x => new SuggestionSummaryDto()
@@ -54,6 +79,18 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Suggestion
         public async Task<Domain.Core.HomeService.SuggestionEntity.Entities.Suggestion>? GetById(int id , CancellationToken cancellation)
         {
             return await _dbContext.Suggestions.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<Result> PaidSuggestion(int suggestionId, CancellationToken cancellation)
+        {
+            var suggestion = await _dbContext.Suggestions.FirstOrDefaultAsync(x => x.Id == suggestionId, cancellation);
+            if (suggestion == null)
+                return new Result(false, "پیشنهاد یافت نشد");
+
+            suggestion.Status = Domain.Core.HomeService.SuggestionEntity.Enum.StatusSuggestionEnum.Paid;
+
+            await _dbContext.SaveChangesAsync(cancellation);
+            return new Result(true, "با موفقیت انجام شد");
         }
 
         public async Task<Result> Update(int id, Domain.Core.HomeService.SuggestionEntity.Entities.Suggestion suggestion, CancellationToken cancellation)

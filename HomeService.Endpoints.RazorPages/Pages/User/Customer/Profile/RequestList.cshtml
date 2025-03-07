@@ -1,0 +1,139 @@
+﻿@page
+@model HomeService.Endpoints.RazorPages.Pages.User.Customer.Profile.RequestListModel
+@using App.Domain.Core.HomeService.RequestEntity.Enum
+@using Framework
+@using HomeService.Endpoints.RazorPages.Pages.User.Customer.Profile
+@{
+    Layout = "_CustomerProfileLayout";
+}
+
+
+
+<div class="col-xl-12 col-lg-12">
+    <div class="dashboard-list-wraps bg-white rounded mb-4">
+        <div class="dashboard-list-wraps-head br-bottom py-3 px-3">
+            <div class="dashboard-list-wraps-flx">
+                <h4 class="mb-0 ft-medium fs-md">
+                    <i class="fa fa-file-alt ms-2 theme-cl fs-sm"></i> درخواست های من
+                </h4>
+            </div>
+        </div>
+
+        @if (Model.Result is not null)
+        {
+            <div class="form-floating mb-5">
+                <h1 style="text-align:center" class="text-danger">@Model.Result.Message</h1>
+            </div>
+        }
+
+
+        <div class="dashboard-list-wraps-body py-3 px-3">
+            <div class="dashboard-listing-wraps">
+
+                @foreach (var request in Model.Requests)
+                {
+                    var dateReq = new DateTime(request.DateOfCompletion.Year, request.DateOfCompletion.Month, request.DateOfCompletion.Day);
+
+                    <div class="dsd-single-listing-wraps mb-5">
+                        <div class="dsd-single-lst-thumb">
+                            <img src="~/assetsHomePage/img/c-4.jpg" class="img-fluid" alt="">
+                        </div>
+                        <div class="dsd-single-lst-caption">
+                            <div class="dsd-single-lst-title">
+                                <h5>@request.ServiceName</h5>
+                            </div>
+                            <div class="ico-content">
+                                <div class="Goodup-ft-first">
+                                    <div class="Goodup-price-range">
+                                        <span>@dateReq.ToPersianString("dddd, dd MMMM,yyyy")</span>
+                                    </div>
+                                </div>
+                                <div class="Goodup-price-range">
+                                    <span>@request.Status.GetEnumDisplayName()</span>
+                                </div>
+                            </div>
+                            <div class="dsd-single-lst-footer">
+                                <button class="btn btn-primary me-1 show-suggestions"
+                                        data-request-id="@request.Id">
+                                    پیشنهاد ها
+                                </button>
+
+                                <!-- محل نمایش پیشنهادات -->
+                                <div id="suggestions-container-@request.Id" class="mt-3" style="display: none;">
+                                    @if (request.Suggestions.Any())
+                                    {
+                                        <table class="table table-striped table-hover">
+                                            <thead class="table-dark">
+                                                <tr>
+                                                    <th>نام متخصص</th>
+                                                    <th>توضیحات</th>
+                                                    <th>تاریخ پیشنهادی</th>
+                                                    <th>قیمت پیشنهادی</th>
+                                                    <th>عملیات</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var suggestion in request.Suggestions)
+                                                {
+                                                    var dateSug = new DateTime(suggestion.DeliveryDate.Year, suggestion.DeliveryDate.Month, suggestion.DeliveryDate.Day);
+                                                    <tr>
+                                                        <td>@suggestion.ExpertName</td>
+                                                        <td>@suggestion.Description</td>
+                                                        <td>@dateSug.ToPersianString("dddd, dd MMMM,yyyy")</td>
+                                                        <td>@suggestion.SuggestedPrice.ToString() تومان</td>
+                                                        <td>
+                                                            @if (request.Status == StatusRequestEnum.WaitingExpertSelection && suggestion.Status == App.Domain.Core.HomeService.SuggestionEntity.Enum.StatusSuggestionEnum.WaitingCustomerSelection)
+                                                            {
+                                                                <a onclick="return confirm('آیا از انتخاب این کارشناس اطمینان دارید؟')" class="btn btn-sm btn-success" asp-page-handler="Accept" asp-route-suggestionId="@suggestion.Id" asp-route-requestId="@request.Id">تایید پیشنهاد</a>
+                                                            }
+                                                            else if (request.Status == StatusRequestEnum.Started && suggestion.Status == App.Domain.Core.HomeService.SuggestionEntity.Enum.StatusSuggestionEnum.Selected)
+                                                            {
+                                                                <span class="text-success">پیشنهاد تایید شده</span>
+                                                                <a onclick="return confirm('آیا از اتمام کار اطمینان دارید؟')" class="btn btn-sm btn-success" asp-page-handler="Finish" asp-route-suggestionId="@suggestion.Id" asp-route-requestId="@request.Id">اتمام کار</a>
+                                                            } else if(request.Status == StatusRequestEnum.WaitingPayment && suggestion.Status == App.Domain.Core.HomeService.SuggestionEntity.Enum.StatusSuggestionEnum.finished)
+                                                            {
+                                                                <span class="text-success">در انتظار پرداخت</span>
+                                                                <a onclick="return confirm('آیا از پرداخت اطمینان دارید؟')" class="btn btn-sm btn-success" asp-page-handler="Payment" asp-route-suggestionId="@suggestion.Id" asp-route-expertId="@suggestion.ExpertId" asp-route-requestId="@request.Id" asp-route-price="@suggestion.SuggestedPrice" >پرداخت</a>
+                                                            }
+                                                            else if (request.Status == StatusRequestEnum.Paid && suggestion.Status == App.Domain.Core.HomeService.SuggestionEntity.Enum.StatusSuggestionEnum.Paid)
+                                                            {
+                                                                <span class="text-success">پرداخت شده</span>
+                                                                <a class="btn btn-sm btn-success" asp-page="Comment" asp-route-suggestionId="@suggestion.Id" asp-route-expertId="@suggestion.ExpertId" asp-route-requestId="@request.Id">ثبت نظر</a>
+                                                            }
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    }
+                                    else
+                                    {
+                                        <p class="text-danger">پیشنهادی ندارید!</p>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".show-suggestions").forEach(button => {
+            button.addEventListener("click", function () {
+                let requestId = this.getAttribute("data-request-id");
+                let container = document.getElementById("suggestions-container-" + requestId);
+
+                // نمایش یا مخفی کردن پیشنهادات
+                if (container.style.display === "none") {
+                    container.style.display = "block";
+                } else {
+                    container.style.display = "none";
+                }
+            });
+        });
+    });
+</script>

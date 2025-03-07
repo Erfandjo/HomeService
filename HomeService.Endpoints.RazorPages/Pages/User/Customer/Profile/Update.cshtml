@@ -1,8 +1,10 @@
 ﻿@page
 @using App.Domain.Core.HomeService.UserEntity.Enum
 @using Framework
-@model HomeService.Endpoints.RazorPages.Pages.User.Customer.EditProfileModel
+@model EditProfileModel
 @{
+
+    Layout = "_CustomerProfileLayout";
 }
 
 
@@ -20,75 +22,78 @@
             </div>
             <div class="row">
                 <form enctype="multipart/form-data" id="simple-form" role="form" method="post">
-                    <img style="border-radius : 50%" src="wwwroot\Images\Profiles\40b0c918-fb8d-4d73-9861-20b2d26d72b364.png" width="80" height="80" />
+                    <img style="border-radius : 50%" src="@Model.Customer.ImagePath" width="80" height="80" />
                     <hr />
-                    <input type="hidden" @* asp-for="User.Id" *@ />
+                    <input type="hidden" asp-for="Customer.Id" />
 
                     <div class="form-body">
                         <div class="form-group">
                             <div class="input-group">
-                                <input @* asp-for="User.FirstName" *@ class="form-control" type="text" placeholder="نام">
+                                <input asp-for="Customer.FirstName" class="form-control" type="text" placeholder="نام">
+                                <span class="text-danger" asp-validation-for="Customer.FirstName"></span>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="input-group">
-                                <input @* asp-for="User.LastName" *@ class="form-control" type="text" placeholder="نام خانوادگی">
+                                <input asp-for="Customer.LastName" class="form-control" type="text" placeholder="نام خانوادگی">
+                                <span class="text-danger" asp-validation-for="Customer.LastName"></span>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="input-group">
-                                <input @* asp-for="User.PhoneNumber" *@ class="form-control" type="text" placeholder="شماره موبایل" />
+                                <input asp-for="Customer.PhoneNumber" class="form-control" type="text" placeholder="شماره موبایل" />
+                                <span class="text-danger" asp-validation-for="Customer.PhoneNumber"></span>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="input-group">
-                                <input @* asp-for="User.Email" *@ dir="rtl" class="form-control" type="email" placeholder="آدرس ایمیل" />
+                                <input asp-for="Customer.Email" dir="rtl" class="form-control" type="text" placeholder="آدرس ایمیل" />
+                                <span class="text-danger" asp-validation-for="Customer.Email"></span>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="input-group">
-                                <input @* asp-for="User.Balance" *@ class="form-control" type="number" placeholder="موجودی" />
+                                <input asp-for="Customer.Address" dir="rtl" class="form-control" type="text" placeholder="آدرس" />
+                                <span class="text-danger" asp-validation-for="Customer.Email"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input asp-for="Customer.Balance" class="form-control" type="number" placeholder="موجودی" />
+                                <span class="text-danger" asp-validation-for="Customer.Balance"></span>
                             </div>
                         </div>
 
 
                         <div class="form-group">
                             <div class="input-group">
-                                <input @* asp-for="User.UserName" *@ class="form-control" type="text" placeholder="نام کاربری" required />
+                                <input asp-for="Customer.UserName" class="form-control" type="text" placeholder="نام کاربری" />
+                                <span class="text-danger" asp-validation-for="Customer.UserName"></span>
                             </div>
                         </div>
 
 
                         <div class="form-group">
                             <div class="input-group">
-                                <select @* asp-for="User.CityId" *@ class="form-select" required>
-                                    @* @foreach (var city in @Model.Cities)
+                                <select asp-for="Customer.CityId" class="form-select">
+                                    @foreach (var city in @Model.Cities)
                                     {
                                         <option value="@city.Id">@city.Title</option>
-                                    } *@
+                                    }
                                 </select>
+                                <span class="text-danger" asp-validation-for="Customer.CityId"></span>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="input-group">
-                                <select @* asp-for="User.Role" *@ class="form-select">
-                                    <option value="@RoleEnum.Admin">@RoleEnum.Admin.GetEnumDisplayName()</option>
-                                    <option value="@RoleEnum.Expert">@RoleEnum.Expert.GetEnumDisplayName()</option>
-                                    <option value="@RoleEnum.Customer">@RoleEnum.Customer.GetEnumDisplayName()</option>
-                                </select>
-                            </div>
-                        </div>
 
                         <div class="form-group relative">
-                            <input @* asp-for="User.ProfileImgFile" *@ type="file" class="form-control">
-                            <label>آپلود عکس</label>
                             <div class="input-group round">
-                                <input type="text" class="form-control file-input" placeholder="برای آپلود کلیک کنید">
+                                <input asp-for="Customer.ProfileImgFile" type="file" class="form-control file-input" placeholder="برای آپلود کلیک کنید">
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-success">
                                         <i class="icon-picture"></i>
@@ -99,6 +104,7 @@
                             </div><!-- /.input-group -->
                             <div class="help-block"></div>
                         </div>
+
 
                     </div>
                     <hr>
@@ -111,6 +117,15 @@
                             بازگشت
                         </a>
                     </div>
+
+                    @if(Model.Results is not null) 
+                    {
+                        <div class="form-floating mb-5">
+                            <h1 style="text-align:center" class="text-danger">@Model.Results.Message</h1>
+                        </div>
+                    }
+                  
+
                 </form>
             </div>
         </div><!-- /.portlet-body -->

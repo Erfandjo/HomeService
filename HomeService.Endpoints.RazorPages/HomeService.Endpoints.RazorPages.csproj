@@ -28,7 +28,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\Images\Request\" />
     <Folder Include="wwwroot\Images\ServiceCategory\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\Images\ServiceCategory\IeKrEgl6K91vwymznimqskAsIGpAxwvPC7rGK005.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

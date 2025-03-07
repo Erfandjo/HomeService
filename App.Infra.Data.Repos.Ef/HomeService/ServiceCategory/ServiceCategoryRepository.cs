@@ -19,8 +19,8 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Service
             categoryService.Title = service.Title;
             categoryService.SubCategoryId = service.SubCategoryId;
             categoryService.ImagePath = service.ImagePath;
-            categoryService.BasePrice = float.Parse(service.BasePrice);
-
+            categoryService.BasePrice = service.BasePrice;
+            categoryService.Description = service.Description;
 
             await _dbContext.Services.AddAsync(categoryService);
             await _dbContext.SaveChangesAsync();
@@ -52,14 +52,25 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Service
                 ImagePath = x.ImagePath,
                 SubCategoryTitle = x.SubCategory.Title,
                 VisitCount = x.VisitCount,
-                BasePrice = Convert.ToString(x.BasePrice),
-                
+                BasePrice = x.BasePrice,
+                Description = x.Description
+
             }).ToListAsync();
         }
 
-        public async Task<ServiceCategory>? GetById(int id, CancellationToken cancellation)
+        public async Task<ServiceCategorySummaryDto>? GetById(int id, CancellationToken cancellation)
         {
-            return await _dbContext.Services.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+            return await _dbContext.Services.AsNoTracking().Select(x => new ServiceCategorySummaryDto()
+            {
+                Id = x.Id,
+                Title = x.Title,
+                ImagePath = x.ImagePath,
+                SubCategoryTitle = x.SubCategory.Title,
+                VisitCount = x.VisitCount,
+                BasePrice = x.BasePrice,
+                Description = x.Description
+
+            }).FirstOrDefaultAsync(x => x.Id == id , cancellation);
         }
 
         public async Task<ServiceCategoryUpdateDto>? GetByIdForUpdate(int id, CancellationToken cancellation)
@@ -69,8 +80,9 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Service
                 Id = x.Id,
                 Title = x.Title,
                 ImagePath = x.ImagePath,
-                BasePrice = Convert.ToString(x.BasePrice),
+                BasePrice = x.BasePrice,
                 SubCategoryId = x.SubCategoryId,
+                Description = x.Description
             }).FirstOrDefaultAsync(x => x.Id == id);
         }
 
@@ -80,11 +92,11 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Service
             {
                 Id = x.Id,
                 SubCategoryTitle = x.SubCategory.Title,
-                BasePrice = x.BasePrice.ToString(),
+                BasePrice = x.BasePrice,
                 VisitCount = x.VisitCount,
                 ImagePath = x.ImagePath,
                 Title = x.Title,
-
+                Description = x.Description
 
             }).ToListAsync();
         }
@@ -96,9 +108,10 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Service
                 return new Result(false, "سرویس یافت نشد");
 
             ser.Title = service.Title;
-            ser.BasePrice = float.Parse(service.BasePrice);
+            ser.BasePrice = service.BasePrice;
             ser.ImagePath = service.ImagePath;
             ser.SubCategoryId = service.SubCategoryId;
+            ser.Description = service.Description;
             
             await _dbContext.SaveChangesAsync();
 

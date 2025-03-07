@@ -18,7 +18,7 @@ namespace App.Domain.Core.HomeService.UserEntity.Dto
         public string RePassword { get; set; }
         public string? PhoneNumber { get; set; }
         public string? Email { get; set; }
-        public float? Balance { get; set; }
+        public string? Balance { get; set; }
         public int? CityId { get; set; }
         [Required]
         public RoleEnum Role { get; set; }

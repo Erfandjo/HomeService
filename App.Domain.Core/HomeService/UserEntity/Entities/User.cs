@@ -13,7 +13,7 @@ namespace App.Domain.Core.HomeService.UserEntity.Entities
         public string? PhoneNumber { get; set; }
         public string? ImagePath { get; set; }
         public DateTime RegisterAt { get; set; }
-        public float? Balance { get; set; }
+        public string Balance { get; set; } = "0";
         public bool IsDeleted { get; set; } = false;
         public int RoleId { get; set; }
         public int? CityId { get; set; }

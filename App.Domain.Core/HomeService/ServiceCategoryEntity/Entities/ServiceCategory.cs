@@ -12,9 +12,9 @@ namespace App.Domain.Core.HomeService.ServiceCategoryEntity.Entities
         public string? ImagePath { get; set; }
         public int SubCategoryId { get; set; }
         public int VisitCount { get; set; }
-        public float BasePrice { get; set; }
+        public string BasePrice { get; set; }
         public bool IsDeleted { get; set; } = false;
-        
+        public string Description { get; set; }
 
         #endregion
 

@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace HomeService.Endpoints.RazorPages.Pages.User.Customer
+namespace HomeService.Endpoints.RazorPages.Pages.User.Customer.Profile
 {
-    public class EditProfileModel : PageModel
+    public class CommentModel : PageModel
     {
         public void OnGet()
         {

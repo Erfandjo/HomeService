@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250301172342_init")]
+    [Migration("20250306210952_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -51,56 +51,56 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 1,
-                            ImagePath = "D:\\MaktabSharif\\FinalProject-HomeService\\HomeService\\HomeService.Endpoints.RazorPages\\wwwroot\\Images\\Category\\TamizKari.jpg",
+                            ImagePath = "\\Images\\Category\\df97889b-19b7-4bd4-9bd6-ab24ba2df64e170186481.jpg",
                             IsDeleted = false,
                             Title = "تمیزکاری"
                         },
                         new
                         {
                             Id = 2,
-                            ImagePath = "D:\\MaktabSharif\\FinalProject-HomeService\\HomeService\\HomeService.Endpoints.RazorPages\\wwwroot\\Images\\Category\\Sakhteman.jpg",
+                            ImagePath = "\\Images\\Category\\29727be9-976b-4cdc-894d-c54519ffe8a4Sakhteman.jpg",
                             IsDeleted = false,
                             Title = "ساختمان"
                         },
                         new
                         {
                             Id = 3,
-                            ImagePath = "D:\\MaktabSharif\\FinalProject-HomeService\\HomeService\\HomeService.Endpoints.RazorPages\\wwwroot\\Images\\Category\\TamiratAshiya.jpg",
+                            ImagePath = "\\Images\\Category\\eb660482-afd7-4ddb-8cfc-c06105e95900TamiratAshiya.jpg",
                             IsDeleted = false,
                             Title = "تعمیرات اشیا"
                         },
                         new
                         {
                             Id = 4,
-                            ImagePath = "D:\\MaktabSharif\\FinalProject-HomeService\\HomeService\\HomeService.Endpoints.RazorPages\\wwwroot\\Images\\Category\\AsbabKeshi.jpg",
+                            ImagePath = "\\Images\\Category\\812cef5c-a6fa-4b90-9575-226a430b2b98AsbabKeshi.jpg",
                             IsDeleted = false,
                             Title = "اسباب کشی و حمل بار"
                         },
                         new
                         {
                             Id = 5,
-                            ImagePath = "D:\\MaktabSharif\\FinalProject-HomeService\\HomeService\\HomeService.Endpoints.RazorPages\\wwwroot\\Images\\Category\\Khodro.jpg",
+                            ImagePath = "\\Images\\Category\\c6a10cce-101c-4184-a558-ee932c1f073eKhodro.jpg",
                             IsDeleted = false,
                             Title = "خودرو"
                         },
                         new
                         {
                             Id = 6,
-                            ImagePath = "D:\\MaktabSharif\\FinalProject-HomeService\\HomeService\\HomeService.Endpoints.RazorPages\\wwwroot\\Images\\Category\\SalamatZibaii.jpg",
+                            ImagePath = "\\Images\\Category\\50c993b5-d39b-4cfa-b0a3-184b1a127866SalamatZibaii.jpg",
                             IsDeleted = false,
                             Title = "سلامت و زیبایی"
                         },
                         new
                         {
                             Id = 7,
-                            ImagePath = "D:\\MaktabSharif\\FinalProject-HomeService\\HomeService\\HomeService.Endpoints.RazorPages\\wwwroot\\Images\\Category\\Sazman.jpg",
+                            ImagePath = "\\Images\\Category\\a77551f4-cc95-4903-a85b-0285fe347d63Sazman.jpg",
                             IsDeleted = false,
                             Title = "سازمان ها و مجتمع ها"
                         },
                         new
                         {
                             Id = 8,
-                            ImagePath = "D:\\MaktabSharif\\FinalProject-HomeService\\HomeService\\HomeService.Endpoints.RazorPages\\wwwroot\\Images\\Category\\Sayer.png",
+                            ImagePath = "\\Images\\Category\\2798b1dd-de02-4490-8265-bee8ed56ad4cSayer.png",
                             IsDeleted = false,
                             Title = "سایر"
                         });
@@ -302,7 +302,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 1,
-                            CommentAt = new DateTime(2025, 3, 1, 20, 53, 41, 392, DateTimeKind.Local).AddTicks(2736),
+                            CommentAt = new DateTime(2025, 3, 7, 0, 39, 50, 515, DateTimeKind.Local).AddTicks(5796),
                             CustomerId = 1,
                             ExpertId = 2,
                             RequestId = 1,
@@ -312,7 +312,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 2,
-                            CommentAt = new DateTime(2025, 3, 1, 20, 53, 41, 393, DateTimeKind.Local).AddTicks(2956),
+                            CommentAt = new DateTime(2025, 3, 7, 0, 39, 50, 517, DateTimeKind.Local).AddTicks(7209),
                             CustomerId = 2,
                             ExpertId = 1,
                             RequestId = 2,
@@ -322,7 +322,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 3,
-                            CommentAt = new DateTime(2025, 3, 1, 20, 53, 41, 393, DateTimeKind.Local).AddTicks(2968),
+                            CommentAt = new DateTime(2025, 3, 7, 0, 39, 50, 517, DateTimeKind.Local).AddTicks(7233),
                             CustomerId = 3,
                             ExpertId = 2,
                             RequestId = 3,
@@ -332,7 +332,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 4,
-                            CommentAt = new DateTime(2025, 3, 1, 20, 53, 41, 393, DateTimeKind.Local).AddTicks(2970),
+                            CommentAt = new DateTime(2025, 3, 7, 0, 39, 50, 517, DateTimeKind.Local).AddTicks(7237),
                             CustomerId = 1,
                             ExpertId = 3,
                             RequestId = 4,
@@ -539,7 +539,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             DateOfCompletion = new DateOnly(2025, 5, 3),
                             Description = "Bana",
                             Price = 240,
-                            RequestAt = new DateTime(2025, 3, 1, 20, 53, 41, 398, DateTimeKind.Local).AddTicks(8881),
+                            RequestAt = new DateTime(2025, 3, 7, 0, 39, 50, 526, DateTimeKind.Local).AddTicks(3170),
                             ServiceId = 5,
                             Status = 3,
                             TimeOfCompletion = new TimeOnly(12, 5, 0)
@@ -551,7 +551,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             DateOfCompletion = new DateOnly(2025, 4, 8),
                             Description = "Bana",
                             Price = 342,
-                            RequestAt = new DateTime(2025, 3, 1, 20, 53, 41, 398, DateTimeKind.Local).AddTicks(9518),
+                            RequestAt = new DateTime(2025, 3, 7, 0, 39, 50, 526, DateTimeKind.Local).AddTicks(4009),
                             ServiceId = 3,
                             Status = 5,
                             TimeOfCompletion = new TimeOnly(12, 5, 0)
@@ -563,7 +563,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             DateOfCompletion = new DateOnly(2025, 8, 18),
                             Description = "Bana",
                             Price = 350,
-                            RequestAt = new DateTime(2025, 3, 1, 20, 53, 41, 398, DateTimeKind.Local).AddTicks(9574),
+                            RequestAt = new DateTime(2025, 3, 7, 0, 39, 50, 526, DateTimeKind.Local).AddTicks(4015),
                             ServiceId = 1,
                             Status = 4,
                             TimeOfCompletion = new TimeOnly(12, 5, 0)
@@ -575,7 +575,7 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             DateOfCompletion = new DateOnly(2025, 4, 2),
                             Description = "Bana",
                             Price = 840,
-                            RequestAt = new DateTime(2025, 3, 1, 20, 53, 41, 398, DateTimeKind.Local).AddTicks(9578),
+                            RequestAt = new DateTime(2025, 3, 7, 0, 39, 50, 526, DateTimeKind.Local).AddTicks(4019),
                             ServiceId = 2,
                             Status = 2,
                             TimeOfCompletion = new TimeOnly(12, 5, 0)
@@ -590,8 +590,13 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<float>("BasePrice")
-                        .HasColumnType("real");
+                    b.Property<string>("BasePrice")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
@@ -619,7 +624,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 1,
-                            BasePrice = 0f,
+                            BasePrice = "12000000",
+                            Description = "\r\nتوضیحات: سرویس نظافت معمولی برای حفظ تمیزی روزمره منزل یا محل کار. شامل گردگیری، جارو کردن، تی کشیدن و نظافت سطوح می‌شود.\r\n\r\nمزایا: مناسب برای افرادی که به دنبال حفظ نظافت پایه‌ای هستند.",
                             IsDeleted = false,
                             SubCategoryId = 1,
                             Title = "سرویس عادی نظافت",
@@ -628,7 +634,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 2,
-                            BasePrice = 0f,
+                            BasePrice = "350000",
+                            Description = "توضیحات: نظافت عمیق و دقیق برای مناطقی که نیاز به توجه بیشتری دارند. شامل تمیز کردن نقاط سخت‌دسترس، نظافت مبلمان و سطوح با دقت بالا.\r\n\r\nمزایا: ایده‌آل برای مواقعی که نیاز به تمیزی بیشتر و جزئی‌نگرانه‌تر دارید.\r\n\r\n",
                             IsDeleted = false,
                             SubCategoryId = 1,
                             Title = "سرویس ویژه نظافت",
@@ -637,7 +644,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 3,
-                            BasePrice = 0f,
+                            BasePrice = "12000000",
+                            Description = "توضیحات: سرویس نظافتی با بالاترین استانداردها و استفاده از مواد شوینده لوکس و تجهیزات پیشرفته. شامل نظافت کامل و براق‌سازی سطوح.\r\n\r\nمزایا: مناسب برای منازل و دفاتر لوکس که به دنبال بهترین کیفیت هستند.",
                             IsDeleted = false,
                             SubCategoryId = 1,
                             Title = "سرویس لوکس نظافت",
@@ -646,7 +654,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 4,
-                            BasePrice = 0f,
+                            BasePrice = "1400000",
+                            Description = "توضیحات: سرویس اختصاصی برای تمیز کردن و براق‌سازی راه‌پله‌ها، شامل پاک‌کردن لکه‌ها و گردگیری کامل.\r\n\r\nمزایا: مناسب برای ساختمان‌های مسکونی و اداری با راه‌پله‌های زیاد.",
                             IsDeleted = false,
                             SubCategoryId = 1,
                             Title = "نظافت راه‌ پله",
@@ -655,7 +664,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 5,
-                            BasePrice = 0f,
+                            BasePrice = "210000",
+                            Description = "توضیحات: سرویس سریع و بدون نیاز به وقت‌گیری قبلی برای مواقع اضطراری که نیاز به نظافت فوری دارید.\r\n\r\nمزایا: مناسب برای مهمانی‌های ناگهانی یا بازدیدهای غیرمنتظره.",
                             IsDeleted = false,
                             SubCategoryId = 1,
                             Title = "سرویس نظافت فوری",
@@ -664,7 +674,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 6,
-                            BasePrice = 0f,
+                            BasePrice = "2100000",
+                            Description = "توضیحات: سرویس سمپاشی برای از بین بردن حشرات موذی در فضای داخلی منزل یا محل کار. استفاده از مواد ایمن و موثر.\r\n\r\nمزایا: ایجاد محیطی سالم و عاری از حشرات.",
                             IsDeleted = false,
                             SubCategoryId = 1,
                             Title = "سمپاشی فضای داخلی",
@@ -673,7 +684,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 7,
-                            BasePrice = 0f,
+                            BasePrice = "2400000",
+                            Description = "توضیحات: ارائه نیروی کار ساده برای انجام کارهای سبک مانند جابجایی وسایل، نظافت اولیه و کمک در امور روزمره.\r\n\r\nمزایا: مناسب برای مواقعی که نیاز به کمک فوری دارید.",
                             IsDeleted = false,
                             SubCategoryId = 1,
                             Title = "پذیرایی",
@@ -682,7 +694,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 8,
-                            BasePrice = 0f,
+                            BasePrice = "2100000",
+                            Description = "توضیحات: سرویس شستشوی حرفه‌ای مبلمان، موکت و فرش در محل شما، بدون نیاز به جابجایی وسایل.\r\n\r\nمزایا: صرفه‌جویی در زمان و حفظ کیفیت وسایل.",
                             IsDeleted = false,
                             SubCategoryId = 1,
                             Title = "کارگر ساده",
@@ -691,7 +704,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 9,
-                            BasePrice = 0f,
+                            BasePrice = "250000",
+                            Description = "توضیحات: سرویس شستشوی حرفه‌ای مبلمان، موکت و فرش در محل شما، بدون نیاز به جابجایی وسایل. استفاده از دستگاه‌های پیشرفته و مواد شوینده مناسب برای هر نوع پارچه.\r\n\r\nمزایا:\r\n\r\nصرفه‌جویی در زمان و انرژی.\r\n\r\nجلوگیری از آسیب‌های ناشی از جابجایی.\r\n\r\nمناسب برای خانواده‌های شلوغ یا افرادی که وقت کافی برای نظافت ندارند.",
                             IsDeleted = false,
                             SubCategoryId = 2,
                             Title = "(شستشو در محل (مبل، موکت، فرش)",
@@ -700,7 +714,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 10,
-                            BasePrice = 0f,
+                            BasePrice = "241555",
+                            Description = "توضیحات: سرویس شستشوی تخصصی فرش‌ها با دستگاه‌های مدرن و مواد شوینده مخصوص. این سرویس شامل ضدعفونی و خوشبوسازی فرش نیز می‌شود.\r\n\r\nمزایا:\r\n\r\nاز بین بردن لکه‌های سخت و عمیق.\r\n\r\nافزایش عمر فرش و حفظ رنگ آن.\r\n\r\nمناسب برای فرش‌های دست‌باف و ماشینی.",
                             IsDeleted = false,
                             SubCategoryId = 2,
                             Title = "قالیشویی",
@@ -709,7 +724,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 11,
-                            BasePrice = 0f,
+                            BasePrice = "12000000",
+                            Description = "توضیحات: سرویس خشکشویی حرفه‌ای برای لباس‌ها و پارچه‌های ظریف که نیاز به شستشوی خاص دارند.\r\n\r\nمزایا: مناسب برای لباس‌های گران‌قیمت و حساس.",
                             IsDeleted = false,
                             SubCategoryId = 2,
                             Title = "خشکشویی",
@@ -718,7 +734,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 23,
-                            BasePrice = 0f,
+                            BasePrice = "15420000",
+                            Description = "\r\nتوضیحات: سرویس شستشوی حرفه‌ای پرده‌ها در محل شما یا در کارگاه تخصصی. این سرویس شامل شستشو، ضدعفونی و اتوکشی پرده‌ها می‌شود.\r\n\r\nمزایا:\r\n\r\nحفظ بافت و رنگ پرده‌ها.\r\n\r\nمناسب برای پرده‌های ظریف و حساس.\r\n\r\nصرفه‌جویی در زمان و هزینه.",
                             IsDeleted = false,
                             SubCategoryId = 2,
                             Title = "پرده‌شویی",
@@ -727,7 +744,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 12,
-                            BasePrice = 0f,
+                            BasePrice = "1400000",
+                            Description = "توضیحات: سرویس براق‌سازی و محافظت از سرامیک خودرو برای افزایش طول عمر و زیبایی آن.\r\n\r\nمزایا: محافظت از رنگ و بدنه خودرو در برابر عوامل محیطی.",
                             IsDeleted = false,
                             SubCategoryId = 3,
                             Title = "سرامیک‌ خودرو",
@@ -736,7 +754,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 13,
-                            BasePrice = 0f,
+                            BasePrice = "4100000",
+                            Description = "\r\nتوضیحات: استفاده از فناوری نانو برای شستشو و محافظت از بدنه خودرو، ایجاد لایه‌ای ضد خش و ضد آب.\r\n\r\nمزایا: افزایش درخشندگی و محافظت طولانی‌مدت.",
                             IsDeleted = false,
                             SubCategoryId = 3,
                             Title = "کارواش نانو",
@@ -745,7 +764,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 14,
-                            BasePrice = 0f,
+                            BasePrice = "2700000",
+                            Description = "\r\nتوضیحات: سرویس شستشوی خودرو با استفاده از آب و مواد شوینده مخصوص، برای تمیز کردن بدنه، شیشه‌ها، چرخ‌ها و سایر قسمت‌های بیرونی خودرو. این سرویس به صورت حرفه‌ای و با دقت بالا انجام می‌شود.\r\n\r\nمزایا:\r\n\r\nاز بین بردن گرد و غبار، لکه‌ها و آلودگی‌های سطحی.\r\n\r\nمناسب برای شستشوی سریع و روزمره خودرو.\r\n\r\nافزایش زیبایی ظاهری خودرو در کمترین زمان.",
                             IsDeleted = false,
                             SubCategoryId = 3,
                             Title = "کارواش با آب",
@@ -754,7 +774,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 15,
-                            BasePrice = 0f,
+                            BasePrice = "2100000",
+                            Description = "\r\nتوضیحات: سرویس تخصصی واکس و پولیش خودرو برای بازگرداندن درخشش و زیبایی اولیه بدنه خودرو. این سرویس شامل پولیش برای از بین بردن خش‌های سطحی و واکس برای ایجاد لایه‌ای محافظ و براق‌کننده است.\r\n\r\nمزایا:\r\n\r\nمحافظت از رنگ و بدنه خودرو در برابر عوامل محیطی مانند نور خورشید، باران و آلودگی.\r\n\r\nاز بین بردن خش‌ها و لکه‌های سطحی.\r\n\r\nمناسب برای خودروهای قدیمی که نیاز به احیا دارند.",
                             IsDeleted = false,
                             SubCategoryId = 3,
                             Title = "واکس و پولیش خودرو",
@@ -763,7 +784,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 16,
-                            BasePrice = 0f,
+                            BasePrice = "140000",
+                            Description = "توضیحات: سرویس نظافت کامل خودرو از داخل و خارج، شامل شستشوی موتور و زیر خودرو.\r\n\r\nمزایا: مناسب برای خودروهای نو یا خودروهایی که نیاز به نظافت کامل دارند.",
                             IsDeleted = false,
                             SubCategoryId = 3,
                             Title = "صفرشویی خودرو",
@@ -772,7 +794,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 17,
-                            BasePrice = 0f,
+                            BasePrice = "1700000",
+                            Description = "\r\nتوضیحات: سرویس شستشوی موتور خودرو برای افزایش کارایی و زیبایی آن.\r\n\r\nمزایا: افزایش طول عمر موتور و بهبود عملکرد.",
                             IsDeleted = false,
                             SubCategoryId = 3,
                             Title = "موتورشویی خودرو",
@@ -781,7 +804,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 18,
-                            BasePrice = 0f,
+                            BasePrice = "1400000",
+                            Description = "توضیحات: سرویس ویژه برای خودروهای لوکس، شامل صفرشویی کامل، واکس و پولیش سه مرحله‌ای.\r\n\r\nمزایا: مناسب برای خودروهای گران‌قیمت که نیاز به مراقبت ویژه دارند",
                             IsDeleted = false,
                             SubCategoryId = 3,
                             Title = "پکیج کارواش VIP (صفرشویی VIP + واکس و پولیش سه مرحله‌ای)",
@@ -790,7 +814,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 19,
-                            BasePrice = 0f,
+                            BasePrice = "1000000",
+                            Description = "توضیحات: سرویس بازگرداندن شفافیت چراغ‌های خودرو که به مرور زمان کدر شده‌اند.\r\n\r\nمزایا: بهبود دید در شب و افزایش ایمنی.",
                             IsDeleted = false,
                             SubCategoryId = 3,
                             Title = "شفاف‌سازی چراغ خودرو",
@@ -799,7 +824,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 20,
-                            BasePrice = 0f,
+                            BasePrice = "2700000",
+                            Description = "\r\nتوضیحات: سرویس بازگرداندن رنگ اصلی خودرو و از بین بردن خش‌ها و لکه‌های سطحی.\r\n\r\nمزایا: افزایش زیبایی و ارزش خودرو.",
                             IsDeleted = false,
                             SubCategoryId = 3,
                             Title = "احیای رنگ خودرو",
@@ -808,7 +834,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 21,
-                            BasePrice = 0f,
+                            BasePrice = "2100000",
+                            Description = "توضیحات: سرویس تخصصی صافکاری و نقاشی خودرو برای رفع خراش‌ها و آسیب‌های بدنه.\r\n\r\nمزایا: بازگرداندن ظاهر اولیه خودرو.",
                             IsDeleted = false,
                             SubCategoryId = 3,
                             Title = "صافکاری و نقاشی خودرو",
@@ -817,7 +844,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                         new
                         {
                             Id = 22,
-                            BasePrice = 0f,
+                            BasePrice = "2100000",
+                            Description = "\r\nتوضیحات: سرویس نصب شیشه دودی با کیفیت بالا برای افزایش حریم خصوصی و کاهش حرارت داخل خودرو.\r\n\r\nمزایا: بهبود ظاهر و راحتی خودرو.",
                             IsDeleted = false,
                             SubCategoryId = 3,
                             Title = "نصب شیشه دودی خودرو در محل",
@@ -1102,8 +1130,9 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<float>("SuggestedPrice")
-                        .HasColumnType("real");
+                    b.Property<string>("SuggestedPrice")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("SuggestionAt")
                         .HasColumnType("datetime2");
@@ -1125,8 +1154,8 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             ExpertId = 1,
                             RequestId = 1,
                             Status = 1,
-                            SuggestedPrice = 250f,
-                            SuggestionAt = new DateTime(2025, 3, 1, 20, 53, 41, 403, DateTimeKind.Local).AddTicks(411)
+                            SuggestedPrice = "250",
+                            SuggestionAt = new DateTime(2025, 3, 7, 0, 39, 50, 533, DateTimeKind.Local).AddTicks(3754)
                         },
                         new
                         {
@@ -1135,9 +1164,9 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             Description = "کار شما تخصص ماست",
                             ExpertId = 2,
                             RequestId = 1,
-                            Status = 3,
-                            SuggestedPrice = 250f,
-                            SuggestionAt = new DateTime(2025, 3, 1, 20, 53, 41, 403, DateTimeKind.Local).AddTicks(1020)
+                            Status = 1,
+                            SuggestedPrice = "250",
+                            SuggestionAt = new DateTime(2025, 3, 7, 0, 39, 50, 533, DateTimeKind.Local).AddTicks(4441)
                         },
                         new
                         {
@@ -1146,9 +1175,9 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             Description = "کار شما تخصص ماست",
                             ExpertId = 3,
                             RequestId = 2,
-                            Status = 4,
-                            SuggestedPrice = 250f,
-                            SuggestionAt = new DateTime(2025, 3, 1, 20, 53, 41, 403, DateTimeKind.Local).AddTicks(1025)
+                            Status = 1,
+                            SuggestedPrice = "250",
+                            SuggestionAt = new DateTime(2025, 3, 7, 0, 39, 50, 533, DateTimeKind.Local).AddTicks(4446)
                         },
                         new
                         {
@@ -1157,9 +1186,9 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             Description = "کار شما تخصص ماست",
                             ExpertId = 2,
                             RequestId = 3,
-                            Status = 2,
-                            SuggestedPrice = 250f,
-                            SuggestionAt = new DateTime(2025, 3, 1, 20, 53, 41, 403, DateTimeKind.Local).AddTicks(1028)
+                            Status = 1,
+                            SuggestedPrice = "250",
+                            SuggestionAt = new DateTime(2025, 3, 7, 0, 39, 50, 533, DateTimeKind.Local).AddTicks(4449)
                         },
                         new
                         {
@@ -1168,9 +1197,42 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             Description = "کار شما تخصص ماست",
                             ExpertId = 3,
                             RequestId = 4,
-                            Status = 4,
-                            SuggestedPrice = 250f,
-                            SuggestionAt = new DateTime(2025, 3, 1, 20, 53, 41, 403, DateTimeKind.Local).AddTicks(1030)
+                            Status = 1,
+                            SuggestedPrice = "250",
+                            SuggestionAt = new DateTime(2025, 3, 7, 0, 39, 50, 533, DateTimeKind.Local).AddTicks(4452)
+                        },
+                        new
+                        {
+                            Id = 6,
+                            DeliveryDate = new DateOnly(2025, 5, 2),
+                            Description = "کار شما تخصص ماست",
+                            ExpertId = 3,
+                            RequestId = 4,
+                            Status = 1,
+                            SuggestedPrice = "250",
+                            SuggestionAt = new DateTime(2025, 3, 7, 0, 39, 50, 533, DateTimeKind.Local).AddTicks(4460)
+                        },
+                        new
+                        {
+                            Id = 7,
+                            DeliveryDate = new DateOnly(2025, 5, 2),
+                            Description = "کار شما تخصص ماست",
+                            ExpertId = 3,
+                            RequestId = 4,
+                            Status = 1,
+                            SuggestedPrice = "250",
+                            SuggestionAt = new DateTime(2025, 3, 7, 0, 39, 50, 533, DateTimeKind.Local).AddTicks(4462)
+                        },
+                        new
+                        {
+                            Id = 8,
+                            DeliveryDate = new DateOnly(2025, 5, 2),
+                            Description = "کار شما تخصص ماست",
+                            ExpertId = 3,
+                            RequestId = 4,
+                            Status = 1,
+                            SuggestedPrice = "250",
+                            SuggestionAt = new DateTime(2025, 3, 7, 0, 39, 50, 533, DateTimeKind.Local).AddTicks(4465)
                         });
                 });
 
@@ -1273,19 +1335,19 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             Id = 1,
                             AccessFailedCount = 0,
                             CityId = 1,
-                            ConcurrencyStamp = "59bf811a-6db9-4fe0-a2d9-a78c528574c4",
+                            ConcurrencyStamp = "d3ca6ced-f562-42a2-89fe-cb8645df3d97",
                             Email = "Admin@gmail.com",
                             EmailConfirmed = false,
                             IsDeleted = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMOA+ms1+mchJxeT22PmjwSrhLRjpcmRJVuzlzv9EXvIz4WTECRi7REaW5vG0ywFCw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHgqK5HchxCjm/yO5X0BMBJ2HzPw3dvTwUsLNS++eMM3QcR7IKCi5xF9wifgQfieAA==",
                             PhoneNumber = "09377507920",
                             PhoneNumberConfirmed = false,
-                            RegisterAt = new DateTime(2025, 3, 1, 20, 53, 41, 407, DateTimeKind.Local).AddTicks(455),
+                            RegisterAt = new DateTime(2025, 3, 7, 0, 39, 50, 539, DateTimeKind.Local).AddTicks(376),
                             RoleId = 1,
-                            SecurityStamp = "ebb1ba6d-03b2-43e0-9a4a-5f4c1191d1c9",
+                            SecurityStamp = "427ccdbc-685c-4739-92a2-e16bf9c3a6b0",
                             TwoFactorEnabled = false,
                             UserName = "Admin@gmail.com"
                         },
@@ -1294,19 +1356,19 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             Id = 2,
                             AccessFailedCount = 0,
                             CityId = 4,
-                            ConcurrencyStamp = "1e725075-f8cc-4a6b-8513-db72915cac50",
+                            ConcurrencyStamp = "60009b19-675c-4f72-809d-eb16dfc35935",
                             Email = "Ali@gmail.com",
                             EmailConfirmed = false,
                             IsDeleted = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ALI@GMAIL.COM",
                             NormalizedUserName = "ALI",
-                            PasswordHash = "AQAAAAIAAYagAAAAEP7jeeNgYQE44k0MKf1kDzuM7Cu+AKrl0TE0mHnakhxjn3lgkXCgczfwgGBjami+ZA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPVSIl4mbLT8BQznnrMU0aNJqIozhk2RzWt8Dcu7GkSG7H2TqiQo5jo8+bma/Amc0Q==",
                             PhoneNumber = "09245112357",
                             PhoneNumberConfirmed = false,
-                            RegisterAt = new DateTime(2025, 3, 1, 20, 53, 41, 407, DateTimeKind.Local).AddTicks(730),
+                            RegisterAt = new DateTime(2025, 3, 7, 0, 39, 50, 539, DateTimeKind.Local).AddTicks(776),
                             RoleId = 2,
-                            SecurityStamp = "90b63b57-562c-43e0-8f63-47e24d36dc4c",
+                            SecurityStamp = "6b9379ec-8e67-45d6-9f84-280854dcf46f",
                             TwoFactorEnabled = false,
                             UserName = "Ali"
                         },
@@ -1315,19 +1377,19 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             Id = 3,
                             AccessFailedCount = 0,
                             CityId = 2,
-                            ConcurrencyStamp = "b0a9adda-11c5-4524-861c-698dc70d8dab",
+                            ConcurrencyStamp = "64ea5d38-fea5-4da0-a08f-0da3b6013dd6",
                             Email = "Mohsen@gmail.com",
                             EmailConfirmed = false,
                             IsDeleted = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "MOHSEN@GMAIL.COM",
                             NormalizedUserName = "MOHSEN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDv5ry0qUIopHEsMCi4gMQb7VRSELR+Cj/VazuE4yochn73khRa0RaypNbGkwdcNAw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIn8/xcosBFBQ5rCp8wKMWWUJRnV9hHwRl5RHYOusVL04PIkP5kTRaFEUYJ3jIhLKQ==",
                             PhoneNumber = "09106578542",
                             PhoneNumberConfirmed = false,
-                            RegisterAt = new DateTime(2025, 3, 1, 20, 53, 41, 407, DateTimeKind.Local).AddTicks(742),
+                            RegisterAt = new DateTime(2025, 3, 7, 0, 39, 50, 539, DateTimeKind.Local).AddTicks(792),
                             RoleId = 2,
-                            SecurityStamp = "6fd3ef24-f5f9-4f9a-aa41-9013749f54b0",
+                            SecurityStamp = "75ce7c59-8e80-4e02-b250-aaf6de7501ed",
                             TwoFactorEnabled = false,
                             UserName = "Mohsen@gmail.com"
                         },
@@ -1336,19 +1398,19 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             Id = 4,
                             AccessFailedCount = 0,
                             CityId = 1,
-                            ConcurrencyStamp = "5ed82c2d-ada2-46c0-8a54-094644b1071e",
+                            ConcurrencyStamp = "e33c2ca9-225b-48a6-a5ac-5efccba04637",
                             Email = "Sahar@gmail.com",
                             EmailConfirmed = false,
                             IsDeleted = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "SAHAR@GMAIL.COM",
                             NormalizedUserName = "SAHAR@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAENtt4Kd5Gpfmxvp1Ig4agGUicg1yTpQSe4gdDU2CwYeRIGhG9aX7ft1zkvf7bK7EVg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHtPCiHWyQi1VuNWMOXVkbMAhha3ULVY04qatbda54h3KSTBdpokRIcEWFpcJ5nkcg==",
                             PhoneNumber = "09304578725",
                             PhoneNumberConfirmed = false,
-                            RegisterAt = new DateTime(2025, 3, 1, 20, 53, 41, 407, DateTimeKind.Local).AddTicks(753),
+                            RegisterAt = new DateTime(2025, 3, 7, 0, 39, 50, 539, DateTimeKind.Local).AddTicks(821),
                             RoleId = 2,
-                            SecurityStamp = "2387bdbc-19f8-4b79-9128-7de31f789fbd",
+                            SecurityStamp = "179e3701-243f-4f59-a237-7c1c8be14f76",
                             TwoFactorEnabled = false,
                             UserName = "Sahar@gmail.com"
                         },
@@ -1357,19 +1419,19 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             Id = 5,
                             AccessFailedCount = 0,
                             CityId = 1,
-                            ConcurrencyStamp = "1ae25b3d-6378-4099-b9bb-684efbc86bbe",
+                            ConcurrencyStamp = "1fe3a96d-ef4c-4e47-83ed-9e44a6db5765",
                             Email = "Majd@gmail.com",
                             EmailConfirmed = false,
                             IsDeleted = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "MAJID@GMAIL.COM",
                             NormalizedUserName = "MAJID@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEA2fXZayIhrqba9i2H01AQUNrtvEAvmjhd0ICaUrLAZQC/QBiVwFz06gPJtYdK0HOQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDg38QNVmmak4I0FlZ+ozlYxCDC4/jKj84HnFdfWaRLtm0gR3dyuiNTQdiRtQnyazA==",
                             PhoneNumber = "09206548795",
                             PhoneNumberConfirmed = false,
-                            RegisterAt = new DateTime(2025, 3, 1, 20, 53, 41, 407, DateTimeKind.Local).AddTicks(770),
+                            RegisterAt = new DateTime(2025, 3, 7, 0, 39, 50, 539, DateTimeKind.Local).AddTicks(840),
                             RoleId = 3,
-                            SecurityStamp = "bac1a043-1869-4106-b720-3108f1cce842",
+                            SecurityStamp = "7996d59d-ae5c-407b-86d1-83dd10f60759",
                             TwoFactorEnabled = false,
                             UserName = "Majid@gmail.com"
                         },
@@ -1378,19 +1440,19 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             Id = 6,
                             AccessFailedCount = 0,
                             CityId = 1,
-                            ConcurrencyStamp = "27935936-b4b3-4b41-9fbb-92f40cc2cd6e",
+                            ConcurrencyStamp = "dd58ddd3-5362-48a7-a09e-14ac4ab3f0e3",
                             Email = "Parvane@gmail.com",
                             EmailConfirmed = false,
                             IsDeleted = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "PARVANE@GMAIL.COM",
                             NormalizedUserName = "PARVANE@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGNCvU0bs0nBQh2ReQVqs4u2duWL7ECHGBmdUxQ+NZnag/KMFE6jVPjNgOLOdODmRA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMMluwjj6MbMURKCMaCyCrdcfF1TMBwr8HfU9/b0BkFhaBG507yKd9ocTDuuMcJw4w==",
                             PhoneNumber = "09632548785",
                             PhoneNumberConfirmed = false,
-                            RegisterAt = new DateTime(2025, 3, 1, 20, 53, 41, 407, DateTimeKind.Local).AddTicks(788),
+                            RegisterAt = new DateTime(2025, 3, 7, 0, 39, 50, 539, DateTimeKind.Local).AddTicks(865),
                             RoleId = 3,
-                            SecurityStamp = "688638cd-1a75-456e-baa9-73998e5a2b72",
+                            SecurityStamp = "1df7a60d-5ab8-44dc-92f6-642b8247a22b",
                             TwoFactorEnabled = false,
                             UserName = "Parvane@gmail.com"
                         },
@@ -1399,19 +1461,19 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Migrations
                             Id = 7,
                             AccessFailedCount = 0,
                             CityId = 8,
-                            ConcurrencyStamp = "d54b464a-23d4-46ac-b0b6-b08a1056b336",
+                            ConcurrencyStamp = "5ffc206b-427b-45dc-a26e-a1af60de51bf",
                             Email = "Hasan@gmail.com",
                             EmailConfirmed = false,
                             IsDeleted = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "HASAN@GMAIL.COM",
                             NormalizedUserName = "HASAN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFXQb2jPLhsyTaJGerRC77S4XL/bS4g1N5V0iX/TuWO0UCj6RbtMdjpQG4BTFz/Pyg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKM9dKgJUKnt41Jb4T2hhI7TtXuYkSmuJtjtq3/PGw002xxnROda4ymZxvhubC8KRw==",
                             PhoneNumber = "09223458712",
                             PhoneNumberConfirmed = false,
-                            RegisterAt = new DateTime(2025, 3, 1, 20, 53, 41, 407, DateTimeKind.Local).AddTicks(798),
+                            RegisterAt = new DateTime(2025, 3, 7, 0, 39, 50, 539, DateTimeKind.Local).AddTicks(882),
                             RoleId = 3,
-                            SecurityStamp = "f197b65e-0d0f-4aeb-9514-0334e15336fa",
+                            SecurityStamp = "655f19bb-5116-450e-89e0-0c7c1f41112d",
                             TwoFactorEnabled = false,
                             UserName = "Hasan@gmail.com"
                         });

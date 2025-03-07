@@ -8,6 +8,7 @@
     Layout = "_Layout";
 }
 
+<input type="text" class="example1" />
 
 <div class="col-xl-12 col-lg-2 col-md-12 col-sm-12">
     <div class="submit-form">
@@ -22,25 +23,40 @@
                 <div class="dashboard-list-wraps-body py-3 px-3">
                     <div class="row">
 
-                        <input type="hidden />
-                        <input type="hidden />
-
+                        <input type="hidden" asp-for="Request.ServiceId" />
+                       
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                             <div class="form-group">
-                                <label  class="form-label">برای چه زمانی؟</label>
-                                <input  data-jdp class="form-control rounded" />
+                                <label  class="form-label">برای چه تاریخی؟</label>
+                                <input asp-for="@Model.Request.DateOfCompletion" type="date" id="calender" data-jdp class="form-control rounded" />
                             </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label class="form-label">برای چه ساعتی؟</label>
+                                    <input asp-for="@Model.Request.TimeOfCompletion" type="time" data-jdp class="form-control rounded" />
+                                </div>
+
+
                         </div>
                         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
                             <div class="form-group">
                                 <label class="mb-1">توضیحات</label>
-                                <textarea  class="form-control rounded" rows="5" cols="4"></textarea>
+                                <textarea asp-for="@Model.Request.Description"  class="form-control rounded" rows="5" cols="4"></textarea>
+                            </div>
+                        </div>
+
+                        </div>
+                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                            <div class="form-group">
+                                <label class="mb-1">قیمت</label>
+                                <input asp-for="@Model.Request.Price" class="form-control rounded" type="number"/>
                             </div>
                         </div>
 
                         <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
                             <label for="formFileLg" class="form-label">آپلود تصویر</label>
-                            <input type="file"  class="form-control" />
+                            <input asp-for="@Model.Request.Images" type="file"  class="form-control" multiple />
                         </div>
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                             <div class="form-group p-2">
@@ -79,5 +95,16 @@
         });
 
         document.getElementById("aaa").addEventListener("jdp:change", function (e) { console.log(e) });
+
+
+         $('#calender').MdPersianDateTimePicker({
+            targetTextSelector: '#calender',
+        });
+
+                $(document).ready(function() {
+          $(".example1").pDatepicker();
+        });
+
     </script>
+  
 }

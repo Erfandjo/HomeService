@@ -8,6 +8,6 @@
         public string SubCategoryTitle { get; set; }
         public string BasePrice { get; set; }
         public int VisitCount { get; set; }
-
+        public string Description { get; set; }
     }
 }

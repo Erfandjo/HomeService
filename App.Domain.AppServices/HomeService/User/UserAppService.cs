@@ -116,7 +116,7 @@ namespace App.Domain.AppServices.HomeService.User
             {
                 role = "Customer";
                 user.RoleId = (int)RoleEnum.Customer;
-                user.Customer = new Customer()
+                user.Customer = new App.Domain.Core.HomeService.CustomerEntity.Entities.Customer()
                 {
 
                 };

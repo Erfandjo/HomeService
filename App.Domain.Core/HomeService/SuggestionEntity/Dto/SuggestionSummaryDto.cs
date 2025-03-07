@@ -5,7 +5,7 @@ namespace App.Domain.Core.HomeService.SuggestionEntity.Dto
     public class SuggestionSummaryDto
     {
         public int Id { get; set; }
-        public float SuggestedPrice { get; set; }
+        public string SuggestedPrice { get; set; }
         public DateOnly DeliveryDate { get; set; }
         public string? Description { get; set; }
         public DateTime SuggestionAt { get; set; }

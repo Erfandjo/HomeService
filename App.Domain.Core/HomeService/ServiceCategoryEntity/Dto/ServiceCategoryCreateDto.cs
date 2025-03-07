@@ -12,5 +12,7 @@ namespace App.Domain.Core.HomeService.ServiceCategoryEntity.Dto
         [Required]
         public int SubCategoryId { get; set; }
         public string BasePrice { get; set; }
+        [Required]
+        public string Description { get; set; }
     }
 }

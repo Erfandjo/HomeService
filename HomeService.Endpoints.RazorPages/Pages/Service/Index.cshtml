@@ -29,22 +29,48 @@
                     </div>
 
 
+                    
 
                     @foreach(var service in Model.ServiceCategory)
                     {
 
+
+                        <a asp-route-id="@service.Id" asp-page="DetailService" class="text-dark fs-md">
                           <div class="grouping-listings-single">
                         <div class="vrt-list-wrap">
                             <div class="vrt-list-wrap-head">
                                 <div class="vrt-list-thumb">
                                     <div class="vrt-list-thumb-figure">
-                                        <img src="@service.ImagePath" class="img-fluid" alt="" />
+
+
+                                                @if (string.IsNullOrEmpty(service.ImagePath))
+                                                {
+                                                    <img src="~/Images/ServiceCategory/IeKrEgl6K91vwymznimqskAsIGpAxwvPC7rGK005.jpg" class="img-fluid" alt="" />
+                                                }
+                                                else
+                                                {
+                                                    <img src="@service.ImagePath" class="img-fluid" alt="" />
+                                                }
+
+
+
+
+
+
+
+
+
+                                        
                                     </div>
                                 </div>
                                 <div class="vrt-list-content">
-                                    <h4 class="mb-0 ft-medium"><a class="text-dark fs-md">@service.Title
+                                    <h4 class="mb-0 ft-medium">
+                                                <a asp-route-id="@service.Id" asp-page="DetailService" class="text-dark fs-md">
+                                                    @service.Title
                                         <span class="verified-badge">
-                                            <i class="fas fa-check-circle"></i></span></a></h4>
+                                            <i class="fas fa-check-circle"></i></span>
+                                            </a>
+                                            </h4>
                                     <div class="Goodup-ft-first">
                                         <div class="Goodup-rating">
                                             <div class="Goodup-rates">
@@ -68,11 +94,15 @@
                                     <div class="vrt-list-desc">
                                             <p class="vrt-qgunke"><span class="ft-bold d14ixhs">قیمت پایه : </span>@service.BasePrice</p>
                                     </div>
+
+                                            <div class="vrt-list-desc">
+                                                <p class="vrt-qgunke"><span class="ft-bold d14ixhs">تعداد بازدید : </span>@service.VisitCount</p>
+                                            </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
+                        </a>
 
 
 

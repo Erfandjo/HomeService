@@ -9,7 +9,18 @@
 <!-- ======================= Searchbar Banner ======================== -->
 <div class="featured-slick">
     <div class="featured-gallery-slide">
-        <div class="dlf-flew"><a href="~/assetsHomePage/img/painting.jpeg" class="mfp-gallery"><img src="~/Images/ServiceCategory/83edfbda-2cf1-4476-9c62-68a2bc65d77e۲۰۲۵۰۲۱۶_۱۴۰۴۴۹.jpg" class="img-fluid mx-auto" alt="" /></a></div>
+        <div class="dlf-flew">
+                @if (string.IsNullOrEmpty(Model.Service.ImagePath))
+                {
+                    <img src="~/Images/ServiceCategory/IeKrEgl6K91vwymznimqskAsIGpAxwvPC7rGK005.jpg" class="img-fluid mx-auto" alt="" />
+                }
+                else
+                {
+                    <img src="@Model.Service.ImagePath" class="img-fluid mx-auto" alt="" />
+                }
+            
+            
+            </div>
         <div class="ftl-diope"><a href="javascript:void(0);" class="btn bg-white text-dark ft-medium rounded">مشاهده تصاویر</a></div>
         <div class="Goodup-ops-bhri">
             <div class="Goodup-lkp-flex d-flex align-items-start justify-content-start">
@@ -66,11 +77,11 @@
                     <div class="bg-white rounded mb-4">
                         <div class="jbd-01 px-4 py-4">
                             <div class="jbd-details">
-                                <h5 class="ft-bold fs-lg ff-second">کولر</h5>
+                                <h5 class="ft-bold fs-lg ff-second">@Model.Service.Title</h5>
 
                                 <div class="d-block mt-3">
-                                    <p>طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
-                                    <p class="p-0 m-0">در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
+                                    <p></p>
+                                    <p class="p-0 m-0">@Model.Service.Description.</p>
                                 </div>
                             </div>
 
@@ -300,16 +311,22 @@
 
                      <!-- order Booking -->
                     <div class="jb-apply-form bg-white rounded py-4 px-4 box-static mb-4">
-                        <h4 class="ft-bold mb-1 ff-second fs-5">زمان دریافت سفارش</h4>
+                        <h4 class="ft-bold mb-2 ff-second fs-5">اطلاعات سفارش</h4>
 
-                      @*   <div class="Goodup-09kjh">
-                            <ul>
-                                <li>35 تومان <span>پیک</span></li>
-                                <li>ارسال <span>سریع</span></li>
-                                <li>35-45 <span>دقیقه</span></li>
-                            </ul>
-                        </div> *@
-                        <a asp-area="" asp-controller="Customer" asp-action="CreateRequest" asp-route-id="شستشو" class="btn btn-md rounded theme-bg text-light ft-medium fs-sm full-width">ثبت سفارش</a>
+                        
+                                <div class="vrt-list-sts">
+                                    <p class="vrt-qgunke"><span class="ft-bold d14ixhs">دسته بندی : </span>@Model.Service.SubCategoryTitle</p>
+                                </div>
+
+                                <div class="vrt-list-desc">
+                                    <p class="vrt-qgunke"><span class="ft-bold d14ixhs">قیمت پایه : </span>@Model.Service.BasePrice</p>
+                                </div>
+
+                                <div class="vrt-list-desc">
+                                    <p class="vrt-qgunke"><span class="ft-bold d14ixhs">تعداد بازدید : </span>@Model.Service.VisitCount</p>
+                                </div>
+                          
+                        <a asp-page="/User/Customer/Request/Index" asp-route-id="@Model.Service.Id" class="btn btn-md rounded theme-bg text-light ft-medium fs-sm full-width">ثبت سفارش</a>
                     </div> 
 
                     <!-- Business Inof -->

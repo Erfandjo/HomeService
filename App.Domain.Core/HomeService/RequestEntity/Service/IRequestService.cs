@@ -11,6 +11,14 @@ namespace App.Domain.Core.HomeService.RequestEntity.Service
         public Task<Result> Update(RequestUpdateDto request, CancellationToken cancellation);
         public Task<RequestUpdateDto>? GetByIdForUpdate(int id, CancellationToken cancellation);
         public Task<Request>? GetById(int id, CancellationToken cancellation);
-        
+        public Task<Result> Add(RequestCreateDto request, CancellationToken cancellation);
+        public Task<List<RequestListCustomerDto>>? GetRequestsCustomer(int customerId, CancellationToken cancellation);
+        public Task<Result> AcceptSuggestion(int requestId, CancellationToken cancellation);
+        public Task<Result> PaidRequest(int requestId, CancellationToken cancellation);
+        public Task<Result> BackStatusWaiting(int requestId, CancellationToken cancellation);
+        public Task<Result> FinishRequest(int requestId, CancellationToken cancellation);
+        public Task<Result> BackStatusSelection(int requestId, CancellationToken cancellation);
+        public Task<Result> BackStatusFinish(int requestId, CancellationToken cancellation);
+
     }
 }

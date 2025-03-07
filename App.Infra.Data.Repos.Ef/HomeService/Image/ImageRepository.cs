@@ -18,6 +18,23 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Image
             return new Result(true, "Success");
         }
 
+        public async Task<Result> AddReqImages(List<string> imgAddress, int reqId, CancellationToken cancellationToken)
+        {
+            if (imgAddress is null || reqId == 0)
+                return new Result(false, "ادرس عکس یا شناسه درخواست ناصحیح است");
+
+            
+            var images = imgAddress.Select(x => new Domain.Core.HomeService.ImageEntity.Entities.Image()
+            {
+                Path = x,
+                RequestId = reqId
+            });
+
+            await _dbContext.Images.AddRangeAsync(images, cancellationToken);
+            await _dbContext.SaveChangesAsync(cancellationToken);
+            return new Result(true, "با موفقیت انجام شد");
+        }
+
         public async Task<Result> Delete(int id, CancellationToken cancellation)
         {
             var image = await _dbContext.Images.FirstOrDefaultAsync(x => x.Id == id);

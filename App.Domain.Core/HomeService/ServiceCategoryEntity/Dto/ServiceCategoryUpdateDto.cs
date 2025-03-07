@@ -15,5 +15,7 @@ namespace App.Domain.Core.HomeService.ServiceCategoryEntity.Dto
         public IFormFile? ImgFile { get; set; }
         [Required]
         public int SubCategoryId { get; set; }
+        [Required]
+        public string Description { get; set; }
     }
 }

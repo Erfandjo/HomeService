@@ -31,6 +31,11 @@ namespace App.Domain.AppServices.HomeService.ServiceCategory
             return await _serviceCategoryService.GetAll(cancellation);
         }
 
+        public async Task<ServiceCategorySummaryDto>? GetById(int id, CancellationToken cancellation)
+        {
+            return await _serviceCategoryService.GetById(id, cancellation);
+        }
+
         public async Task<ServiceCategoryUpdateDto>? GetByIdForUpdate(int id, CancellationToken cancellation)
         {
             return await _serviceCategoryService.GetByIdForUpdate(id, cancellation);

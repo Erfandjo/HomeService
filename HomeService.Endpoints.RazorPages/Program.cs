@@ -1,6 +1,7 @@
 using App.Domain.AppServices.HomeService.Category;
 using App.Domain.AppServices.HomeService.City;
 using App.Domain.AppServices.HomeService.Comment;
+using App.Domain.AppServices.HomeService.Customer;
 using App.Domain.AppServices.HomeService.Dashboard;
 using App.Domain.AppServices.HomeService.Request;
 using App.Domain.AppServices.HomeService.ServiceCategory;
@@ -17,6 +18,9 @@ using App.Domain.Core.HomeService.CommentEntity.AppService;
 using App.Domain.Core.HomeService.CommentEntity.Data;
 using App.Domain.Core.HomeService.CommentEntity.Service;
 using App.Domain.Core.HomeService.Config;
+using App.Domain.Core.HomeService.CustomerEntity.AppService;
+using App.Domain.Core.HomeService.CustomerEntity.Data;
+using App.Domain.Core.HomeService.CustomerEntity.Service;
 using App.Domain.Core.HomeService.DashboardEntity.AppService;
 using App.Domain.Core.HomeService.ExpertEntity.Data;
 using App.Domain.Core.HomeService.ImageEntity.Data;
@@ -40,6 +44,7 @@ using App.Domain.Core.HomeService.UserEntity.Service;
 using App.Domain.Services.HomeService.Category;
 using App.Domain.Services.HomeService.City;
 using App.Domain.Services.HomeService.Comment;
+using App.Domain.Services.HomeService.Customer;
 using App.Domain.Services.HomeService.Image;
 using App.Domain.Services.HomeService.Request;
 using App.Domain.Services.HomeService.ServiceCategory;
@@ -50,6 +55,7 @@ using App.Infra.Data.Db.SqlServer.Ef.Common;
 using App.Infra.Data.Repos.Ef.HomeService.Category;
 using App.Infra.Data.Repos.Ef.HomeService.City;
 using App.Infra.Data.Repos.Ef.HomeService.Comment;
+using App.Infra.Data.Repos.Ef.HomeService.Customer;
 using App.Infra.Data.Repos.Ef.HomeService.Expert;
 using App.Infra.Data.Repos.Ef.HomeService.Image;
 using App.Infra.Data.Repos.Ef.HomeService.Request;
@@ -139,6 +145,10 @@ builder.Services.AddScoped<ISuggestionRepository, SuggestionRepository>();
 builder.Services.AddScoped<ISuggestionService, SuggestionService>();
 builder.Services.AddScoped<ISuggestionAppService, SuggestionAppService>();
 builder.Services.AddScoped<IImageRepository, ImageRepository>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<ICustomerAppService, CustomerAppService>();
+
 
 
 

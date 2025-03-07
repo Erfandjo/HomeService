@@ -1,11 +1,17 @@
-﻿using App.Domain.Core.HomeService.ImageEntity.Service;
+﻿using App.Domain.Core.HomeService.ImageEntity.Data;
+using App.Domain.Core.HomeService.ImageEntity.Service;
+using App.Domain.Core.HomeService.ResultEntity;
 using Microsoft.AspNetCore.Http;
 using System.Net.Http.Headers;
 
 namespace App.Domain.Services.HomeService.Image
 {
-    public class ImageService : IImageService
+    public class ImageService(IImageRepository _imageRepository) : IImageService
     {
+        public async Task<Result> AddReqImages(List<string> imgAddress, int reqId, CancellationToken cancellationToken)
+        {
+            return await _imageRepository.AddReqImages(imgAddress, reqId, cancellationToken);
+        }
 
         public async Task<string> UploadImage(IFormFile FormFile, string folderName, CancellationToken cancellation)
         {

@@ -6,5 +6,6 @@ namespace App.Domain.Core.HomeService.RequestEntity.Dto
     {
         public int Id { get; set; }
         public StatusRequestEnum StatusRequest { get; set; }
+
     }
 }
