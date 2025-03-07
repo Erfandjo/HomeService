@@ -18,7 +18,8 @@ namespace HomeService.Endpoints.RazorPages.Areas.Admin.Pages.Users
 
         public async Task<IActionResult> OnPostAsync(CancellationToken cancellationToken)
         {
-            await _userAppService.ChangePassword(User , cancellationToken);
+            
+            await _userAppService.ChangePasswordAdmin(User , cancellationToken);
             return RedirectToPage("Index");
         }
     }

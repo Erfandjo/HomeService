@@ -1,5 +1,6 @@
 ﻿using App.Domain.Core.HomeService.CommentEntity.Data;
 using App.Domain.Core.HomeService.CommentEntity.Dto;
+using App.Domain.Core.HomeService.CommentEntity.Entities;
 using App.Domain.Core.HomeService.ResultEntity;
 using App.Infra.Data.Db.SqlServer.Ef.Common;
 using Microsoft.EntityFrameworkCore;
@@ -8,15 +9,24 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Comment
 {
     public class CommentRepository(AppDbContext _dbContext) : ICommentRepository
     {
-        public async Task<Result> Add(Domain.Core.HomeService.CommentEntity.Entities.Comment comment, CancellationToken cancellation)
+        public async Task<Result> Add(  CommentCreateDto comment, CancellationToken cancellation)
         {
             if (comment is null)
-                return new Result(false, "Comment Is Null");
+                return new Result(false, "نظر یافت نشد");
 
-            await _dbContext.Comments.AddAsync(comment);
+            var com = new App.Domain.Core.HomeService.CommentEntity.Entities.Comment();
+
+            com.Text = comment.Text;
+            com.StatusEnum = comment.StatusEnum;
+            com.CustomerId = comment.CustomerId;
+            com.ExpertId = comment.ExpertId;
+            com.RequestId = comment.RequestId;
+            com.Star = comment.Star;
+
+            await _dbContext.Comments.AddAsync(com);
             await _dbContext.SaveChangesAsync();
 
-            return new Result(true, "Success");
+            return new Result(true, "با موفقیت ثبت شد");
         }
 
         public async Task<Result> ApproveComment(int id, CancellationToken cancellation)
@@ -30,6 +40,11 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Comment
             await _dbContext.SaveChangesAsync();
 
             return new Result(true, "نظر با موفقیت تایید شد");
+        }
+
+        public async Task<bool> CheckComment(int requestId, CancellationToken cancellation)
+        {
+            return await _dbContext.Comments.Where(x => x.RequestId == requestId).AnyAsync();
         }
 
         public async Task<Result> Delete(int id, CancellationToken cancellation)
@@ -55,6 +70,7 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Comment
                 CustomerId = x.CustomerId,
                 RequestId = x.RequestId,
                 StatusEnum = x.StatusEnum,
+                Star = x.Star,
             }).OrderBy(x => x.StatusEnum).ToListAsync();
         }
 

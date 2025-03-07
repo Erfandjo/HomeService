@@ -1,11 +1,13 @@
 using App.Domain.Core.HomeService.RequestEntity.AppService;
 using App.Domain.Core.HomeService.RequestEntity.Dto;
 using App.Domain.Core.HomeService.ResultEntity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace HomeService.Endpoints.RazorPages.Pages.User.Customer.Profile
 {
+    [Authorize(Roles = "Customer")]
     public class RequestListModel: PageModel
     {
 

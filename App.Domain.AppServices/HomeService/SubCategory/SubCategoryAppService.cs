@@ -1,14 +1,16 @@
-﻿using App.Domain.Core.HomeService.CategoryEntity.Entities;
+﻿using App.Domain.Core.HomeService.CategoryEntity.Dto;
+using App.Domain.Core.HomeService.CategoryEntity.Entities;
 using App.Domain.Core.HomeService.ImageEntity.Entities;
 using App.Domain.Core.HomeService.ImageEntity.Service;
 using App.Domain.Core.HomeService.ResultEntity;
 using App.Domain.Core.HomeService.SubCategoryEntity.AppService;
 using App.Domain.Core.HomeService.SubCategoryEntity.Dto;
 using App.Domain.Core.HomeService.SubCategoryEntity.Service;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace App.Domain.AppServices.HomeService.SubCategory
 {
-    public class SubCategoryAppService(ISubCategoryService _subCategoryService, IImageService _imageService) : ISubCategoryAppService
+    public class SubCategoryAppService(ISubCategoryService _subCategoryService, IImageService _imageService , IMemoryCache _memoryCache) : ISubCategoryAppService
     {
         public async Task<Result> Add(SubCategoryCreateDto categoryCreateDto, CancellationToken cancellation)
         {
@@ -28,7 +30,23 @@ namespace App.Domain.AppServices.HomeService.SubCategory
 
         public async Task<List<SubCategorySummaryDto>>? GetAll(CancellationToken cancellation)
         {
-            return await _subCategoryService.GetAll(cancellation);
+            // return await _subCategoryService.GetAll(cancellation);
+
+
+            List<SubCategorySummaryDto> subCategories;
+            if (_memoryCache.Get("SubCategoryList") is not null)
+            {
+                subCategories = _memoryCache.Get<List<SubCategorySummaryDto>>("SubCategoryList");
+            }
+            else
+            {
+                subCategories = await _subCategoryService.GetAll(cancellation);
+                _memoryCache.Set("SubCategoryList", subCategories, TimeSpan.FromSeconds(10));
+
+
+            }
+            return subCategories;
+
         }
 
         public async Task<List<SubCategorySummaryDto>>? GetByCategoryId(int categoryId, CancellationToken cancellation)

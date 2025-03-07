@@ -40,6 +40,11 @@ namespace App.Domain.Services.HomeService.User
 
         }
 
+        public async Task<string> GetImagePath(int id)
+        {
+            return await _userRepository.GetImagePath(id);
+        }
+
         public async Task<Result> Update(UserUpdateDto user, CancellationToken cancellation)
         {
             return await _userRepository.Update(user, cancellation);

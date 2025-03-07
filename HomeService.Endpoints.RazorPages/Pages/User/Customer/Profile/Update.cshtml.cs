@@ -4,12 +4,14 @@ using App.Domain.Core.HomeService.CityEntity.Entities;
 using App.Domain.Core.HomeService.CustomerEntity.AppService;
 using App.Domain.Core.HomeService.CustomerEntity.Dto;
 using App.Domain.Core.HomeService.ResultEntity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Threading;
 
 namespace HomeService.Endpoints.RazorPages.Pages.User.Customer.Profile
 {
+    [Authorize(Roles = "Customer")]
     public class EditProfileModel : PageModel
     {
         private readonly ICustomerAppService _customerAppService;
@@ -41,8 +43,12 @@ namespace HomeService.Endpoints.RazorPages.Pages.User.Customer.Profile
 
         public async Task<IActionResult> OnPostAsync(CancellationToken cancellation)
         {
+            if (ModelState.IsValid)
+            {
                 Results = await _customerAppService.Update(Customer, cancellation);
                 Cities = await _cityAppService.GetAll(cancellation);
+            }
+             
                 return Page();
             
         }

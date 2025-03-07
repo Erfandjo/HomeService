@@ -4,10 +4,12 @@ using App.Domain.Core.HomeService.ResultEntity;
 using App.Domain.Core.HomeService.ServiceCategoryEntity.AppService;
 using App.Domain.Core.HomeService.ServiceCategoryEntity.Dto;
 using App.Domain.Core.HomeService.ServiceCategoryEntity.Service;
+using App.Domain.Core.HomeService.SubCategoryEntity.Dto;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace App.Domain.AppServices.HomeService.ServiceCategory
 {
-    public class ServiceCategoryAppService(IServiceCategoryService _serviceCategoryService, IImageService _imageService) : IServiceCategoryAppService
+    public class ServiceCategoryAppService(IServiceCategoryService _serviceCategoryService, IImageService _imageService, IMemoryCache _memoryCache) : IServiceCategoryAppService
     {
         public async Task<Result> Add(ServiceCategoryCreateDto service, CancellationToken cancellation)
         {
@@ -28,7 +30,24 @@ namespace App.Domain.AppServices.HomeService.ServiceCategory
 
         public async Task<List<ServiceCategorySummaryDto>>? GetAll(CancellationToken cancellation)
         {
-            return await _serviceCategoryService.GetAll(cancellation);
+            // return await _serviceCategoryService.GetAll(cancellation);
+
+
+
+            List<ServiceCategorySummaryDto> serviceCategories;
+            if (_memoryCache.Get("ServiceCategoryList") is not null)
+            {
+                serviceCategories = _memoryCache.Get<List<ServiceCategorySummaryDto>>("ServiceCategoryList");
+            }
+            else
+            {
+                serviceCategories = await _serviceCategoryService.GetAll(cancellation);
+                _memoryCache.Set("ServiceCategoryList", serviceCategories, TimeSpan.FromSeconds(10));
+
+
+            }
+            return serviceCategories;
+
         }
 
         public async Task<ServiceCategorySummaryDto>? GetById(int id, CancellationToken cancellation)

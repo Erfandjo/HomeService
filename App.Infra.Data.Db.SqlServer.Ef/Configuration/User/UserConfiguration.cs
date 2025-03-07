@@ -168,12 +168,12 @@ namespace App.Infra.Data.Db.SqlServer.Ef.Configuration.User
             );
 
             builder.Entity<IdentityUserClaim<int>>().HasData(
-               new IdentityUserClaim<int>() { Id = 1, ClaimType = "ExpertId" , ClaimValue = "1" , UserId = 1 },
-               new IdentityUserClaim<int>() { Id = 2, ClaimType = "ExpertId", ClaimValue = "2", UserId = 2 },
-               new IdentityUserClaim<int>() { Id = 3, ClaimType = "ExpertId", ClaimValue = "3", UserId = 3 },
-               new IdentityUserClaim<int>() { Id = 4, ClaimType = "CustomerId", ClaimValue = "1", UserId = 4 },
-               new IdentityUserClaim<int>() { Id = 5, ClaimType = "CustomerId", ClaimValue = "2", UserId = 5 },
-               new IdentityUserClaim<int>() { Id = 6, ClaimType = "CustomerId", ClaimValue = "3", UserId = 6 }
+               new IdentityUserClaim<int>() { Id = 1, ClaimType = "ExpertId" , ClaimValue = "1" , UserId = 2 },
+               new IdentityUserClaim<int>() { Id = 2, ClaimType = "ExpertId", ClaimValue = "2", UserId = 3 },
+               new IdentityUserClaim<int>() { Id = 3, ClaimType = "ExpertId", ClaimValue = "3", UserId = 4 },
+               new IdentityUserClaim<int>() { Id = 4, ClaimType = "CustomerId", ClaimValue = "1", UserId = 5 },
+               new IdentityUserClaim<int>() { Id = 5, ClaimType = "CustomerId", ClaimValue = "2", UserId = 6 },
+               new IdentityUserClaim<int>() { Id = 6, ClaimType = "CustomerId", ClaimValue = "3", UserId = 7 }
            );
 
             //Seed Role To Users

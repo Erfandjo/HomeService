@@ -7,9 +7,19 @@ namespace App.Domain.Services.HomeService.Comment
 {
     public class CommentService(ICommentRepository _commentRepository) : ICommentService
     {
+        public async Task<Result> Add(CommentCreateDto comment, CancellationToken cancellation)
+        {
+            return await _commentRepository.Add(comment , cancellation);
+        }
+
         public async Task<Result> ApproveComment(int id, CancellationToken cancellation)
         {
             return await _commentRepository.ApproveComment(id, cancellation);
+        }
+
+        public async Task<bool> CheckComment(int requestId, CancellationToken cancellation)
+        {
+            return await _commentRepository.CheckComment(requestId, cancellation);
         }
 
         public async Task<List<CommentSummaryDto>>? GetAll(CancellationToken cancellation)

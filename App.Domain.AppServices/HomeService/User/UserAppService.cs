@@ -24,7 +24,7 @@ namespace App.Domain.AppServices.HomeService.User
     {
       
 
-        public async Task<IdentityResult> ChangePassword(UserChangePasswordDto user, CancellationToken cancellation)
+        public async Task<IdentityResult> ChangePasswordAdmin(UserChangePasswordDto user, CancellationToken cancellation)
         {
             if (user.Password != user.Repassword)
                 return IdentityResult.Failed(new IdentityError(){ Description = "رمز عبور و تکرار آن برابر نیست"});
@@ -60,6 +60,10 @@ namespace App.Domain.AppServices.HomeService.User
 
         public Task<int> GetCount(CancellationToken cancellation) => _userService.GetCount(cancellation);
 
+        public async Task<string> GetImagePath(int id)
+        {
+            return await _userService.GetImagePath(id);
+        }
 
         public async Task<Result> Login(string username, string password, bool rememberMe)
         {

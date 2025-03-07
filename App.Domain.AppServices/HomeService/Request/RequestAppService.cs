@@ -4,13 +4,15 @@ using App.Domain.Core.HomeService.RequestEntity.AppService;
 using App.Domain.Core.HomeService.RequestEntity.Dto;
 using App.Domain.Core.HomeService.RequestEntity.Service;
 using App.Domain.Core.HomeService.ResultEntity;
+using App.Domain.Core.HomeService.ServiceCategoryEntity.AppService;
+using App.Domain.Core.HomeService.ServiceCategoryEntity.Service;
 using App.Domain.Core.HomeService.SuggestionEntity.AppService;
 using App.Domain.Core.HomeService.SuggestionEntity.Service;
 using System.Threading;
 
 namespace App.Domain.AppServices.HomeService.Request
 {
-    public class RequestAppService(IRequestService _requestService, IImageService _imageService , ISuggestionService _suggestionService , ICustomerService _customerService) : IRequestAppService
+    public class RequestAppService(IRequestService _requestService, IImageService _imageService , ISuggestionService _suggestionService , IServiceCategoryService _serviceCategoryService , ICustomerService _customerService) : IRequestAppService
     {
         public async Task<Result> AcceptSuggestion(int requestId, int suggestionId, CancellationToken cancellation)
         {
@@ -34,9 +36,13 @@ namespace App.Domain.AppServices.HomeService.Request
 
         public async Task<Result> Add(RequestCreateDto request, CancellationToken cancellation)
         {
-            
+            var service = await _serviceCategoryService.GetById(request.ServiceId, cancellation);
+            if (request.Price < int.Parse(service.BasePrice))
+                return new Result(false, "قیمت نمیتواند کمتر قیمت پایه سرویس باشد");
 
             var imagesPath = new List<string>();
+            request.RequestAt = DateTime.Now;
+            request.Status = Core.HomeService.RequestEntity.Enum.StatusRequestEnum.WaitingSuggestion;
             var result = await _requestService.Add(request, cancellation);
 
             

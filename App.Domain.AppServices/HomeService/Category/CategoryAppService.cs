@@ -4,12 +4,14 @@ using App.Domain.Core.HomeService.CategoryEntity.Service;
 using App.Domain.Core.HomeService.ImageEntity.Service;
 using App.Domain.Core.HomeService.ResultEntity;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Caching.Memory;
 using System.Threading;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace App.Domain.AppServices.HomeService.Category
 {
-    public class CategoryAppService(ICategoryService _categoryService , IImageService _imageService) : ICategoryAppService
+    public class CategoryAppService(ICategoryService _categoryService , IImageService _imageService , IMemoryCache _memoryCache) : ICategoryAppService
     {
         public async Task<Result> Add(CategoryCreateDto category, CancellationToken cancellation)
         {
@@ -34,7 +36,23 @@ namespace App.Domain.AppServices.HomeService.Category
 
         public async Task<List<CategorySummaryDto>>? GetAll(CancellationToken cancellation)
         {
-            return await _categoryService.GetAll(cancellation);
+           // return await _categoryService.GetAll(cancellation);
+
+            List<CategorySummaryDto> categories;
+            if (_memoryCache.Get("CategoryList") is not null)
+            {
+                categories = _memoryCache.Get<List<CategorySummaryDto>>("CategoryList");
+            }
+            else
+            {
+                categories = await _categoryService.GetAll(cancellation);
+                _memoryCache.Set("CategoryList", categories, TimeSpan.FromSeconds(10));
+
+              
+            }
+            return categories;
+
+
         }
 
         public async Task<CategoryUpdateDto>? GetByIdForUpdate(int id, CancellationToken cancellation)

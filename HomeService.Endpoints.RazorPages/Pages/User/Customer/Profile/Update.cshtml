@@ -22,7 +22,15 @@
             </div>
             <div class="row">
                 <form enctype="multipart/form-data" id="simple-form" role="form" method="post">
-                    <img style="border-radius : 50%" src="@Model.Customer.ImagePath" width="80" height="80" />
+                    @if (string.IsNullOrEmpty(Model.Customer.ImagePath))
+                    {
+                        <td><img style="border-radius : 50%" src="~/Images/Profiles/placeholder.jpg" width="80" height="80" /></td>
+                    }
+                    else
+                    {
+                        <td><img style="border-radius : 50%" src="@Model.Customer.ImagePath" width="80" height="80"/></td>
+                    }
+                    
                     <hr />
                     <input type="hidden" asp-for="Customer.Id" />
 
@@ -93,7 +101,7 @@
 
                         <div class="form-group relative">
                             <div class="input-group round">
-                                <input asp-for="Customer.ProfileImgFile" type="file" class="form-control file-input" placeholder="برای آپلود کلیک کنید">
+                                <input value="@Model.Customer.ImagePath" asp-for="Customer.ProfileImgFile" type="file" class="form-control file-input" placeholder="برای آپلود کلیک کنید">
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-success">
                                         <i class="icon-picture"></i>

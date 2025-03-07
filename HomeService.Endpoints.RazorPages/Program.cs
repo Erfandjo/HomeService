@@ -104,7 +104,7 @@ builder.Services.AddIdentity<User, IdentityRole<int>>(options =>
     .AddRoles<IdentityRole<int>>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddErrorDescriber<PersianIdentityErrorDescriber>();
-;
+
 
 
 
@@ -116,6 +116,12 @@ builder.Services.AddIdentity<User, IdentityRole<int>>(options =>
         config.WriteTo.Seq("http://localhost:5341", apiKey: "N1C3WgdFG0vkWdpe6px7");
     });
 
+
+
+
+//builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddMemoryCache();
 
 builder.Services.AddScoped<IUserAppService, UserAppService>();
 builder.Services.AddScoped<IUserService, UserService>();

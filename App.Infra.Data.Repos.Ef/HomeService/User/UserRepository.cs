@@ -64,7 +64,7 @@ namespace App.Infra.Data.Repos.Ef.HomeService.User
 
         public async Task<Domain.Core.HomeService.UserEntity.Entities.User>? GetById(int id, CancellationToken cancellation)
         {
-            return await _dbContext.Users.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+            return await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<UserUpdateDto>? GetByIdForUpdate(int id, CancellationToken cancellation)
@@ -86,6 +86,12 @@ namespace App.Infra.Data.Repos.Ef.HomeService.User
         }
 
         public async Task<int> GetCount(CancellationToken cancellation) => await _dbContext.Users.CountAsync();
+
+        public async Task<string> GetImagePath(int id)
+        {
+            var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
+            return user.ImagePath;
+        }
 
         public async Task<Result> Update(UserUpdateDto user, CancellationToken cancellation)
         {

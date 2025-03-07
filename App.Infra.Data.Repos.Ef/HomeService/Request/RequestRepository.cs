@@ -29,6 +29,8 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Request
             if (request is null)
                 return new Result(false, "درخواستی پیدا نشد!");
 
+            
+
             var req = new App.Domain.Core.HomeService.RequestEntity.Entities.Request();
             req.Description = request.Description;
             req.Price = request.Price;
@@ -36,8 +38,8 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Request
             req.DateOfCompletion = request.DateOfCompletion;
             req.CustomerId =  request.CustomerId;
             req.ServiceId = request.ServiceId;
-
-
+            req.RequestAt = request.RequestAt;
+            req.Status = request.Status;
 
             await _dbContext.Requests.AddAsync(req);
             await _dbContext.SaveChangesAsync();

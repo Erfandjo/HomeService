@@ -8,5 +8,7 @@ namespace App.Domain.Core.HomeService.CommentEntity.Service
         public Task<List<CommentSummaryDto>>? GetAll(CancellationToken cancellation);
         public Task<Result> ApproveComment(int id, CancellationToken cancellation);
         public Task<Result> RejectComment(int id, CancellationToken cancellation);
+        public Task<Result> Add(CommentCreateDto comment, CancellationToken cancellation);
+        public Task<bool> CheckComment(int requestId, CancellationToken cancellation);
     }
 }

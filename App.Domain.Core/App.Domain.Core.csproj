@@ -9,5 +9,8 @@
      <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
      <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.2" />
   </ItemGroup>
+<ItemGroup>
+  <Folder Include="HomeService\ExpertEntity\NewFolder\" />
+</ItemGroup>
 
 </Project>

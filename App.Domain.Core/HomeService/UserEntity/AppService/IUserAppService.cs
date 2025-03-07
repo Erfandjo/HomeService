@@ -14,7 +14,8 @@ namespace App.Domain.Core.HomeService.UserEntity.AppService
         public Task<Entities.User>? GetById(int id, CancellationToken cancellation);
         public Task<Result> Update(UserUpdateDto user, CancellationToken cancellation);
         public Task<UserUpdateDto>? GetByIdForUpdate(int id, CancellationToken cancellation);
-        public Task<IdentityResult> ChangePassword(UserChangePasswordDto user , CancellationToken cancellation);
+        public Task<IdentityResult> ChangePasswordAdmin(UserChangePasswordDto user , CancellationToken cancellation);
         public Task<UserChangePasswordDto> GetByForChangePassword(int id , CancellationToken cancellation);
+        public Task<string> GetImagePath(int id);
     }
 }

@@ -99,9 +99,9 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Customer
             cus.User.FirstName = customer.FirstName;
             cus.User.LastName = customer.LastName;
             cus.User.PhoneNumber = customer.PhoneNumber;
-            cus.User.ImagePath = customer.ImagePath;
             cus.User.CityId = customer.CityId;
             
+            cus.User.ImagePath = customer.ImagePath;
 
             await _dbContext.SaveChangesAsync(cancellation);
 

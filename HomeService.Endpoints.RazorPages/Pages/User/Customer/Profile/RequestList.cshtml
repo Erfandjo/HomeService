@@ -98,7 +98,12 @@
                                                             else if (request.Status == StatusRequestEnum.Paid && suggestion.Status == App.Domain.Core.HomeService.SuggestionEntity.Enum.StatusSuggestionEnum.Paid)
                                                             {
                                                                 <span class="text-success">پرداخت شده</span>
-                                                                <a class="btn btn-sm btn-success" asp-page="Comment" asp-route-suggestionId="@suggestion.Id" asp-route-expertId="@suggestion.ExpertId" asp-route-requestId="@request.Id">ثبت نظر</a>
+                                                                <a class="btn btn-sm btn-success" asp-page="Comment"  asp-route-expertId="@suggestion.ExpertId" asp-route-requestId="@request.Id">ثبت نظر</a>
+                                                            }
+                                                            else if (request.Status == StatusRequestEnum.Paid && suggestion.Status == App.Domain.Core.HomeService.SuggestionEntity.Enum.StatusSuggestionEnum.Paid)
+                                                            {
+                                                                <span class="text-success">پرداخت شده</span>
+                                                                <a class="btn btn-sm btn-success" asp-page="Comment" asp-route-expertId="@suggestion.ExpertId" asp-route-requestId="@request.Id">ثبت نظر</a>
                                                             }
                                                         </td>
                                                     </tr>

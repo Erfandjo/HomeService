@@ -8,7 +8,7 @@
     Layout = "_Layout";
 }
 
-<input type="text" class="example1" />
+
 
 <div class="col-xl-12 col-lg-2 col-md-12 col-sm-12">
     <div class="submit-form">
@@ -18,45 +18,55 @@
                     <h4 class="mb-0 ft-medium fs-md">درخواست جدید</h4>
                 </div>
             </div>
+
             <form method="post" asp-action="CreateRequest" enctype="multipart/form-data">
-                <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+                
                 <div class="dashboard-list-wraps-body py-3 px-3">
                     <div class="row">
 
                         <input type="hidden" asp-for="Request.ServiceId" />
                        
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+
+
                             <div class="form-group">
+
+                                <div class="input-group">
                                 <label  class="form-label">برای چه تاریخی؟</label>
-                                <input asp-for="@Model.Request.DateOfCompletion" type="date" id="calender" data-jdp class="form-control rounded" />
-                            </div>
-
-                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                                <div class="form-group">
-                                    <label class="form-label">برای چه ساعتی؟</label>
-                                    <input asp-for="@Model.Request.TimeOfCompletion" type="time" data-jdp class="form-control rounded" />
+                                <input asp-for="Request.DateOfCompletion" type="date" id="calender" data-jdp class="form-control rounded" />
+                                <span class="text-danger" asp-validation-for="Request.DateOfCompletion"></span>
                                 </div>
+                            </div>
 
-
-                        </div>
-                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
                             <div class="form-group">
-                                <label class="mb-1">توضیحات</label>
-                                <textarea asp-for="@Model.Request.Description"  class="form-control rounded" rows="5" cols="4"></textarea>
+                                <div class="input-group">
+                                    <label class="form-label">برای چه ساعتی؟</label>
+                                    <input asp-for="Request.TimeOfCompletion" type="time" data-jdp class="form-control rounded" />
+                                    <span class="text-danger" asp-validation-for="Request.TimeOfCompletion"></span>
+                                </div>
+                                
+                        </div>
+                            <div class="form-group">
+                            <div class="input-group">
+                                    <label class="form-label">توضیحات</label>
+                                <textarea asp-for="Request.Description"  class="form-control rounded" rows="5" cols="4"></textarea>
+                                 <span class="text-danger" asp-validation-for="Request.Description"></span>
                             </div>
                         </div>
 
                         </div>
-                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                            <div class="form-group">
-                                <label class="mb-1">قیمت</label>
-                                <input asp-for="@Model.Request.Price" class="form-control rounded" type="number"/>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <label class="form-label">قیمت</label>
+                                <input asp-for="Request.Price" class="form-control rounded" type="number"/>
+                                <span class="text-danger" asp-validation-for="Request.Price"></span>
                             </div>
                         </div>
 
-                        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
-                            <label for="formFileLg" class="form-label">آپلود تصویر</label>
-                            <input asp-for="@Model.Request.Images" type="file"  class="form-control" multiple />
+                        <div class="form-group">
+                            <label for="form-label" class="form-label">آپلود تصویر</label>
+                            <input asp-for="Request.Images" type="file"  class="form-control" multiple />
+                            <span class="text-danger" asp-validation-for="Request.Images"></span>
                         </div>
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                             <div class="form-group p-2">
@@ -65,6 +75,16 @@
                         </div>
                     </div>
                 </div>
+
+
+                @if (Model.Results is not null)
+                {
+                    <div class="form-floating mb-5">
+                        <h1 style="text-align:center" class="text-danger">@Model.Results.Message</h1>
+                    </div>
+                }
+
+
             </form>
         </div>
     </div>

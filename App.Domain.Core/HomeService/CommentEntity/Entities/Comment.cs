@@ -12,6 +12,7 @@ namespace App.Domain.Core.HomeService.CommentEntity.Entities
         #region Properties
         public int Id { get; set; }
         public string Text { get; set; }
+        public int Star { get; set; }
         public DateTime CommentAt { get; set; }
         public int ExpertId { get; set; }
         public int CustomerId { get; set; }

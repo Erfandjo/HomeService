@@ -64,5 +64,7 @@ namespace Framework
             Code = nameof(PasswordRequiresNonAlphanumeric),
             Description = $"رمز عبور باید حداقل یک کاراکتر غیر الفبایی داشته باشد."
         };
+
+       
     }
 }

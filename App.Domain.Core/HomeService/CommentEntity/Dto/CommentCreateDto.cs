@@ -1,11 +1,14 @@
 ﻿using App.Domain.Core.HomeService.CommentEntity.Enum;
+using System.ComponentModel.DataAnnotations;
 
 namespace App.Domain.Core.HomeService.CommentEntity.Dto
 {
-    public class CommentSummaryDto
+    public class CommentCreateDto
     {
-        public int Id { get; set; }
+        [Required(ErrorMessage = "این قسمت نمیتواند خالی باشد")]
         public string Text { get; set; }
+        [Required(ErrorMessage = "این قسمت نمیتواند خالی باشد")]
+        [Range(1, 5 , ErrorMessage ="باید بین یک تا پنج باشد")]
         public int Star { get; set; }
         public DateTime CommentAt { get; set; }
         public int ExpertId { get; set; }
