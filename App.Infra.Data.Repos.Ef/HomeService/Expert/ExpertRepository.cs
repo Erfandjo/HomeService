@@ -1,5 +1,10 @@
-﻿using App.Domain.Core.HomeService.ExpertEntity.Data;
+﻿using App.Domain.Core.HomeService.CommentEntity.Dto;
+using App.Domain.Core.HomeService.CustomerEntity.Entities;
+using App.Domain.Core.HomeService.ExpertEntity.Data;
+using App.Domain.Core.HomeService.ExpertEntity.Dto;
 using App.Domain.Core.HomeService.ResultEntity;
+using App.Domain.Core.HomeService.ServiceCategoryEntity.Dto;
+using App.Domain.Core.HomeService.ServiceCategoryEntity.Entities;
 using App.Infra.Data.Db.SqlServer.Ef.Common;
 using Microsoft.EntityFrameworkCore;
 
@@ -40,6 +45,52 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Expert
             return await _dbContext.Experts.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
         }
 
+        public async Task<ExpertProfileDto> GetByIdForProfile(int id, CancellationToken cancellation)
+        {
+            return await _dbContext.Experts.AsNoTracking().Select(x => new ExpertProfileDto()
+            {
+                Id = x.Id,
+                ImagePath = x.User.ImagePath,
+                FirstName = x.User.FirstName,
+                LastName = x.User.LastName,
+                Comments = (List<CommentProfileDto>) x.Comments.Select(x => new Domain.Core.HomeService.CommentEntity.Dto.CommentProfileDto()
+                {
+                    FullName = x.Customer.User.FirstName + " " + x.Customer.User.LastName,
+                    Star = x.Star,
+                    Text = x.Text,
+                    ServiceName = x.Request.Service.Title
+                }),
+                Biography = x.Biography,
+                Score = x.Score,
+                Skils = (List<SkilsProfileDto>) x.Skils.Select(x => new Domain.Core.HomeService.ServiceCategoryEntity.Dto.SkilsProfileDto()
+                {
+                    Title = x.Title,
+                    
+                })
+            }).FirstOrDefaultAsync(x => x.Id == id);
+
+        }
+
+        public async Task<ExpertUpdateDto>? GetByIdForUpdate(int id, CancellationToken cancellation)
+        {
+            return await _dbContext.Experts.AsNoTracking().Select(x => new ExpertUpdateDto()
+            {
+                Id = x.Id,
+                Biography = x.Biography,
+                CityId = x.User.CityId,
+                FirstName = x.User.FirstName,
+                LastName = x.User.LastName,
+                PhoneNumber = x.User.PhoneNumber,
+                UserName = x.User.UserName,
+                Balance = x.User.Balance,
+                ImagePath = x.User.ImagePath,
+                Email = x.User.Email,
+                Skils = x.Skils.Select(x => x.Id).ToList()
+
+
+            }).FirstOrDefaultAsync(x => x.Id == id);
+        }
+
         public async Task<Result> Price(int id, string price, CancellationToken cancellation)
         {
            var user =  await _dbContext.Experts.Include(x => x.User).FirstOrDefaultAsync(x => x.Id == id);
@@ -62,6 +113,53 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Expert
             await _dbContext.SaveChangesAsync();
 
             return new Result(true, "Success");
+        }
+
+        public async Task<Result> Update(ExpertUpdateDto expert, CancellationToken cancellation)
+        {
+            var exp = await _dbContext.Experts.Include(x => x.User).FirstOrDefaultAsync(x => x.Id == expert.Id);
+            if (exp is null)
+                return new Result(false, "کارشناس پیدا نشد");
+
+
+            exp.Skils ??= new List<ServiceCategory>();
+
+
+            exp.Skils.Clear();
+
+
+
+            if (expert.Skils is not null)
+            {
+                foreach (var catId in expert.Skils)
+                {
+                    var category = await _dbContext.Services.FirstOrDefaultAsync(c => c.Id == catId);
+                    exp.Skils.Add(category);
+                }
+            }
+
+
+
+
+
+
+
+            exp.Biography = expert.Biography;
+            exp.User.UserName = expert.UserName;
+            exp.User.Email = expert.Email;
+            exp.User.Balance = expert.Balance;
+            exp.User.FirstName = expert.FirstName;
+            exp.User.LastName = expert.LastName;
+            exp.User.PhoneNumber = expert.PhoneNumber;
+            exp.User.CityId = expert.CityId;
+            exp.User.NormalizedEmail = expert.Email.ToUpper();
+            exp.User.NormalizedUserName = expert.UserName.ToUpper();
+
+            exp.User.ImagePath = expert.ImagePath;
+
+            await _dbContext.SaveChangesAsync(cancellation);
+
+            return new Result(true, "با موفقیت ویرایش شد");
         }
     }
 }

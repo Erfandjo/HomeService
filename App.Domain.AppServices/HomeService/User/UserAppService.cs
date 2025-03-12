@@ -77,6 +77,12 @@ namespace App.Domain.AppServices.HomeService.User
             return new Result(true, "خوش آمدید");
         }
 
+        public async Task<Result> LogOut(CancellationToken cancellation)
+        {
+           await _signInManager.SignOutAsync();
+            return new Result(true , "با موفقیت انجام شد");
+        }
+
         public async Task<IdentityResult> Register(UserCreateDto model, CancellationToken cancellationToken)
         {
             if (model.Password != model.RePassword)
@@ -110,7 +116,7 @@ namespace App.Domain.AppServices.HomeService.User
             {
                 role = "Expert";
                 user.RoleId = (int)RoleEnum.Expert;
-                user.Expert = new Expert()
+                user.Expert = new App.Domain.Core.HomeService.ExpertEntity.Entities.Expert()
                 {
 
                 };

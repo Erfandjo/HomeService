@@ -12,5 +12,6 @@ namespace App.Domain.Core.HomeService.SubCategoryEntity.AppService
         public Task<Result> Update(SubCategoryUpdateDto subCategory, CancellationToken cancellation);
         public Task<SubCategorySummaryDto>? GetById(int id, CancellationToken cancellation);
         public Task<List<SubCategorySummaryDto>>? GetByCategoryId(int categoryId , CancellationToken cancellation);
+        public Task<List<SubCategoryApiDto>> GetForApi(CancellationToken cancellation);
     }
 }

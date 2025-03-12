@@ -91,6 +91,19 @@ namespace App.Infra.Data.Repos.Ef.HomeService.SubCategory
             }).FirstOrDefaultAsync(x => x.Id == id , cancellation);
         }
 
+        public async Task<List<SubCategoryApiDto>> GetForApi(CancellationToken cancellation)
+        {
+            return await _dbContext.SubCategories.AsNoTracking().Select(x => new SubCategoryApiDto()
+            {
+                Id = x.Id,
+                CategoryId = x.CategoryId,
+                Title = x.Title,
+                ImagePath = x.ImagePath,
+                IsDeleted = x.IsDeleted,
+                Services = x.Services,
+            }).ToListAsync();
+        }
+
         public async Task<Result> Update(SubCategoryUpdateDto subCategory, CancellationToken cancellation)
         {
             var sub = await _dbContext.SubCategories.FirstOrDefaultAsync(x => x.Id == subCategory.Id);

@@ -37,6 +37,11 @@ namespace App.Domain.Services.HomeService.SubCategory
             return await _subCategoryRepository.GetByIdForUpdate(id, cancellation);
         }
 
+        public async Task<List<SubCategoryApiDto>> GetForApi(CancellationToken cancellation)
+        {
+            return await _subCategoryRepository.GetForApi(cancellation);
+        }
+
         public async Task<Result> Update(SubCategoryUpdateDto subCategory, CancellationToken cancellation)
         {
             return await _subCategoryRepository.Update(subCategory, cancellation);

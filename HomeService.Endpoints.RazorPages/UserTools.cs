@@ -14,6 +14,11 @@ namespace HomeService.Endpoints.RazorPages
             return Convert.ToInt32(claims.FirstOrDefault(x => x.Type == "CustomerId").Value);
         }
 
-        
+        public static int GetExpertId(IEnumerable<Claim> claims)
+        {
+            return Convert.ToInt32(claims.FirstOrDefault(x => x.Type == "ExpertId").Value);
+        }
+
+
     }
 }

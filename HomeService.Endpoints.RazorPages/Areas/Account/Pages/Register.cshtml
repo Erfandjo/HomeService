@@ -1,4 +1,6 @@
 ﻿@page
+@using App.Domain.Core.HomeService.UserEntity.Enum
+@using Framework
 @model HomeService.Endpoints.RazorPages.Areas.Account.Pages.RegisterModel
 @{
 }
@@ -14,16 +16,49 @@
                     <form method="post">
                         <div class="form-group">
                             <input type="text" asp-for="@Model.User.UserName" class="form-control" placeholder="نام کاربری">
+                            <span style="background-color:tomato; color:white" asp-validation-for="@Model.User.UserName"></span>
                         </div>
                         <div class="form-group">
                             <input type="password" asp-for="@Model.User.Password" class="form-control" placeholder="رمزعبور">
+                            <span style="background-color:tomato; color:white" asp-validation-for="@Model.User.Password"></span>
                         </div>
+
+                        <div class="form-group">
+                            <input type="password" asp-for="@Model.User.RePassword" class="form-control" placeholder="تکرار رمزعبور">
+                            <span style="background-color:tomato; color:white" asp-validation-for="@Model.User.RePassword"></span>
+                        </div>
+
+                        <div class="form-group">
+                                <select asp-for="User.Role" class="form-select">
+                                    <option value="@RoleEnum.Customer">@RoleEnum.Customer.GetEnumDisplayName()</option>
+                                    <option value="@RoleEnum.Expert">@RoleEnum.Expert.GetEnumDisplayName()</option>
+                                </select>
+                            <span style="background-color:tomato;" class="text-danger" asp-validation-for="User.Role"></span>
+                        </div>
+
                         <button type="submit" class="btn">ثبت نام</button>
                     </form><!-- form -->
                     <!-- forgot-password -->
+                    @if (Model.Result is not null)
+                    {
+                        foreach (var error in Model.Result.Errors)
+                        {
+                            <h1 style="align-items:center; background-color:tomato; display:block; font-size:22px; text-align:center; color:white" class="m-3 p-3">@error.Description</h1>
+                        }
+
+                    }
                 </div>
                 <a asp-page="Login" class="btn-primary">ورود به اکانت</a>
             </div><!-- user-login -->
         </div><!-- row -->
     </div><!-- container -->
 </section><!-- signin-page -->
+
+
+
+
+
+
+
+
+

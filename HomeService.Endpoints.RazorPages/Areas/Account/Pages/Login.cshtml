@@ -16,16 +16,18 @@
                     <form method="post">
                         <div class="form-group">
                             <input type="text" asp-for="Users.Username" class="form-control" placeholder="نام کاربری">
+                            <span style="background-color:tomato; color:white" asp-validation-for="@Model.Users.Username"></span>
                         </div>
                         <div class="form-group">
                             <input type="password" asp-for="Users.Password" class="form-control" placeholder="رمزعبور">
+                            <span style="background-color:tomato; color:white" asp-validation-for="@Model.Users.Password"></span>
                         </div>
                         <button type="submit" class="btn">ورود</button>
                     </form><!-- form -->
-                   @*  @if(@Model.Result is not null)
+                    @if(@Model.Result.Message is not null)
                     {
                         <h1 style="align-items:center; background-color:tomato; display:block; font-size:22px; text-align:center; color:white" class="m-3 p-3">@Model.Result.Message</h1>
-                    } *@
+                    }
                     <!-- forgot-password -->
                 </div>
                 <a  asp-page="Register" class="btn-primary">ساخت اکانت جدید</a>

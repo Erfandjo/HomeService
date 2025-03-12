@@ -1,0 +1,207 @@
+﻿@page
+@using App.Domain.Core.HomeService.ServiceCategoryEntity.AppService
+@model HomeService.Endpoints.RazorPages.Pages.User.Expert.Profile.UpdateModel
+@inject IServiceCategoryAppService _serviceCategoryAppService
+@{
+    Layout = "_ExpertProfileLayout";
+ 
+}
+
+<div class="col-lg-12">
+    <div class="portlet box shadow">
+        <div class="portlet-heading">
+            <div class="portlet-title">
+                <h3 class="title">
+                    کاربران
+                </h3>
+            </div><!-- /.portlet-title -->
+        </div><!-- /.portlet-heading -->
+        <div class="portlet-body">
+            <div class="top-buttons-box mb-2">
+            </div>
+            <div class="row">
+                <form enctype="multipart/form-data" id="simple-form" role="form" method="post">
+                    @if (string.IsNullOrEmpty(Model.Expert.ImagePath))
+                    {
+                        <td><img style="border-radius : 50%" src="~/Images/Profiles/placeholder.jpg" width="80" height="80" /></td>
+                    }
+                    else
+                    {
+                        <td><img style="border-radius : 50%" src="@Model.Expert.ImagePath" width="80" height="80" /></td>
+                    }
+
+                    <hr />
+                    <input type="hidden" asp-for="Expert.Id" />
+
+                    <div class="form-body">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input asp-for="Expert.FirstName" class="form-control" type="text" placeholder="نام">
+                                <span class="text-danger" asp-validation-for="Expert.FirstName"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input asp-for="Expert.LastName" class="form-control" type="text" placeholder="نام خانوادگی">
+                                <span class="text-danger" asp-validation-for="Expert.LastName"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input asp-for="Expert.PhoneNumber" class="form-control" type="text" placeholder="شماره موبایل" />
+                                <span class="text-danger" asp-validation-for="Expert.PhoneNumber"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input asp-for="Expert.Email" dir="rtl" class="form-control" type="text" placeholder="آدرس ایمیل" />
+                                <span class="text-danger" asp-validation-for="Expert.Email"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input asp-for="Expert.Biography" dir="rtl" class="form-control" type="text" placeholder="آدرس" />
+                                <span class="text-danger" asp-validation-for="Expert.Biography"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input asp-for="Expert.Balance" class="form-control" type="number" placeholder="موجودی" />
+                                <span class="text-danger" asp-validation-for="Expert.Balance"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input asp-for="Expert.UserName" class="form-control" type="text" placeholder="نام کاربری" />
+                                <span class="text-danger" asp-validation-for="Expert.UserName"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="input-group">
+                            <select asp-for="Expert.Skils" class="js-example-basic-multiple form-control" multiple="multiple">
+                                    
+                                @foreach (var skils in await _serviceCategoryAppService.GetSkils(default))
+                                {
+                                    <option value="@skils.Id">@skils.Title</option>
+                                }
+                            </select>
+                        </div>
+                        </div>
+                   
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select asp-for="Expert.CityId" class="form-select">
+                                    @foreach (var city in @Model.Cities)
+                                    {
+                                        <option value="@city.Id">@city.Title</option>
+                                    }
+                                </select>
+                                <span class="text-danger" asp-validation-for="Expert.CityId"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group relative">
+                            <div class="input-group round">
+                                <input value="@Model.Expert.ImagePath" asp-for="Expert.ProfileImgFile" type="file" class="form-control file-input" placeholder="برای آپلود کلیک کنید">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-success">
+                                        <i class="icon-picture"></i>
+                                        آپلود عکس
+                                        <div class="paper-ripple"><div class="paper-ripple__background"></div><div class="paper-ripple__waves"></div></div>
+                                    </button>
+                                </span>
+                            </div><!-- /.input-group -->
+                            <div class="help-block"></div>
+                        </div>
+
+
+                    </div>
+                    <hr>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-success">
+                            <i class="icon-check"></i>
+                            ذخیره
+                        </button>
+                        <a asp-page="Index" class="btn btn-warning">
+                            بازگشت
+                        </a>
+                    </div>
+
+                    @if (Model.Results is not null)
+                    {
+                        <div class="form-floating mb-5">
+                            <h1 style="text-align:center" class="text-danger">@Model.Results.Message</h1>
+                        </div>
+                    }
+
+
+                </form>
+            </div>
+        </div><!-- /.portlet-body -->
+    </div><!-- /.portlet -->
+</div><!-- /.col-lg-12 -->
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+      
+
+
+                document.addEventListener("DOMContentLoaded", function () {
+            $('.js-example-basic-multiple').select2({
+                placeholder: "@Html.DisplayNameFor(model => model.Expert.Skils)",
+                allowClear: true,
+                width: '100%',
+                length: '100%'
+            });
+        });
+
+
+
+    </script>
+}
+
+    <style>
+
+
+    .select2-container--default .select2-selection--multiple {
+        height: auto !important;
+        min-height: 38px;
+        border-radius: 8px;
+        background-color: #fff;
+    }
+
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            background-color: #4CAF50; /* رنگ پس‌زمینه انتخاب‌ها */
+            color: #fff; /* رنگ متن انتخاب‌ها */
+            border-radius: 4px;
+            padding: 5px;
+        }
+
+        
+
+
+
+
+
+
+    </style>

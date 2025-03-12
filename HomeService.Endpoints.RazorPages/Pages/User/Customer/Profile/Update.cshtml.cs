@@ -46,10 +46,9 @@ namespace HomeService.Endpoints.RazorPages.Pages.User.Customer.Profile
             if (ModelState.IsValid)
             {
                 Results = await _customerAppService.Update(Customer, cancellation);
-                Cities = await _cityAppService.GetAll(cancellation);
             }
-             
-                return Page();
+            Cities = await _cityAppService.GetAll(cancellation);
+            return Page();
             
         }
 

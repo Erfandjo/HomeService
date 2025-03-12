@@ -39,7 +39,7 @@ namespace App.Domain.Services.HomeService.User
             return await _userRepository.GetCount(cancellation);
 
         }
-
+        
         public async Task<string> GetImagePath(int id)
         {
             return await _userRepository.GetImagePath(id);

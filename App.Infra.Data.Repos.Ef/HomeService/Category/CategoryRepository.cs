@@ -1,4 +1,4 @@
-﻿using App.Domain.Core.HomeService.CategoryEntity.Data;
+﻿using App.Domain.Core.HomeService.CategoryEntity.Data.EntityFramework;
 using App.Domain.Core.HomeService.CategoryEntity.Dto;
 using App.Domain.Core.HomeService.ResultEntity;
 using App.Infra.Data.Db.SqlServer.Ef.Common;

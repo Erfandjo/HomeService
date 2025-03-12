@@ -101,6 +101,15 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Service
             }).ToListAsync();
         }
 
+        public async Task<List<SkilsProfileDto>>? GetSkils(CancellationToken cancellation)
+        {
+            return await _dbContext.Services.Select(x => new SkilsProfileDto()
+            {
+                Id = x.Id,
+                Title = x.Title
+            }).ToListAsync();
+        }
+
         public async Task<Result> Update(ServiceCategoryUpdateDto service, CancellationToken cancellation)
         {
             var ser = await _dbContext.Services.FirstOrDefaultAsync(x => x.Id == service.Id);

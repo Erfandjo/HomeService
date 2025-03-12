@@ -85,6 +85,7 @@
                                                             @if (request.Status == StatusRequestEnum.WaitingExpertSelection && suggestion.Status == App.Domain.Core.HomeService.SuggestionEntity.Enum.StatusSuggestionEnum.WaitingCustomerSelection)
                                                             {
                                                                 <a onclick="return confirm('آیا از انتخاب این کارشناس اطمینان دارید؟')" class="btn btn-sm btn-success" asp-page-handler="Accept" asp-route-suggestionId="@suggestion.Id" asp-route-requestId="@request.Id">تایید پیشنهاد</a>
+                                                                <a class="btn btn-sm btn-blue" asp-page="/User/Expert/Profile" asp-route-id="@suggestion.ExpertId">پروفایل کارشناس</a>
                                                             }
                                                             else if (request.Status == StatusRequestEnum.Started && suggestion.Status == App.Domain.Core.HomeService.SuggestionEntity.Enum.StatusSuggestionEnum.Selected)
                                                             {

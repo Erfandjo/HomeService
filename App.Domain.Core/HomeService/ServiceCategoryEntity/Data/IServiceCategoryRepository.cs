@@ -15,5 +15,6 @@ namespace App.Domain.Core.HomeService.ServiceCategoryEntity.Data
         public Task<List<ServiceCategorySummaryDto>>? GetAll(CancellationToken cancellation);
         public Task<ServiceCategoryUpdateDto>? GetByIdForUpdate(int id, CancellationToken cancellation);
         public Task<List<ServiceCategorySummaryDto>>? GetBySubCategoryId(int subCategoryId, CancellationToken cancellation);
+        public Task<List<SkilsProfileDto>>? GetSkils(CancellationToken cancellation);
     }
 }

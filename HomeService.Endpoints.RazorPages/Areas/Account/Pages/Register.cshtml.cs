@@ -1,7 +1,9 @@
 using App.Domain.Core.HomeService.CityEntity.AppService;
 using App.Domain.Core.HomeService.CityEntity.Entities;
+using App.Domain.Core.HomeService.ResultEntity;
 using App.Domain.Core.HomeService.UserEntity.AppService;
 using App.Domain.Core.HomeService.UserEntity.Dto;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -14,19 +16,27 @@ namespace HomeService.Endpoints.RazorPages.Areas.Account.Pages
         [BindProperty]
         public UserCreateDto User { get; set; }
 
-        [BindProperty]
-        public List<City> Cities { get; set; }
+        public IdentityResult Result { get; set; }
+
 
         public async Task OnGetAsync(CancellationToken cancellationToken)
         {
-            Cities = await _cityAppService.GetAll(cancellationToken);
+          
         }
 
 
         public async Task<IActionResult> OnPost(CancellationToken cancellationToken)
         {
-            await _userAppService.Register(User, cancellationToken);
-            return RedirectToPage("Index");
+            if (ModelState.IsValid)
+            {
+                Result = await _userAppService.Register(User, cancellationToken);
+                if (Result.Succeeded)
+                {
+                    return RedirectToPage("Login");
+                }
+            }
+            return Page();
+            
         }
 
 

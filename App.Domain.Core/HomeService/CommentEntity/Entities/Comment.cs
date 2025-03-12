@@ -19,7 +19,8 @@ namespace App.Domain.Core.HomeService.CommentEntity.Entities
         public int RequestId { get; set; }
         public StatusEnum StatusEnum { get; set; } = StatusEnum.IsPending;
         #endregion
-
+        
+        
         #region NavigationProperties
         public Expert Expert { get; set; }
         public Customer Customer { get; set; }

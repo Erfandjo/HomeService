@@ -1,0 +1,381 @@
+﻿@page
+@model HomeService.Endpoints.RazorPages.Pages.User.Expert.Profile.ProfileModel
+@{
+    Layout = "_CustomerProfileLayout";
+}
+
+@* <!DOCTYPE html>
+<html lang="fa"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پروفایل کارشناس</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        .rating .fa-star {
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card text-center p-4">
+            <img src="https://via.placeholder.com/100" class="rounded-circle mx-auto" alt="Avatar">
+            <h2 class="mt-3">مهندس رضا محمدی</h2>
+            <p class="text-muted">توسعه‌دهنده وب و متخصص ASP.NET</p>
+            <p class="text-secondary">با بیش از 5 سال تجربه در توسعه وب و فریمورک‌های مایکروسافت.</p>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-alt"></i>
+                <p class="mt-2">امتیاز: 4.7</p>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <h3 class="text-center mb-3">نظرات کاربران</h3>
+            <div class="card p-3 mb-3">
+                <p class="fw-bold">سعید احمدی</p>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <p class="text-muted">بسیار حرفه‌ای و خوش برخورد.</p>
+            </div>
+            <div class="card p-3 mb-3">
+                <p class="fw-bold">الهام رضایی</p>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star text-muted"></i>
+                </div>
+                <p class="text-muted">دانش فنی خوبی دارد ولی زمان‌بندی کمی مشکل داشت.</p>
+            </div>
+            <div class="card p-3 mb-3">
+                <p class="fw-bold">محمد کاظمی</p>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <p class="text-muted">پیشنهاد میکنم حتماً با ایشون کار کنید!</p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> *@
+
+
+@* <div class="profile-container">
+    <!-- بخش اطلاعات کارشناس -->
+    <div class="profile-header">
+        <div class="profile-image">
+            <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
+        </div>
+        <div class="profile-info">
+            <h2 class="name">نام کارشناس</h2>
+            <p class="specialties">تخصص‌ها: <span class="skills">برنامه‌نویسی، طراحی وب</span></p>
+            <div class="rating">
+                <span>امتیاز: </span>
+                <span class="score">4.5</span>
+                <span> از 5</span>
+            </div>
+            <p class="biography">بیوگرافی: متخصص در زمینه‌های مختلف فناوری اطلاعات و طراحی سیستم‌های نرم‌افزاری.</p>
+        </div>
+    </div>
+
+    <!-- بخش کامنت‌ها -->
+    <div class="comments">
+        <h3>نظرات کاربران:</h3>
+        <div class="comment">
+            <p class="commenter-name">مشتری 1</p>
+            <p class="comment-text">خیلی کارش عالی بود، خیلی سریع و دقیق پاسخ داد.</p>
+            <p class="service-title"><strong>سرویس مربوطه:</strong> طراحی وب</p>
+        </div>
+        <div class="comment">
+            <p class="commenter-name">مشتری 2</p>
+            <p class="comment-text">راضی نبودم از عملکردش.</p>
+            <p class="service-title"><strong>سرویس مربوطه:</strong> مشاوره فناوری</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .profile-container {
+        max-width: 900px;
+        margin: auto;
+        padding: 20px;
+        font-family: 'Arial', sans-serif;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .profile-image {
+        margin-right: 20px;
+    }
+
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #ddd;
+    }
+
+    .profile-info {
+        flex-grow: 1;
+    }
+
+    .name {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        margin: 0;
+    }
+
+    .specialties {
+        font-size: 16px;
+        color: #777;
+    }
+
+    .skills {
+        font-weight: bold;
+        color: #555;
+    }
+
+    .rating {
+        margin-top: 10px;
+        font-size: 18px;
+        color: #f39c12;
+    }
+
+    .biography {
+        margin-top: 20px;
+        font-size: 16px;
+        color: #555;
+        line-height: 1.5;
+    }
+
+    .comments {
+        margin-top: 30px;
+    }
+
+        .comments h3 {
+            font-size: 20px;
+            color: #333;
+        }
+
+    .comment {
+        padding: 15px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        margin-bottom: 10px;
+    }
+
+    .commenter-name {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .comment-text {
+        font-style: italic;
+        color: #555;
+        margin-top: 5px;
+    }
+
+    .service-title {
+        margin-top: 10px;
+        font-weight: bold;
+        color: #f39c12;
+    }
+</style> *@
+
+
+
+<div class="profile-container">
+    <!-- بخش اطلاعات کارشناس -->
+    <div class="profile-header">
+        <div class="profile-image">
+
+            @if (string.IsNullOrEmpty(Model.Expert.ImagePath))
+            {
+                <img src="~/Images/Profiles/placeholder.jpg" alt="Profile Picture" class="profile-pic">
+            }
+            else
+            {
+                <img src="@Model.Expert.ImagePath" alt="Profile Picture" class="profile-pic">
+            }
+
+
+
+           
+           
+        </div>
+        <div class="profile-info">
+            <h2 class="name">@Model.Expert.FirstName @Model.Expert.LastName</h2>
+            <p class="specialties">
+                تخصص‌ها:
+                <span class="skills">
+                    @string.Join(", ", Model.Expert.Skils.Select(skill => skill.Title))
+                </span>
+            </p>
+
+            <div class="rating">
+                <span>امتیاز: </span>
+                <span class="score">@Model.Expert.Score</span>
+                <span> از 5</span>
+            </div>
+            <p class="biography">بیوگرافی: @Model.Expert.Biography</p>
+        </div>
+    </div>
+
+    <!-- بخش کامنت‌ها -->
+    <div class="comments">
+        <h3>نظرات کاربران:</h3>
+
+        @if(Model.Expert.Comments is not null)
+        {
+            @foreach (var comment in Model.Expert.Comments)
+            {
+
+
+                <div class="comment">
+                    <p class="commenter-name">@comment.FullName</p>
+                    <p class="comment-text">@comment.Text</p>
+                    <p class="service-title"><strong>سرویس مربوطه:</strong>@comment.ServiceName</p>
+                    <p class="comment-score"><strong>امتیاز:</strong> @comment.Star از 5</p>
+                </div>
+
+            }
+
+        }
+
+          <div class="comment">
+                    <p>نظری ثبت نشده است</p>
+                </div>
+
+</div>
+</div>
+
+<style>
+    .profile-container {
+        max-width: 900px;
+        margin: auto;
+        padding: 20px;
+        font-family: 'Arial', sans-serif;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .profile-image {
+        margin-right: 20px;
+    }
+
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #ddd;
+    }
+
+    .profile-info {
+        flex-grow: 1;
+    }
+
+    .name {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        margin: 0;
+    }
+
+    .specialties {
+        font-size: 16px;
+        color: #777;
+    }
+
+    .skills {
+        font-weight: bold;
+        color: #555;
+    }
+
+    .rating {
+        margin-top: 10px;
+        font-size: 18px;
+        color: #f39c12;
+    }
+
+    .biography {
+        margin-top: 20px;
+        font-size: 16px;
+        color: #555;
+        line-height: 1.5;
+    }
+
+    .comments {
+        margin-top: 30px;
+    }
+
+        .comments h3 {
+            font-size: 20px;
+            color: #333;
+        }
+
+    .comment {
+        padding: 15px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        margin-bottom: 10px;
+    }
+
+    .commenter-name {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .comment-text {
+        font-style: italic;
+        color: #555;
+        margin-top: 5px;
+    }
+
+    .service-title {
+        margin-top: 10px;
+        font-weight: bold;
+        color: #f39c12;
+    }
+
+    .comment-score {
+        margin-top: 5px;
+        color: #f39c12;
+        font-weight: bold;
+    }
+</style>

@@ -17,5 +17,6 @@ namespace App.Domain.Core.HomeService.UserEntity.AppService
         public Task<IdentityResult> ChangePasswordAdmin(UserChangePasswordDto user , CancellationToken cancellation);
         public Task<UserChangePasswordDto> GetByForChangePassword(int id , CancellationToken cancellation);
         public Task<string> GetImagePath(int id);
+        public Task<Result> LogOut(CancellationToken cancellation);
     }
 }

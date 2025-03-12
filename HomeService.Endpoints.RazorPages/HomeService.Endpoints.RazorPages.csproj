@@ -16,6 +16,7 @@
     <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
     <PackageReference Include="Serilog.Enrichers.Environment" Version="3.0.1" />
     <PackageReference Include="Serilog.Sinks.Seq" Version="9.0.0" />
+    <PackageReference Include="Syncfusion.EJ2.AspNet.Core" Version="28.2.11" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +24,7 @@
     <ProjectReference Include="..\App.Domain.Core\App.Domain.Core.csproj" />
     <ProjectReference Include="..\App.Domain.Services\App.Domain.Services.csproj" />
     <ProjectReference Include="..\App.Infra.Data.Db.SqlServer.Ef\App.Infra.Data.Db.SqlServer.Ef.csproj" />
+    <ProjectReference Include="..\App.Infra.Data.Repos.Dapper\App.Infra.Data.Repos.Dapper.csproj" />
     <ProjectReference Include="..\App.Infra.Data.Repos.Ef\App.Infra.Data.Repos.Ef.csproj" />
     <ProjectReference Include="..\Framework\Framework.csproj" />
   </ItemGroup>

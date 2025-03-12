@@ -65,6 +65,11 @@ namespace App.Domain.AppServices.HomeService.ServiceCategory
             return await _serviceCategoryService.GetBySubCategoryId(subCategoryId, cancellation);
         }
 
+        public async Task<List<SkilsProfileDto>>? GetSkils(CancellationToken cancellation)
+        {
+            return await _serviceCategoryService.GetSkils(cancellation);
+        }
+
         public async Task<Result> Update(ServiceCategoryUpdateDto service, CancellationToken cancellation)
         {
 

@@ -64,6 +64,11 @@ namespace App.Domain.AppServices.HomeService.SubCategory
             return await _subCategoryService.GetByIdForUpdate(id, cancellation);
         }
 
+        public async Task<List<SubCategoryApiDto>> GetForApi(CancellationToken cancellation)
+        {
+            return await _subCategoryService.GetForApi(cancellation);
+        }
+
         public async Task<Result> Update(SubCategoryUpdateDto subCategory, CancellationToken cancellation)
         {
             if (subCategory.ImgFile is not null)

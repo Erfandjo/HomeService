@@ -10,9 +10,9 @@ namespace App.Domain.Core.HomeService.UserEntity.Dto
     public class UserChangePasswordDto
     {
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "رمزعبور نمیتواند خالی بماند")]
         public string Password { get; set; }
-        [Required]
+        [Required(ErrorMessage = "رمزعبور نمیتواند خالی بماند")]
         public string Repassword { get; set; }
     }
 }

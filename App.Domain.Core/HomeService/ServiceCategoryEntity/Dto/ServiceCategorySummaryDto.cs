@@ -9,5 +9,7 @@
         public string BasePrice { get; set; }
         public int VisitCount { get; set; }
         public string Description { get; set; }
+
+        // Id,Title,ImagePath,
     }
 }

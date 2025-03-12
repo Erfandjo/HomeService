@@ -100,6 +100,8 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Customer
             cus.User.LastName = customer.LastName;
             cus.User.PhoneNumber = customer.PhoneNumber;
             cus.User.CityId = customer.CityId;
+            cus.User.NormalizedEmail = customer.Email.ToUpper();
+            cus.User.NormalizedUserName = customer.UserName.ToUpper();
             
             cus.User.ImagePath = customer.ImagePath;
 

@@ -326,7 +326,15 @@
                                     <p class="vrt-qgunke"><span class="ft-bold d14ixhs">تعداد بازدید : </span>@Model.Service.VisitCount</p>
                                 </div>
                           
-                        <a asp-page="/User/Customer/Request/Index" asp-route-id="@Model.Service.Id" class="btn btn-md rounded theme-bg text-light ft-medium fs-sm full-width">ثبت سفارش</a>
+
+                                @if(User.IsInRole("Customer"))
+                                {
+                            <a asp-page="/User/Customer/Request/Index" asp-route-id="@Model.Service.Id" class="btn btn-md rounded theme-bg text-light ft-medium fs-sm full-width">ثبت سفارش</a>
+                                } else
+                                {
+                            <a class="btn btn-md rounded theme-bg text-light ft-medium fs-sm full-width">امکان سفارش وجود ندارد</a>
+                                }
+                   
                     </div> 
 
                     <!-- Business Inof -->

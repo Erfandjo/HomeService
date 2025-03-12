@@ -10,14 +10,24 @@ namespace HomeService.Endpoints.RazorPages.Areas.Account.Pages
 
     
 
-    public class LoginModel(SiteSettings siteSettings, IUserAppService userAppService) : PageModel
+    public class LoginModel : PageModel
     {
+
+      
+        private readonly IUserAppService _userAppService;
+
+        public LoginModel(IUserAppService userAppService)
+        {
+           
+            _userAppService = userAppService;
+            Result = new Result();
+        }
 
         [BindProperty]
         public UserLoginModel Users { get; set; }
 
-        //[BindProperty]
-        //public Result? Result { get; set; }
+        [BindProperty]
+        public Result? Result { get; set; }
 
         public IActionResult OnGetAsync()
         {
@@ -26,12 +36,14 @@ namespace HomeService.Endpoints.RazorPages.Areas.Account.Pages
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            
-            var user = await userAppService.Login(Users.Username, Users.Password, true);
-            //if (!Result.IsSucces)
-            //{
-            //    return Page();
-            //}
+            if (ModelState.IsValid)
+            {
+                Result = await _userAppService.Login(Users.Username, Users.Password, true);
+                if (!Result.IsSucces)
+                {
+                    return Page();
+                }
+            }
             if (User.IsInRole("Admin"))
             {
                 returnUrl = Url.Content("/Admin");
