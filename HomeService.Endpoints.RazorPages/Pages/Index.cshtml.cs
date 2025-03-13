@@ -14,6 +14,9 @@ namespace HomeService.Endpoints.RazorPages.Pages
 
         public async Task<IActionResult> OnGetAsync(CancellationToken cancellation , string returnUrl = null)
         {
+
+        
+
             Categories = await _categoryRepositoryDapper.GetAll(cancellation);
             if (User.IsInRole("Admin"))
             {

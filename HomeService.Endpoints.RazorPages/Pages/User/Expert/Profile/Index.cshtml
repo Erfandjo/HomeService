@@ -1,8 +1,10 @@
 ﻿@page
-@model HomeService.Endpoints.RazorPages.Pages.User.Expert.Profile.ProfileModel
+@model HomeService.Endpoints.RazorPages.Pages.User.Expert.Profile.IndexModel
 @{
     Layout = "_CustomerProfileLayout";
 }
+
+
 
 @* <!DOCTYPE html>
 <html lang="fa"> 
@@ -227,8 +229,8 @@
 
 
 
-           
-           
+
+
         </div>
         <div class="profile-info">
             <h2 class="name">@Model.Expert.FirstName @Model.Expert.LastName</h2>
@@ -252,7 +254,7 @@
     <div class="comments">
         <h3>نظرات کاربران:</h3>
 
-        @if(Model.Expert.Comments is not null)
+        @if (Model.Expert.Comments is not null)
         {
             @foreach (var comment in Model.Expert.Comments)
             {
@@ -269,11 +271,11 @@
 
         }
 
-          <div class="comment">
-                    <p>نظری ثبت نشده است</p>
-                </div>
+        <div class="comment">
+            <p>نظری ثبت نشده است</p>
+        </div>
 
-</div>
+    </div>
 </div>
 
 <style>

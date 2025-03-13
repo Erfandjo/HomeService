@@ -24,6 +24,11 @@ namespace App.Domain.Services.HomeService.Expert
             return await _expertRepository.GetByIdForUpdate(id, cancellation);
         }
 
+        public async Task<List<int>>? GetExpertSkils(int expertId, CancellationToken cancellation)
+        {
+            return await _expertRepository.GetExpertSkils(expertId, cancellation);
+        }
+
         public async Task<Result> Price(int id, string price, CancellationToken cancellation)
         {
             return await _expertRepository.Price(id, price, cancellation);

@@ -100,6 +100,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 
 
+
+
 builder.Services.AddIdentity<User, IdentityRole<int>>(options =>
 {
     options.SignIn.RequireConfirmedAccount = false;
@@ -191,6 +193,7 @@ app.UseHttpsRedirection();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 app.UseSerilogRequestLogging();
 app.MapStaticAssets();

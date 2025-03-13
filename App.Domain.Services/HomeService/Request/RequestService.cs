@@ -52,9 +52,14 @@ namespace App.Domain.Services.HomeService.Request
             return await _requestRepository.GetByIdForUpdate(id, cancellation);
         }
 
-        public async Task<List<RequestListCustomerDto>>? GetRequestsCustomer(int customerId, CancellationToken cancellation)
+        public async Task<List<RequestCustomerListDto>>? GetRequestsCustomer(int customerId, CancellationToken cancellation)
         {
             return await _requestRepository.GetRequestsCustomer(customerId, cancellation);
+        }
+
+        public async Task<List<RequestExpertListDto>>? GetRequestsExpert(List<int> expetSkils , CancellationToken cancellation)
+        {
+            return await _requestRepository.GetRequestsExpert(expetSkils , cancellation);
         }
 
         public async Task<Result> PaidRequest(int requestId, CancellationToken cancellation)

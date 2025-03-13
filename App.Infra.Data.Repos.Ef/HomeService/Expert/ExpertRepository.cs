@@ -7,6 +7,7 @@ using App.Domain.Core.HomeService.ServiceCategoryEntity.Dto;
 using App.Domain.Core.HomeService.ServiceCategoryEntity.Entities;
 using App.Infra.Data.Db.SqlServer.Ef.Common;
 using Microsoft.EntityFrameworkCore;
+using System.Threading;
 
 namespace App.Infra.Data.Repos.Ef.HomeService.Expert
 {
@@ -89,6 +90,15 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Expert
 
 
             }).FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<List<int>>? GetExpertSkils(int expertId, CancellationToken cancellation)
+        {
+            var expertSkils = await _dbContext.Experts.Where(e => e.Id == expertId)
+                .SelectMany(e => e.Skils)
+                .Select(c => c.Id).ToListAsync(cancellation);
+
+            return (List<int>) expertSkils;
         }
 
         public async Task<Result> Price(int id, string price, CancellationToken cancellation)

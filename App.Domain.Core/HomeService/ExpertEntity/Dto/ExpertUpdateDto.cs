@@ -18,8 +18,8 @@ namespace App.Domain.Core.HomeService.ExpertEntity.Dto
         [Required(ErrorMessage = "این قسمت نمیتواند خالی باشد")]
         public string UserName { get; set; }
         public string? PhoneNumber { get; set; }
-        public string? Email { get; set; }
         [Required(ErrorMessage = "این قسمت نمیتواند خالی باشد")]
+        public string? Email { get; set; }
         public string Balance { get; set; }
         public int? CityId { get; set; }
         public IFormFile? ProfileImgFile { get; set; }

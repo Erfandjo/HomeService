@@ -1,4 +1,5 @@
-﻿using App.Domain.Core.HomeService.RequestEntity.Data;
+﻿using App.Domain.Core.HomeService.CustomerEntity.Entities;
+using App.Domain.Core.HomeService.RequestEntity.Data;
 using App.Domain.Core.HomeService.RequestEntity.Dto;
 using App.Domain.Core.HomeService.RequestEntity.Entities;
 using App.Domain.Core.HomeService.ResultEntity;
@@ -142,10 +143,10 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Request
             }).FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<List<RequestListCustomerDto>>? GetRequestsCustomer(int customerId, CancellationToken cancellation)
+        public async Task<List<RequestCustomerListDto>>? GetRequestsCustomer(int customerId, CancellationToken cancellation)
         {
             var suggestions = new List<SuggestionRequestListDto>();
-            return await _dbContext.Requests.AsNoTracking().Where(x => x.CustomerId == customerId).Select(x => new RequestListCustomerDto()
+            return await _dbContext.Requests.AsNoTracking().Where(x => x.CustomerId == customerId).Select(x => new RequestCustomerListDto()
             {
                 Id = x.Id,
                 ServiceImagePath = x.Service.ImagePath,
@@ -167,6 +168,22 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Request
                     Status = x.Status,
                 }),
                 
+            }).ToListAsync(cancellation);
+        }
+
+        public async Task<List<RequestExpertListDto>>? GetRequestsExpert(List<int> expetSkils, CancellationToken cancellation)
+        {
+            var suggestions = new List<SuggestionRequestListDto>();
+            return await _dbContext.Requests.AsNoTracking().Where(x => expetSkils.Contains(x.ServiceId)).Select(x => new RequestExpertListDto()
+            {
+                Id = x.Id,
+                ServiceImagePath = x.Service.ImagePath,
+                ServiceName = x.Service.Title,
+                Status = x.Status,
+                DateOfCompletion = x.DateOfCompletion,
+                TimeOfCompletion = x.TimeOfCompletion,
+
+
             }).ToListAsync(cancellation);
         }
 

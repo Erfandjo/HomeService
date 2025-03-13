@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace App.Domain.Core.HomeService.RequestEntity.Dto
 {
-    public class RequestListCustomerDto
+    public class RequestCustomerListDto
     {
 
         public int Id { get; set; }

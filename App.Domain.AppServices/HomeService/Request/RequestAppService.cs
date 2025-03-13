@@ -98,9 +98,15 @@ namespace App.Domain.AppServices.HomeService.Request
             return await _requestService.GetByIdForUpdate(id, cancellation);
         }
 
-        public async Task<List<RequestListCustomerDto>>? GetRequestsCustomer(int customerId, CancellationToken cancellation)
+        public async Task<List<RequestCustomerListDto>>? GetRequestsCustomer(int customerId, CancellationToken cancellation)
         {
             return await _requestService.GetRequestsCustomer(customerId, cancellation);
+        }
+
+        public async Task<List<RequestExpertListDto>>? GetRequestsExpert(int expertId, CancellationToken cancellation)
+        {
+           var expertSkils = await _expertService.GetExpertSkils(expertId, cancellation);
+            return await _requestService.GetRequestsExpert(expertSkils , cancellation);
         }
 
         public async Task<Result> PaidSuggestion(int requestId, int suggestionId, int customerId , string price, int expertId, CancellationToken cancellation)

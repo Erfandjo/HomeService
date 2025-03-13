@@ -101,21 +101,42 @@
 					<ul class="sign-in">
                         @if (SignInManager.IsSignedIn(User))
                         {
-                            <li class="nav-item">
-								<a asp-page="/User/Customer/Profile/Update">
+							@if(User.IsInRole("Customer"))
+							{
+								<li class="nav-item">
+									<a asp-page="/User/Customer/Profile/Update">
 
-									@if (string.IsNullOrEmpty(await _userAppService.GetImagePath(int.Parse(UserTools.GetUserId(User.Claims)))))
-									{
-										<img src="~/Images/Profiles/placeholder.jpg" alt="عکس پرفایل" class="img-circle img-responsive  " width="80" height="80">
-									}
-									else
-									{
-										<img src= @await _userAppService.GetImagePath(int.Parse(UserTools.GetUserId(User.Claims)))) alt="عکس پرفایل" class="img-circle img-responsive" width="80" height="80">
-									}
-									<span>@User.Identity.Name</span>
-									<i class="icon-arrow-down"></i>
-								</a>
-                            </li>
+										@if (string.IsNullOrEmpty(await _userAppService.GetImagePath(int.Parse(UserTools.GetUserId(User.Claims)))))
+										{
+											<img src="~/Images/Profiles/placeholder.jpg" alt="عکس پرفایل" class="img-circle img-responsive  " width="80" height="80">
+										}
+										else
+										{
+											<img src=@await _userAppService.GetImagePath(int.Parse(UserTools.GetUserId(User.Claims)))) alt="عکس پرفایل" class="img-circle img-responsive" width="80" height="80">
+										}
+										<span>@User.Identity.Name</span>
+										<i class="icon-arrow-down"></i>
+									</a>
+								</li>
+							} else if(User.IsInRole("Expert"))
+							{
+								<li class="nav-item">
+									<a asp-page="/User/Expert/Profile/Update">
+
+										@if (string.IsNullOrEmpty(await _userAppService.GetImagePath(int.Parse(UserTools.GetUserId(User.Claims)))))
+										{
+											<img src="~/Images/Profiles/placeholder.jpg" alt="عکس پرفایل" class="img-circle img-responsive  " width="80" height="80">
+										}
+										else
+										{
+											<img src=@await _userAppService.GetImagePath(int.Parse(UserTools.GetUserId(User.Claims)))) alt="عکس پرفایل" class="img-circle img-responsive" width="80" height="80">
+										}
+										<span>@User.Identity.Name</span>
+										<i class="icon-arrow-down"></i>
+									</a>
+								</li>
+							}
+                           
                             
                         }
 

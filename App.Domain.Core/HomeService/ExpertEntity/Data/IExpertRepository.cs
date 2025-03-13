@@ -14,5 +14,6 @@ namespace App.Domain.Core.HomeService.ExpertEntity.Data
         public Task<Result> Price(int id, string price, CancellationToken cancellation);
         public Task<ExpertUpdateDto>? GetByIdForUpdate(int id, CancellationToken cancellation);
         public Task<ExpertProfileDto> GetByIdForProfile(int id, CancellationToken cancellation);
+        public Task<List<int>>? GetExpertSkils(int expertId, CancellationToken cancellation);
     }
 }

@@ -20,7 +20,7 @@ namespace HomeService.Endpoints.RazorPages.Pages.User.Customer.Profile
         }
 
         [BindProperty]
-        public List<RequestListCustomerDto> Requests { get; set; }
+        public List<RequestCustomerListDto> Requests { get; set; }
 
         [BindProperty]
         public Result Result { get; set; }
