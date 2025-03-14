@@ -4,7 +4,7 @@ using App.Domain.Core.HomeService.ServiceCategoryEntity.Dto;
 using App.Domain.Core.HomeService.ServiceCategoryEntity.Entities;
 using App.Domain.Core.HomeService.SubCategoryEntity.Dto;
 
-namespace App.Domain.Core.HomeService.ServiceCategoryEntity.Data
+namespace App.Domain.Core.HomeService.ServiceCategoryEntity.Data.EntityFramework
 {
     public interface IServiceCategoryRepository
     {

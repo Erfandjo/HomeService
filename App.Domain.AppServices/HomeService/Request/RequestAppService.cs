@@ -45,7 +45,7 @@ namespace App.Domain.AppServices.HomeService.Request
 
             var imagesPath = new List<string>();
             request.RequestAt = DateTime.Now;
-            request.Status = Core.HomeService.RequestEntity.Enum.StatusRequestEnum.WaitingSuggestion;
+            request.Status = Core.HomeService.RequestEntity.Enum.StatusRequestEnum.WaitingExpertSelection;
             var result = await _requestService.Add(request, cancellation);
 
             
@@ -98,6 +98,11 @@ namespace App.Domain.AppServices.HomeService.Request
             return await _requestService.GetByIdForUpdate(id, cancellation);
         }
 
+        public async Task<RequestDetailDto>? GetRequestDetails(int id, CancellationToken cancellation)
+        {
+            return await _requestService.GetRequestDetails(id, cancellation);
+        }
+
         public async Task<List<RequestCustomerListDto>>? GetRequestsCustomer(int customerId, CancellationToken cancellation)
         {
             return await _requestService.GetRequestsCustomer(customerId, cancellation);
@@ -106,7 +111,7 @@ namespace App.Domain.AppServices.HomeService.Request
         public async Task<List<RequestExpertListDto>>? GetRequestsExpert(int expertId, CancellationToken cancellation)
         {
            var expertSkils = await _expertService.GetExpertSkils(expertId, cancellation);
-            return await _requestService.GetRequestsExpert(expertSkils , cancellation);
+            return await _requestService.GetRequestsExpert(expertSkils , expertId , cancellation);
         }
 
         public async Task<Result> PaidSuggestion(int requestId, int suggestionId, int customerId , string price, int expertId, CancellationToken cancellation)
@@ -123,23 +128,11 @@ namespace App.Domain.AppServices.HomeService.Request
             var resultadmin = await _userService.Price(priceAdmin, cancellation);
 
             var requestResult = await _requestService.PaidRequest(requestId, cancellation);
-            if (requestResult.IsSucces)
-            {
-                var suggestionResult = await _suggestionService.PaidSuggestion(suggestionId, cancellation);
-                if (suggestionResult.IsSucces)
-                {
-                    return new Result(true, "با موفقیت انجام شد");
-                }
-                else
-                {
-                    await _requestService.BackStatusFinish(requestId, cancellation);
-                    return suggestionResult;
-                }
-            }
-            else
-            {
-                return requestResult;
-            }
+            var suggestionResult = await _suggestionService.PaidSuggestion(suggestionId, cancellation);
+
+            await _requestService.SaveChanges(cancellation);
+
+            return new Result(true, "با موفقیت انجام شد");
         }
 
        

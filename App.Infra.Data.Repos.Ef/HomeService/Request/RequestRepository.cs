@@ -1,4 +1,5 @@
 ﻿using App.Domain.Core.HomeService.CustomerEntity.Entities;
+using App.Domain.Core.HomeService.ExpertEntity.Entities;
 using App.Domain.Core.HomeService.RequestEntity.Data;
 using App.Domain.Core.HomeService.RequestEntity.Dto;
 using App.Domain.Core.HomeService.RequestEntity.Entities;
@@ -143,6 +144,23 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Request
             }).FirstOrDefaultAsync(x => x.Id == id);
         }
 
+        public async Task<RequestDetailDto>? GetRequestDetails(int id, CancellationToken cancellation)
+        {
+            return await _dbContext.Requests.AsNoTracking().Select(x => new RequestDetailDto()
+            {
+                Id = x.Id,
+                DateOfCompletion = x.DateOfCompletion,
+                TimeOfCompletion = x.TimeOfCompletion,
+                CustomerName = x.Customer.User.UserName,
+                ServiceTitle = x.Service.Title,
+                Description = x.Description,
+                RequestAt = x.RequestAt,
+                Images = x.Images,
+                Price = x.Price,
+                Status = x.Status,
+            }).FirstOrDefaultAsync(x => x.Id == id);
+        }
+
         public async Task<List<RequestCustomerListDto>>? GetRequestsCustomer(int customerId, CancellationToken cancellation)
         {
             var suggestions = new List<SuggestionRequestListDto>();
@@ -171,7 +189,7 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Request
             }).ToListAsync(cancellation);
         }
 
-        public async Task<List<RequestExpertListDto>>? GetRequestsExpert(List<int> expetSkils, CancellationToken cancellation)
+        public async Task<List<RequestExpertListDto>>? GetRequestsExpert(List<int> expetSkils,int expertId, CancellationToken cancellation)
         {
             var suggestions = new List<SuggestionRequestListDto>();
             return await _dbContext.Requests.AsNoTracking().Where(x => expetSkils.Contains(x.ServiceId)).Select(x => new RequestExpertListDto()
@@ -182,7 +200,8 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Request
                 Status = x.Status,
                 DateOfCompletion = x.DateOfCompletion,
                 TimeOfCompletion = x.TimeOfCompletion,
-
+                HasExpertSuggestion = x.Suggestions.Any(b => b.ExpertId == expertId),
+                IsAcceptedSuggestion = x.Suggestions.FirstOrDefault(b => b.ExpertId == expertId).Status != Domain.Core.HomeService.SuggestionEntity.Enum.StatusSuggestionEnum.NotSelection,
 
             }).ToListAsync(cancellation);
         }
@@ -196,8 +215,12 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Request
 
             request.Status = Domain.Core.HomeService.RequestEntity.Enum.StatusRequestEnum.Paid;
 
-            await _dbContext.SaveChangesAsync(cancellation);
             return new Result(true, "با موفقیت انجام شد");
+        }
+
+        public async Task SaveChanges(CancellationToken cancellation)
+        {
+            await _dbContext.SaveChangesAsync(cancellation);
         }
 
         public async Task<Result> Update(RequestUpdateDto request, CancellationToken cancellation)

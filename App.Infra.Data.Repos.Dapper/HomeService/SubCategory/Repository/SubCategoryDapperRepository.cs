@@ -1,6 +1,6 @@
 ﻿using App.Domain.Core.HomeService.CategoryEntity.Dto;
 using App.Domain.Core.HomeService.Config;
-using App.Domain.Core.HomeService.SubCategoryEntity.Data;
+using App.Domain.Core.HomeService.SubCategoryEntity.Data.Dapper;
 using App.Domain.Core.HomeService.SubCategoryEntity.Dto;
 using App.Infra.Data.Repos.Dapper.HomeService.Category.Queries;
 using App.Infra.Data.Repos.Dapper.HomeService.SubCategory.Queries;

@@ -14,6 +14,11 @@ namespace App.Domain.Services.HomeService.Expert
 {
     public class ExpertService(IExpertRepository _expertRepository) : IExpertService
     {
+        public async Task<Result> ChangeScore(int expertId, int Score, CancellationToken cancellation)
+        {
+            return await _expertRepository.ChangeScore(expertId, Score, cancellation);
+        }
+
         public async Task<ExpertProfileDto> GetByIdForProfile(int id, CancellationToken cancellation)
         {
             return await _expertRepository.GetByIdForProfile(id, cancellation);

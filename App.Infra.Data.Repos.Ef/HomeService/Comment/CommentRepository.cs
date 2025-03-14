@@ -42,7 +42,7 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Comment
             return new Result(true, "نظر با موفقیت تایید شد");
         }
 
-        public async Task<bool> CheckComment(int requestId, CancellationToken cancellation)
+        public async Task<bool> CheckComment(int requestId , CancellationToken cancellation)
         {
             return await _dbContext.Comments.Where(x => x.RequestId == requestId).AnyAsync();
         }

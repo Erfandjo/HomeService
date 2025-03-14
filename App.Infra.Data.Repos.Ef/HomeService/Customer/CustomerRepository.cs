@@ -16,7 +16,7 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Customer
 {
     public class CustomerRepository(AppDbContext _dbContext) : ICustomerRepository
     {
-        public async Task<Result> Add(Domain.Core.HomeService.CustomerEntity.Entities.Customer customer, CancellationToken cancellation)
+        public async Task<Result> Add(Domain.Core.HomeService.CustomerEntity.Entities.Customer customer , CancellationToken cancellation)
         {
             if (customer is null)
                 return new Result(false, "Customer Is Null");
@@ -79,9 +79,9 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Customer
             if (cus is null)
                 return new Result(false, "مشتری پیدا نشد");
 
-            cus.User.Balance = Convert.ToString(int.Parse(cus.User.Balance) - int.Parse(price));
+            cus.User.Balance = Convert.ToString(float.Parse(cus.User.Balance) - float.Parse(price));
         
-            await _dbContext.SaveChangesAsync(cancellation);
+            
 
             return new Result(true, "با موفقیت انجام شد");
         }

@@ -50,6 +50,41 @@
                                     <span>@request.Status.GetEnumDisplayName()</span>
                                 </div>
                             </div>
+                            <div class="dsd-single-lst-footer">
+                                <a class="btn btn-sm btn-success" asp-page="RequestDetails" asp-route-requestId="@request.Id">نمایش جزییات</a>
+                                @if (request.Status == App.Domain.Core.HomeService.RequestEntity.Enum.StatusRequestEnum.WaitingExpertSelection)
+                                {
+                                    if (request.HasExpertSuggestion == false)
+                                    {
+                                        <a asp-page="/User/Expert/Profile/Suggestion/Index" asp-route-requestId="@request.Id" class="btn btn-edit mr-1"><i class=" fas fa-edit ms-1"></i>پیشنهاد</a>
+                                    }
+                                    else
+                                    {
+                                        <p>پیشنهاد شما ثبت شد</p>
+                                    }
+                                }
+                                else if ((request.Status != App.Domain.Core.HomeService.RequestEntity.Enum.StatusRequestEnum.WaitingExpertSelection) && request.IsAcceptedSuggestion != null && request.HasExpertSuggestion == true)
+                                {
+                                    @if (request.IsAcceptedSuggestion == true)
+                                    {
+                                        <div class="text-success">
+                                            <p>پیشنهاد شما تایید مشتری شد</p>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="text-warning">
+                                            <p>پیشنهاد شما انتخاب نشد</p>
+                                        </div>
+                                    }
+                                }
+                            </div>
+
+
+
+                            
+                          
+
                          @*    <div class="dsd-single-lst-footer">
                                 <button class="btn btn-primary me-1 show-suggestions"
                                         data-request-id="@request.Id">

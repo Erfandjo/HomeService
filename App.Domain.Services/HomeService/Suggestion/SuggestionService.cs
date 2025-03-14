@@ -12,6 +12,11 @@ namespace App.Domain.Services.HomeService.Suggestion
             return await _suggestionRepository.AcceptSuggestion(suggestionId, cancellation);
         }
 
+        public async Task<Result> Add(SuggestionCreateDto suggestion, CancellationToken cancellation)
+        {
+            return await _suggestionRepository.Add(suggestion, cancellation);
+        }
+
         public async Task<Result> FinishSuggestion(int suggestionId, CancellationToken cancellation)
         {
             return await _suggestionRepository.FinishSuggestion(suggestionId, cancellation);

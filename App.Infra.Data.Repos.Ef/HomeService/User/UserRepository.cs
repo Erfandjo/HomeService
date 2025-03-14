@@ -87,17 +87,20 @@ namespace App.Infra.Data.Repos.Ef.HomeService.User
 
         public async Task<int> GetCount(CancellationToken cancellation) => await _dbContext.Users.CountAsync();
 
-        public async Task<string> GetImagePath(int id)
+        public async Task<string>? GetImagePath(int id)
         {
             var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
+            if (user == null)
+                return "29eefre";
+
             return user.ImagePath;
         }
 
         public async Task<Result> Price(string price, CancellationToken cancellation)
         {
             var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == 1);
-            user.Balance = Convert.ToString(int.Parse(user.Balance) + int.Parse(price));
-            await _dbContext.SaveChangesAsync();
+            user.Balance = Convert.ToString(float.Parse(user.Balance) + float.Parse(price));
+            
             return new Result(true, "با موفقیت انجام شد");
         }
 

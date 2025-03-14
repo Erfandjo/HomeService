@@ -15,5 +15,6 @@ namespace App.Domain.Core.HomeService.RequestEntity.AppService
         public Task<Result> FinishSuggestion(int requestId, int suggestionId, CancellationToken cancellation);
         public Task<Result> PaidSuggestion(int requestId, int suggestionId, int customerId, string price , int expertId , CancellationToken cancellation);
         public Task<List<RequestExpertListDto>>? GetRequestsExpert(int expertId, CancellationToken cancellation);
+        public Task<RequestDetailDto>? GetRequestDetails(int id, CancellationToken cancellation);
     }
 }

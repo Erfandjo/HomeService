@@ -1,7 +1,7 @@
 ﻿using App.Domain.Core.HomeService.CategoryEntity.Dto;
 using App.Domain.Core.HomeService.ResultEntity;
 
-namespace App.Domain.Core.HomeService.CategoryEntity.AppService.EntityFramework
+namespace App.Domain.Core.HomeService.CategoryEntity.AppService
 {
     public interface ICategoryAppService
     {

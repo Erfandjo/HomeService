@@ -30,7 +30,6 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <select asp-for="Request.StatusRequest" class="form-select" required>
-                                <option value="@StatusRequestEnum.WaitingSuggestion">@StatusRequestEnum.WaitingSuggestion.GetEnumDisplayName()</option>
                                 <option value="@StatusRequestEnum.WaitingExpertSelection">@StatusRequestEnum.WaitingExpertSelection.GetEnumDisplayName()</option>
                                 <option value="@StatusRequestEnum.ExpertSelection">@StatusRequestEnum.ExpertSelection.GetEnumDisplayName()</option>
                                 <option value="@StatusRequestEnum.Started">@StatusRequestEnum.Started.GetEnumDisplayName()</option>

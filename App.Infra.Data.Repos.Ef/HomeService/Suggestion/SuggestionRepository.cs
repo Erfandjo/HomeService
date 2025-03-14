@@ -1,6 +1,7 @@
 ﻿using App.Domain.Core.HomeService.ResultEntity;
 using App.Domain.Core.HomeService.SuggestionEntity.Data;
 using App.Domain.Core.HomeService.SuggestionEntity.Dto;
+using App.Domain.Core.HomeService.SuggestionEntity.Entities;
 using App.Infra.Data.Db.SqlServer.Ef.Common;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -26,15 +27,24 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Suggestion
 
         }
 
-        public async Task<Result> Add(Domain.Core.HomeService.SuggestionEntity.Entities.Suggestion suggestion, CancellationToken cancellation)
+        public async Task<Result> Add(SuggestionCreateDto suggestion, CancellationToken cancellation)
         {
-            if (suggestion is null)
-                return new Result(false, "Suggestion Is Null");
+            if (suggestion == null)
+                return new Result(false , "پیشنهادی یافت نشد");
 
-            await _dbContext.Suggestions.AddAsync(suggestion);
+
+            var sug = new App.Domain.Core.HomeService.SuggestionEntity.Entities.Suggestion();
+            sug.ExpertId = suggestion.ExpertId;
+            sug.DeliveryDate = suggestion.DeliveryDate;
+            sug.Description =suggestion.Description;
+            sug.SuggestedPrice = suggestion.SuggestedPrice;
+            sug.Status = suggestion.Status;
+            sug.SuggestionAt = suggestion.SuggestionAt;
+            sug.RequestId = suggestion.RequestId;
+
+            await _dbContext.AddAsync(sug);
             await _dbContext.SaveChangesAsync();
-
-            return new Result(true, "Success");
+            return new Result(true, "با موفقیت اضافه شد");
         }
 
         public async Task<Result> Delete(int id, CancellationToken cancellation)
@@ -89,7 +99,7 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Suggestion
 
             suggestion.Status = Domain.Core.HomeService.SuggestionEntity.Enum.StatusSuggestionEnum.Paid;
 
-            await _dbContext.SaveChangesAsync(cancellation);
+            
             return new Result(true, "با موفقیت انجام شد");
         }
 

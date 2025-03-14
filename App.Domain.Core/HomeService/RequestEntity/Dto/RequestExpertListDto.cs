@@ -16,5 +16,7 @@ namespace App.Domain.Core.HomeService.RequestEntity.Dto
         public string? ServiceImagePath { get; set; }
         public StatusRequestEnum Status { get; set; }
         public string ServiceName { get; set; }
+        public bool? HasExpertSuggestion { get; set; }
+        public bool? IsAcceptedSuggestion { get; set; }
     }
 }

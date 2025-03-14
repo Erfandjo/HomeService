@@ -1,12 +1,12 @@
 using App.Domain.Core.HomeService.ServiceCategoryEntity.AppService;
-using App.Domain.Core.HomeService.ServiceCategoryEntity.Data;
+using App.Domain.Core.HomeService.ServiceCategoryEntity.Data.Dapper;
 using App.Domain.Core.HomeService.ServiceCategoryEntity.Dto;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace HomeService.Endpoints.RazorPages.Pages.Service
 {
-    public class IndexModel(IServiceCategoryDapperRepository _serviceCategoryDapperRepository) : PageModel
+    public class IndexModel(IServiceCategoryAppService _serviceCategoryAppService) : PageModel
     {
 
 
@@ -15,7 +15,7 @@ namespace HomeService.Endpoints.RazorPages.Pages.Service
 
         public async Task OnGetAsync(int id , CancellationToken cancellation)
         {
-            ServiceCategory = await _serviceCategoryDapperRepository.GetBySubCategoryId(id, cancellation);
+            ServiceCategory = await _serviceCategoryAppService.GetBySubCategoryId(id, cancellation);
         }
     }
 }

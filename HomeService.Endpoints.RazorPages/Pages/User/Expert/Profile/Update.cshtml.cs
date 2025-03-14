@@ -47,9 +47,14 @@ namespace HomeService.Endpoints.RazorPages.Pages.User.Expert.Profile
             if (ModelState.IsValid)
             {
                 Results = await _expertAppService.Update(Expert, cancellation);
-                Cities = await _cityAppService.GetAll(cancellation);
+                if (!Results.IsSucces)
+                {
+                    Cities = await _cityAppService.GetAll(cancellation);
+                    return Page();
+                }
+            
             }
-
+            Cities = await _cityAppService.GetAll(cancellation);
             return Page();
 
         }

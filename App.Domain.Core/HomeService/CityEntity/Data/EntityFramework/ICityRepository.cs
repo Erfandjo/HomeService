@@ -1,7 +1,7 @@
 ﻿using App.Domain.Core.HomeService.CityEntity.Entities;
 using App.Domain.Core.HomeService.ResultEntity;
 
-namespace App.Domain.Core.HomeService.CityEntity.Data
+namespace App.Domain.Core.HomeService.CityEntity.Data.EntityFramework
 {
     public interface ICityRepository
     {

@@ -9,22 +9,5 @@
      <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
      <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.2" />
   </ItemGroup>
-<ItemGroup>
-  <Folder Include="HomeService\CategoryEntity\AppService\Dapper\" />
-  <Folder Include="HomeService\CategoryEntity\Service\Dapper\" />
-  <Folder Include="HomeService\CategoryEntity\Service\EntityFramework\" />
-  <Folder Include="HomeService\ServiceCategoryEntity\AppService\Dapper\" />
-  <Folder Include="HomeService\ServiceCategoryEntity\AppService\EntityFramework\" />
-  <Folder Include="HomeService\ServiceCategoryEntity\Data\Dapper\" />
-  <Folder Include="HomeService\ServiceCategoryEntity\Data\EntityFramework\" />
-  <Folder Include="HomeService\ServiceCategoryEntity\Service\Dapper\" />
-  <Folder Include="HomeService\ServiceCategoryEntity\Service\EntityFramework\" />
-  <Folder Include="HomeService\SubCategoryEntity\AppService\Dapper\" />
-  <Folder Include="HomeService\SubCategoryEntity\AppService\EntityFramework\" />
-  <Folder Include="HomeService\SubCategoryEntity\Data\Dapper\" />
-  <Folder Include="HomeService\SubCategoryEntity\Data\EntityFramework\" />
-  <Folder Include="HomeService\SubCategoryEntity\Service\Dapper\" />
-  <Folder Include="HomeService\SubCategoryEntity\Service\EntityFramework\" />
-</ItemGroup>
 
 </Project>

@@ -1,5 +1,7 @@
-﻿using App.Domain.Core.HomeService.ExpertEntity.Dto;
+﻿using App.Domain.Core.HomeService.CustomerEntity.Dto;
+using App.Domain.Core.HomeService.ExpertEntity.Dto;
 using App.Domain.Core.HomeService.ResultEntity;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +15,6 @@ namespace App.Domain.Core.HomeService.ExpertEntity.AppService
         public Task<Result> Update(ExpertUpdateDto expert, CancellationToken cancellation);
         public Task<ExpertUpdateDto>? GetByIdForUpdate(int id, CancellationToken cancellation);
         public Task<ExpertProfileDto> GetByIdForProfile(int id, CancellationToken cancellation);
+        public Task<IdentityResult> ChangePassword(ExpertChangePasswordDto user, CancellationToken cancellation);
     }
 }

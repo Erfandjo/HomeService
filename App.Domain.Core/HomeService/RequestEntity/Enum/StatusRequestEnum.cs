@@ -5,10 +5,9 @@ namespace App.Domain.Core.HomeService.RequestEntity.Enum
 {
     public enum StatusRequestEnum
     {
-        [Display(Name = "در انتظار ارسال پیشنهاد")]
-        WaitingSuggestion = 1,
+
         [Display(Name = "در انتظار انتخاب کارشناس")]
-        WaitingExpertSelection,
+        WaitingExpertSelection = 1,
         [Display(Name = "کارشناس انتخاب شده")]
         ExpertSelection,
         [Display(Name = "شروع شده")]

@@ -23,6 +23,7 @@ namespace HomeService.Endpoints.RazorPages.Pages.User.Customer.Request
         [BindProperty]
         public RequestCreateDto Request { get; set; }
 
+        [BindProperty]
         public Result Results { get; set; }
 
 
@@ -30,7 +31,6 @@ namespace HomeService.Endpoints.RazorPages.Pages.User.Customer.Request
         public async Task OnGetAsync(int id , CancellationToken cancellation)
         {
             Request.ServiceId = id;
-            
         }
 
 

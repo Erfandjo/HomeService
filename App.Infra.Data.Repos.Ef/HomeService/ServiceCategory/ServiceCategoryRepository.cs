@@ -1,5 +1,5 @@
 ﻿using App.Domain.Core.HomeService.ResultEntity;
-using App.Domain.Core.HomeService.ServiceCategoryEntity.Data;
+using App.Domain.Core.HomeService.ServiceCategoryEntity.Data.EntityFramework;
 using App.Domain.Core.HomeService.ServiceCategoryEntity.Dto;
 using App.Domain.Core.HomeService.ServiceCategoryEntity.Entities;
 using App.Infra.Data.Db.SqlServer.Ef.Common;

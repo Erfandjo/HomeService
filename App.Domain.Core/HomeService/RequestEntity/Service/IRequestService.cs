@@ -19,7 +19,9 @@ namespace App.Domain.Core.HomeService.RequestEntity.Service
         public Task<Result> FinishRequest(int requestId, CancellationToken cancellation);
         public Task<Result> BackStatusSelection(int requestId, CancellationToken cancellation);
         public Task<Result> BackStatusFinish(int requestId, CancellationToken cancellation);
-        public Task<List<RequestExpertListDto>>? GetRequestsExpert(List<int> expetSkils, CancellationToken cancellation);
+        public Task<List<RequestExpertListDto>>? GetRequestsExpert(List<int> expetSkils, int expertId, CancellationToken cancellation);
+        public Task<RequestDetailDto>? GetRequestDetails(int id , CancellationToken cancellation);
+        public Task SaveChanges(CancellationToken cancellation);
 
     }
 }

@@ -10,5 +10,6 @@ namespace App.Domain.Core.HomeService.SuggestionEntity.Service
         public Task<Result> AcceptSuggestion(int suggestionId, CancellationToken cancellation);
         public Task<Result> FinishSuggestion(int suggestionId, CancellationToken cancellation);
         public Task<Result> PaidSuggestion(int suggestionId, CancellationToken cancellation);
+        public Task<Result> Add(SuggestionCreateDto suggestion, CancellationToken cancellation);
     }
 }

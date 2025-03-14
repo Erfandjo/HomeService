@@ -1,4 +1,5 @@
 ﻿using App.Domain.Core.HomeService.CommentEntity.Entities;
+using App.Domain.Core.HomeService.ExpertEntity.Entities;
 using App.Domain.Core.HomeService.ImageEntity.Entities;
 using App.Domain.Core.HomeService.RequestEntity.Enum;
 using App.Domain.Core.HomeService.ServiceCategoryEntity.Entities;
@@ -23,6 +24,7 @@ namespace App.Domain.Core.HomeService.RequestEntity.Entities
         public StatusRequestEnum Status { get; set; }
         public int ServiceId { get; set; }
         public int Price { get; set; }
+        public int? AcceptedExpertId { get; set; }
         #endregion
 
         #region NavigationProperties
@@ -31,6 +33,7 @@ namespace App.Domain.Core.HomeService.RequestEntity.Entities
         public List<Suggestion>? Suggestions { get; set; }
         public ServiceCategory Service { get; set; }
         public Comment? Comment { get; set; }
+        public Expert? AcceptedExpert { get; set; }
         #endregion
     }
 }

@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using App.Domain.Core.HomeService.SubCategoryEntity.Entities;
 using Microsoft.AspNetCore.Authorization;
-using App.Domain.Core.HomeService.CategoryEntity.AppService.EntityFramework;
+using App.Domain.Core.HomeService.CategoryEntity.AppService;
 
 namespace HomeService.Endpoints.RazorPages.Areas.Admin.Pages.SubCategory
 {

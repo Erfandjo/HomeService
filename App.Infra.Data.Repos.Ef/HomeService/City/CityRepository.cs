@@ -1,4 +1,4 @@
-﻿using App.Domain.Core.HomeService.CityEntity.Data;
+﻿using App.Domain.Core.HomeService.CityEntity.Data.EntityFramework;
 using App.Domain.Core.HomeService.ResultEntity;
 using App.Infra.Data.Db.SqlServer.Ef.Common;
 using Microsoft.EntityFrameworkCore;

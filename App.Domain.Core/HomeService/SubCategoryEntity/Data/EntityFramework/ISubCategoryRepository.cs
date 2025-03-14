@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Domain.Core.HomeService.SubCategoryEntity.Data
+namespace App.Domain.Core.HomeService.SubCategoryEntity.Data.EntityFramework
 {
     public interface ISubCategoryRepository
     {
@@ -17,7 +17,7 @@ namespace App.Domain.Core.HomeService.SubCategoryEntity.Data
         public Task<List<SubCategorySummaryDto>>? GetAll(CancellationToken cancellation);
         public Task<SubCategorySummaryDto>? GetById(int id, CancellationToken cancellation);
         public Task<SubCategoryUpdateDto> GetByIdForUpdate(int id, CancellationToken cancellation);
-        public Task<List<SubCategorySummaryDto>>? GetByCategoryId(int categoryId , CancellationToken cancellation);
+        public Task<List<SubCategorySummaryDto>>? GetByCategoryId(int categoryId, CancellationToken cancellation);
         public Task<List<SubCategoryApiDto>> GetForApi(CancellationToken cancellation);
     }
 }

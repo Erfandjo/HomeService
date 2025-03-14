@@ -1,0 +1,113 @@
+﻿@page
+@model HomeService.Endpoints.RazorPages.Pages.User.Expert.Profile.Suggestion.IndexModel
+@{
+    Layout = "_ExpertProfileLayout";
+}
+
+
+<div class="col-xl-12 col-lg-2 col-md-12 col-sm-12">
+    <div class="submit-form">
+        <div class="dashboard-list-wraps bg-white rounded mb-4">
+            <div class="dashboard-list-wraps-head br-bottom py-3 px-3">
+                <div class="dashboard-list-wraps-flx">
+                    <h4 class="mb-0 ft-medium fs-md">درخواست جدید</h4>
+                </div>
+            </div>
+
+            <form method="post" asp-action="CreateRequest" enctype="multipart/form-data">
+
+                <div class="dashboard-list-wraps-body py-3 px-3">
+                    <div class="row">
+
+
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+
+                            <input type="hidden" asp-for="Suggestion.RequestId" />
+                            <div class="form-group">
+
+                                <div class="input-group">
+                                    <label class="form-label">تاریخ انجام؟</label>
+                                    <input asp-for="Suggestion.DeliveryDate" type="date" id="calender" data-jdp class="form-control rounded" />
+                                    <span class="text-danger" asp-validation-for="Suggestion.DeliveryDate"></span>
+                                </div>
+                            </div>
+
+                         
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label class="form-label">توضیحات</label>
+                                    <textarea asp-for="Suggestion.Description" class="form-control rounded" rows="5" cols="4"></textarea>
+                                    <span class="text-danger" asp-validation-for="Suggestion.Description"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <label class="form-label">قیمت</label>
+                                <input asp-for="Suggestion.SuggestedPrice" class="form-control rounded" type="number" />
+                                <span class="text-danger" asp-validation-for="Suggestion.SuggestedPrice"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                            <div class="form-group p-2">
+                                <button type="submit" class="btn theme-cl rounded theme-bg-light ft-medium">ثبت</button>
+                            </div>
+                        </div>
+                     
+                    </div>
+                </div>
+
+
+                @if (Model.Results is not null)
+                {
+                    <div class="form-floating mb-5">
+                        <h1 style="text-align:center" class="text-danger">@Model.Results.Message</h1>
+                    </div>
+                }
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        jalaliDatepicker.startWatch({
+            minDate: "attr",
+            maxDate: "attr",
+            minTime: "attr",
+            maxTime: "attr",
+            hideAfterChange: true,
+            autoHide: true,
+            showTodayBtn: true,
+            showEmptyBtn: true,
+            topSpace: 10,
+            bottomSpace: 30,
+            dayRendering(opt, input) {
+                return {
+                    isHollyDay: opt.day == 1
+                }
+            }
+        });
+
+        document.getElementById("aaa").addEventListener("jdp:change", function (e) { console.log(e) });
+
+
+         $('#calender').MdPersianDateTimePicker({
+            targetTextSelector: '#calender',
+        });
+
+                $(document).ready(function() {
+          $(".example1").pDatepicker();
+        });
+
+    </script>
+
+}

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Domain.Core.HomeService.SubCategoryEntity.Data
+namespace App.Domain.Core.HomeService.SubCategoryEntity.Data.Dapper
 {
     public interface ISubCategoryDapperRepository
     {

@@ -24,6 +24,21 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Expert
             return new Result(true, "Success");
         }
 
+        public async Task<Result> ChangeScore(int expertId, int Score, CancellationToken cancellation)
+        {
+            var expert = await _dbContext.Experts.FirstOrDefaultAsync(x => x.Id == expertId);
+            if (expert is null)
+                return new Result(false, "کارشناس یافت نشد");
+
+
+            expert.Score = (expert.Score + Score) / 2;
+
+
+            await _dbContext.SaveChangesAsync();
+
+            return new Result(true, "Success");
+        }
+
         public async Task<Result> Delete(int id, CancellationToken cancellation)
         {
             var expert = await _dbContext.Experts.FirstOrDefaultAsync(x => x.Id == id);
@@ -104,8 +119,8 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Expert
         public async Task<Result> Price(int id, string price, CancellationToken cancellation)
         {
            var user =  await _dbContext.Experts.Include(x => x.User).FirstOrDefaultAsync(x => x.Id == id);
-            user.User.Balance = Convert.ToString(int.Parse(user.User.Balance) + int.Parse(price));
-           await _dbContext.SaveChangesAsync();
+            user.User.Balance = Convert.ToString(float.Parse(user.User.Balance) + float.Parse(price));
+           
             return new Result(true, "با موفقیت انجام شد"); 
         }
 
@@ -127,23 +142,29 @@ namespace App.Infra.Data.Repos.Ef.HomeService.Expert
 
         public async Task<Result> Update(ExpertUpdateDto expert, CancellationToken cancellation)
         {
-            var exp = await _dbContext.Experts.Include(x => x.User).FirstOrDefaultAsync(x => x.Id == expert.Id);
+            var exp = await _dbContext.Experts.Include(x => x.User).Include(x => x.Skils).FirstOrDefaultAsync(x => x.Id == expert.Id);
             if (exp is null)
                 return new Result(false, "کارشناس پیدا نشد");
 
 
-            exp.Skils ??= new List<ServiceCategory>();
+           
+            var newSkillIds = expert.Skils ?? new List<int>();
+            var currentSkillIds = exp.Skils.Select(s => s.Id).ToList();
 
-
-            exp.Skils.Clear();
-
-
-
-            if (expert.Skils is not null)
+          
+            var skillsToRemove = exp.Skils.Where(s => !newSkillIds.Contains(s.Id)).ToList();
+            foreach (var skill in skillsToRemove)
             {
-                foreach (var catId in expert.Skils)
+                exp.Skils.Remove(skill);
+            }
+
+        
+            var skillsToAdd = newSkillIds.Except(currentSkillIds).ToList();
+            foreach (var skillId in skillsToAdd)
+            {
+                var category = await _dbContext.Services.FirstOrDefaultAsync(c => c.Id == skillId);
+                if (category != null)
                 {
-                    var category = await _dbContext.Services.FirstOrDefaultAsync(c => c.Id == catId);
                     exp.Skils.Add(category);
                 }
             }

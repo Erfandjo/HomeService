@@ -1,11 +1,12 @@
-﻿using App.Domain.Core.HomeService.CategoryEntity.Data.EntityFramework;
+﻿using App.Domain.Core.HomeService.CategoryEntity.Data.Dapper;
+using App.Domain.Core.HomeService.CategoryEntity.Data.EntityFramework;
 using App.Domain.Core.HomeService.CategoryEntity.Dto;
 using App.Domain.Core.HomeService.CategoryEntity.Service;
 using App.Domain.Core.HomeService.ResultEntity;
 
 namespace App.Domain.Services.HomeService.Category
 {
-    public class CategoryService(ICategoryRepository _categoryRepository) : ICategoryService
+    public class CategoryService(ICategoryRepository _categoryRepository , ICategoryDapperRepository _categoryDapperRepository) : ICategoryService
     {
         public async Task<Result> Add(CategoryCreateDto category, CancellationToken cancellation)
         {
@@ -19,7 +20,7 @@ namespace App.Domain.Services.HomeService.Category
 
         public async Task<List<CategorySummaryDto>>? GetAll(CancellationToken cancellation)
         {
-            return await _categoryRepository.GetAll(cancellation);
+            return await _categoryDapperRepository.GetAll(cancellation);
         }
 
         public async Task<CategoryUpdateDto>? GetByIdForUpdate(int id, CancellationToken cancellation)

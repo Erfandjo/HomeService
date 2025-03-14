@@ -1,6 +1,6 @@
 ﻿using App.Domain.Core.HomeService.ServiceCategoryEntity.Dto;
 
-namespace App.Domain.Core.HomeService.ServiceCategoryEntity.Data
+namespace App.Domain.Core.HomeService.ServiceCategoryEntity.Data.Dapper
 {
     public interface IServiceCategoryDapperRepository
     {

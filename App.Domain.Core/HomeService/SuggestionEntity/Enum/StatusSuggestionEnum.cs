@@ -4,9 +4,9 @@ namespace App.Domain.Core.HomeService.SuggestionEntity.Enum
 {
     public enum StatusSuggestionEnum
     {
-        [Display(Name = "در انتظار انتخاب مشتری")]
-        WaitingCustomerSelection = 1,
-        [Display(Name = "انتخاب شده")]
+        [Display(Name = "انتخاب نشدید")]
+        NotSelection = 1,
+        [Display(Name = "انتخاب شدید")]
         Selected,
         [Display(Name = "تمام شده")]
         finished,

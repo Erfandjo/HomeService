@@ -1,6 +1,6 @@
 ﻿using App.Domain.Core.HomeService.CategoryEntity.Entities;
 using App.Domain.Core.HomeService.ResultEntity;
-using App.Domain.Core.HomeService.SubCategoryEntity.Data;
+using App.Domain.Core.HomeService.SubCategoryEntity.Data.EntityFramework;
 using App.Domain.Core.HomeService.SubCategoryEntity.Dto;
 using App.Domain.Core.HomeService.SubCategoryEntity.Entities;
 using App.Infra.Data.Db.SqlServer.Ef.Common;

@@ -5,7 +5,7 @@ namespace App.Domain.Core.HomeService.SuggestionEntity.Data
 {
     public interface ISuggestionRepository
     {
-        public Task<Result> Add(Entities.Suggestion suggestion, CancellationToken cancellation);
+        public Task<Result> Add(SuggestionCreateDto suggestion, CancellationToken cancellation);
         public Task<Result> Update(int id, Entities.Suggestion suggestion, CancellationToken cancellation);
         public Task<Result> Delete(int id, CancellationToken cancellation);
         public Task<List<SuggestionSummaryDto>>? GetAll(CancellationToken cancellation);

@@ -1,4 +1,5 @@
 ﻿using App.Domain.Core.HomeService.CommentEntity.Entities;
+using App.Domain.Core.HomeService.RequestEntity.Entities;
 using App.Domain.Core.HomeService.ServiceCategoryEntity.Entities;
 using App.Domain.Core.HomeService.SuggestionEntity.Entities;
 using System;
@@ -24,6 +25,7 @@ namespace App.Domain.Core.HomeService.ExpertEntity.Entities
         public List<Comment>? Comments { get; set; }
         public List<ServiceCategory>? Skils { get; set; }
         public List<Suggestion>? Suggestions { get; set; }
+        public List<Request>? AcceptedRequests { get; set; }
         #endregion
     }
 }

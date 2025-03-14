@@ -82,10 +82,10 @@
                                                         <td>@dateSug.ToPersianString("dddd, dd MMMM,yyyy")</td>
                                                         <td>@suggestion.SuggestedPrice.ToString() تومان</td>
                                                         <td>
-                                                            @if (request.Status == StatusRequestEnum.WaitingExpertSelection && suggestion.Status == App.Domain.Core.HomeService.SuggestionEntity.Enum.StatusSuggestionEnum.WaitingCustomerSelection)
+                                                            @if (request.Status == StatusRequestEnum.WaitingExpertSelection && suggestion.Status == App.Domain.Core.HomeService.SuggestionEntity.Enum.StatusSuggestionEnum.NotSelection)
                                                             {
                                                                 <a onclick="return confirm('آیا از انتخاب این کارشناس اطمینان دارید؟')" class="btn btn-sm btn-success" asp-page-handler="Accept" asp-route-suggestionId="@suggestion.Id" asp-route-requestId="@request.Id">تایید پیشنهاد</a>
-                                                                <a class="btn btn-sm btn-blue" asp-page="/User/Expert/Profile" asp-route-id="@suggestion.ExpertId">پروفایل کارشناس</a>
+                                                               
                                                             }
                                                             else if (request.Status == StatusRequestEnum.Started && suggestion.Status == App.Domain.Core.HomeService.SuggestionEntity.Enum.StatusSuggestionEnum.Selected)
                                                             {
@@ -106,6 +106,7 @@
                                                                 <span class="text-success">پرداخت شده</span>
                                                                 <a class="btn btn-sm btn-success" asp-page="Comment" asp-route-expertId="@suggestion.ExpertId" asp-route-requestId="@request.Id">ثبت نظر</a>
                                                             }
+                                                            <a class="btn btn-sm btn-blue" asp-page="/User/Expert/Profile/Index" asp-route-id="@suggestion.ExpertId">پروفایل کارشناس</a>
                                                         </td>
                                                     </tr>
                                                 }

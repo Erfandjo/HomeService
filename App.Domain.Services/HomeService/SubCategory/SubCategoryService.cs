@@ -1,11 +1,12 @@
 ﻿using App.Domain.Core.HomeService.ResultEntity;
-using App.Domain.Core.HomeService.SubCategoryEntity.Data;
+using App.Domain.Core.HomeService.SubCategoryEntity.Data.Dapper;
+using App.Domain.Core.HomeService.SubCategoryEntity.Data.EntityFramework;
 using App.Domain.Core.HomeService.SubCategoryEntity.Dto;
 using App.Domain.Core.HomeService.SubCategoryEntity.Service;
 
 namespace App.Domain.Services.HomeService.SubCategory
 {
-    public class SubCategoryService(ISubCategoryRepository _subCategoryRepository) : ISubCategoryService
+    public class SubCategoryService(ISubCategoryRepository _subCategoryRepository , ISubCategoryDapperRepository _subCategoryDapperRepository) : ISubCategoryService
     {
         public async Task<Result> Add(SubCategoryCreateDto categoryCreateDto, CancellationToken cancellation)
         {
@@ -24,7 +25,7 @@ namespace App.Domain.Services.HomeService.SubCategory
 
         public async Task<List<SubCategorySummaryDto>>? GetByCategoryId(int categoryId, CancellationToken cancellation)
         {
-            return await _subCategoryRepository.GetByCategoryId(categoryId, cancellation);
+            return await _subCategoryDapperRepository.GetByCategoryId(categoryId, cancellation);
         }
 
         public async Task<SubCategorySummaryDto>? GetById(int id, CancellationToken cancellation)

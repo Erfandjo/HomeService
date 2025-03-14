@@ -1,12 +1,13 @@
 ﻿using App.Domain.Core.HomeService.ResultEntity;
-using App.Domain.Core.HomeService.ServiceCategoryEntity.Data;
+using App.Domain.Core.HomeService.ServiceCategoryEntity.Data.Dapper;
+using App.Domain.Core.HomeService.ServiceCategoryEntity.Data.EntityFramework;
 using App.Domain.Core.HomeService.ServiceCategoryEntity.Dto;
 using App.Domain.Core.HomeService.ServiceCategoryEntity.Service;
 using App.Domain.Core.HomeService.SubCategoryEntity.Dto;
 
 namespace App.Domain.Services.HomeService.ServiceCategory
 {
-    public class ServiceCategoryService(IServiceCategoryRepository _serviceCategoryRepository) : IServiceCategoryService
+    public class ServiceCategoryService(IServiceCategoryRepository _serviceCategoryRepository , IServiceCategoryDapperRepository _serviceCategoryDapperRepository) : IServiceCategoryService
     {
         public async Task<Result> Add(ServiceCategoryCreateDto service, CancellationToken cancellation)
         {
@@ -35,7 +36,7 @@ namespace App.Domain.Services.HomeService.ServiceCategory
 
         public async Task<List<ServiceCategorySummaryDto>>? GetBySubCategoryId(int subCategoryId, CancellationToken cancellation)
         {
-            return await _serviceCategoryRepository.GetBySubCategoryId(subCategoryId, cancellation);
+            return await _serviceCategoryDapperRepository.GetBySubCategoryId(subCategoryId, cancellation);
         }
 
         public async Task<List<SkilsProfileDto>>? GetSkils(CancellationToken cancellation)

@@ -1,0 +1,88 @@
+﻿@page
+@using Framework
+@model HomeService.Endpoints.RazorPages.Pages.User.Expert.Profile.RequestDetailsModel
+@{
+    Layout = "_ExpertProfileLayout";
+
+    var time = new DateTime(Model.RequestDetail.DateOfCompletion.Year, Model.RequestDetail.DateOfCompletion.Month, Model.RequestDetail.DateOfCompletion.Day);
+    ViewData["Title"] = "جزییات درخواست";
+
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card {
+            margin-top: 20px;
+        }
+
+        .card-header {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mt-4">@ViewData["Title"]</h2>
+        <div class="card">
+            <div class="card-header">
+                Request Details
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <p><strong>تاریخ انجام:</strong> @time.ToPersianString("dddd, dd MMMM,yyyy")</p>
+                        <p><strong>ساعت انجام:</strong> @Model.RequestDetail.TimeOfCompletion</p>
+                        <p><strong>توضیحات:</strong> @Model.RequestDetail.Description</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>تاریخ ثبت درخواست:</strong> @Model.RequestDetail.RequestAt.ToPersianString("dddd, dd MMMM,yyyy")</p>
+                        <p><strong>نام کاربری مشتری:</strong> @Model.RequestDetail.CustomerName</p>
+                        <p><strong>وضعیت:</strong> @Model.RequestDetail.Status.GetEnumDisplayName()</p>
+                        <p><strong>نام خدمت:</strong> @Model.RequestDetail.ServiceTitle</p>
+                        <p><strong>قیمت:</strong> @Model.RequestDetail.Price</p>
+                    </div>
+                </div>
+
+
+
+                <div class="mt-3">
+                    <h5>Images:</h5>
+                    <div class="row">
+                        @if (Model.RequestDetail.Images != null && Model.RequestDetail.Images.Any())
+                        {
+                            @foreach (var image in Model.RequestDetail.Images)
+                            {
+                                <div class="col-md-4">
+                                    <img src="@image.Path" alt="Image" class="img-fluid mb-2" />
+                                </div>
+                            }
+                        } else 
+                        {
+                            <div class="col-md-4">
+                                <img src="~/Images/Category/IeKrEgl6K91vwymznimqskAsIGpAxwvPC7rGK005.jpg" alt="Image" class="img-fluid mb-2" />
+                            </div>
+                        }
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

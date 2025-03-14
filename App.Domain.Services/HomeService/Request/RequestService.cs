@@ -52,19 +52,29 @@ namespace App.Domain.Services.HomeService.Request
             return await _requestRepository.GetByIdForUpdate(id, cancellation);
         }
 
+        public async Task<RequestDetailDto>? GetRequestDetails(int id, CancellationToken cancellation)
+        {
+            return await _requestRepository.GetRequestDetails(id, cancellation);
+        }
+
         public async Task<List<RequestCustomerListDto>>? GetRequestsCustomer(int customerId, CancellationToken cancellation)
         {
             return await _requestRepository.GetRequestsCustomer(customerId, cancellation);
         }
 
-        public async Task<List<RequestExpertListDto>>? GetRequestsExpert(List<int> expetSkils , CancellationToken cancellation)
+        public async Task<List<RequestExpertListDto>>? GetRequestsExpert(List<int> expetSkils, int expertId , CancellationToken cancellation)
         {
-            return await _requestRepository.GetRequestsExpert(expetSkils , cancellation);
+            return await _requestRepository.GetRequestsExpert(expetSkils , expertId , cancellation);
         }
 
         public async Task<Result> PaidRequest(int requestId, CancellationToken cancellation)
         {
             return await _requestRepository.PaidRequest(requestId, cancellation);
+        }
+
+        public async Task SaveChanges(CancellationToken cancellation)
+        {
+             await _requestRepository.SaveChanges(cancellation);
         }
 
         public async Task<Result> Update(RequestUpdateDto request, CancellationToken cancellation)

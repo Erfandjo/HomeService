@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace HomeService.Endpoints.RazorPages.Pages
 {
-    public class IndexModel(ICategoryDapperRepository _categoryRepositoryDapper) : PageModel
+    public class IndexModel(ICategoryAppService _categoryAppService) : PageModel
     {
 
         [BindProperty]
@@ -17,7 +17,7 @@ namespace HomeService.Endpoints.RazorPages.Pages
 
         
 
-            Categories = await _categoryRepositoryDapper.GetAll(cancellation);
+            Categories = await _categoryAppService.GetAll(cancellation);
             if (User.IsInRole("Admin"))
             {
                 returnUrl = Url.Content("/Admin");
